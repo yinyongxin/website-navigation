@@ -3,6 +3,7 @@ import { createSignal } from "solid-js";
 export default () => {
   const [color, setColor] = createSignal("#E0E0E0");
   const [rounded, setRounded] = createSignal(20);
+  const [distalce, setDistalce] = createSignal(10);
   return (
     <div
       style={{
@@ -15,7 +16,7 @@ export default () => {
           class="w-3/5 aspect-square "
           style={{
             "border-radius": rounded() + "px",
-            "box-shadow": `18px 18px 36px #bebebe,-18px -18px 36px #ffffff;`,
+            "box-shadow": `${distalce()}px ${distalce()}px 36px #bebebe,-${distalce()}px -${distalce()}px 36px #ffffff;`,
           }}
         ></div>
       </div>

@@ -4,6 +4,7 @@ export default () => {
   const [color, setColor] = createSignal("#E0E0E0");
   const [rounded, setRounded] = createSignal(20);
   const [distalce, setDistalce] = createSignal(10);
+  const [blur, setBlur] = createSignal(30);
   return (
     <div
       style={{
@@ -16,7 +17,14 @@ export default () => {
           class="w-3/5 aspect-square "
           style={{
             "border-radius": rounded() + "px",
-            "box-shadow": `${distalce()}px ${distalce()}px 36px #bebebe,-${distalce()}px -${distalce()}px 36px #ffffff;`,
+            "box-shadow": `${distalce()}px ${distalce()}px ${blur()}px #bebebe,-${distalce()}px -${distalce()}px ${blur()}px #ffffff;`,
+          }}
+        ></div>
+        <div
+          class="w-3/5 aspect-square "
+          style={{
+            "border-radius": rounded() + "px",
+            "box-shadow": `inset ${distalce()}px ${distalce()}px ${blur()}px #bebebe,inset -${distalce()}px -${distalce()}px ${blur()}px #ffffff;`,
           }}
         ></div>
       </div>

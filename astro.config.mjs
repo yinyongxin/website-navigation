@@ -8,7 +8,7 @@ import solidJs from "@astrojs/solid-js";
 // https://astro.build/config
 export default defineConfig({
 	integrations: [tailwind(), solidJs()],
-	experimental: {
-		svg: true,
-	  },
+	// experimental: {
+	// 	svg: true,
+	//   },
 });

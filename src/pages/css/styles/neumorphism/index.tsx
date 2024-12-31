@@ -6,9 +6,23 @@ export default () => {
   const [blur, setBlur] = createSignal(24);
   const getBaseNeumorphism = () => {
     console.log("distalce()", distalce());
+    console.log("blur()", blur());
+    console.log();
     return {
       "border-radius": radius() + "px",
-      "box-shadow": `${distalce()}px ${distalce()}px ${blur()}px #bebebe,-${distalce()}px -${distalce()}px ${blur()}px #ffffff;`,
+      "box-shadow":
+        distalce() +
+        "px " +
+        distalce() +
+        "px " +
+        blur() +
+        "px #bebebe," +
+        -distalce() +
+        "px " +
+        -distalce() +
+        "px " +
+        blur() +
+        "px #ffffff",
     };
   };
   return (
@@ -22,14 +36,24 @@ export default () => {
         <div
           class="h-3/5 xl:h-[unset] w-[unset] xl:w-3/5 aspect-square "
           style={getBaseNeumorphism()}
-        ></div>
+        >
+          {blur()}
+          {distalce()}
+          {radius()}
+        </div>
         <div
           class="h-3/5 xl:h-[unset] w-[unset] xl:w-3/5 aspect-square "
           style={{
             "border-radius": radius() + "px",
-            "box-shadow": `inset ${distalce()}px ${distalce()}px ${blur()}px #bebebe,inset -${distalce()}px -${distalce()}px ${blur()}px #ffffff;`,
+            "box-shadow":
+              `inset ${distalce()}px ${distalce()}px ${blur()}px #bebebe,inset -${distalce()}px -${distalce()}px ${blur()}px #ffffff;` +
+              "",
           }}
-        ></div>
+        >
+          {blur()}
+          {distalce()}
+          {radius()}
+        </div>
       </div>
       <div class="h-full xl:h-[unset] w-full xl:w-full aspect-square grid grid-cols-1 xl:grid-cols-2 gap-4 auto-rows-max grid-flow-dense content-center">
         <div

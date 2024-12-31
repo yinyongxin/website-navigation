@@ -38,7 +38,7 @@ export default () => {
           <div>radius</div>
           <div class="flex items-center gap-3">
             <div
-              class="cursor-pointer"
+              class="cursor-pointer px-4 aspect-square flex items-center"
               style={getBaseNeumorphism()}
               onClick={() => {
                 setRadius((r) => r - 1);
@@ -48,7 +48,7 @@ export default () => {
             </div>
             {radius()}
             <div
-              class="cursor-pointer"
+              class="cursor-pointer px-4 aspect-square flex items-center"
               style={getBaseNeumorphism()}
               onClick={() => {
                 setRadius((r) => r + 1);

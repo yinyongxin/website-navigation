@@ -4,25 +4,26 @@ export default () => {
   const [radius, setRadius] = createSignal(20);
   const [distalce, setDistalce] = createSignal(8);
   const [blur, setBlur] = createSignal(24);
-  const getBaseNeumorphism = () => {
-    console.log("distalce()", distalce());
-    console.log("blur()", blur());
-    console.log();
-    return {
-      "border-radius": radius() + "px",
-      "box-shadow":
+  const getBaseNeumorphism = (inset: boolean = false) => {
+    const shadows = [
+      (inset ? "inset " : "") +
         distalce() +
         "px " +
         distalce() +
         "px " +
         blur() +
-        "px #bebebe," +
+        "px #bebebe",
+      (inset ? "inset " : "") +
         -distalce() +
         "px " +
         -distalce() +
         "px " +
         blur() +
         "px #ffffff",
+    ];
+    return {
+      "border-radius": radius() + "px",
+      "box-shadow": shadows.join(","),
     };
   };
   return (
@@ -32,24 +33,13 @@ export default () => {
       }}
       class="size-full grid grid-cols-1 grid-rows-2 xl:grid-cols-2 xl:grid-rows-1 p-10 place-items-center overflow-hidden"
     >
-      <div class="h-full xl:h-[unset] w-full xl:w-full grid grid-cols-2 grid-rows-2 place-content-center place-items-center aspect-square">
-        <div
-          class="h-3/5 xl:h-[unset] w-[unset] xl:w-3/5 aspect-square "
-          style={getBaseNeumorphism()}
-        >
+      <div class="h-full xl:h-[unset] w-full xl:w-full grid grid-cols-2 grid-rows-2 place-content-center place-items-center aspect-square gap-10">
+        <div class="size-full aspect-square " style={getBaseNeumorphism()}>
           {blur()}
           {distalce()}
           {radius()}
         </div>
-        <div
-          class="h-3/5 xl:h-[unset] w-[unset] xl:w-3/5 aspect-square "
-          style={{
-            "border-radius": radius() + "px",
-            "box-shadow":
-              `inset ${distalce()}px ${distalce()}px ${blur()}px #bebebe,inset -${distalce()}px -${distalce()}px ${blur()}px #ffffff;` +
-              "",
-          }}
-        >
+        <div class="size-full aspect-square" style={getBaseNeumorphism(true)}>
           {blur()}
           {distalce()}
           {radius()}

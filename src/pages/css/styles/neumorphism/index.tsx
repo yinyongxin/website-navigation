@@ -5,6 +5,7 @@ export default () => {
   const [distalce, setDistalce] = createSignal(8);
   const [blur, setBlur] = createSignal(24);
   const getBaseNeumorphism = () => {
+    console.log("distalce()", distalce());
     return {
       "border-radius": radius() + "px",
       "box-shadow": `${distalce()}px ${distalce()}px ${blur()}px #bebebe,-${distalce()}px -${distalce()}px ${blur()}px #ffffff;`,
@@ -32,13 +33,13 @@ export default () => {
       </div>
       <div class="h-full xl:h-[unset] w-full xl:w-full aspect-square grid grid-cols-1 xl:grid-cols-2 gap-4 auto-rows-max grid-flow-dense content-center">
         <div
-          class="flex justify-between px-6 py-6"
+          class="flex items-center justify-between px-6 py-6"
           style={getBaseNeumorphism()}
         >
           <div>radius</div>
-          <div class="flex items-center gap-3">
+          <div class="flex items-center gap-4">
             <div
-              class="cursor-pointer px-4 aspect-square flex items-center"
+              class="cursor-pointer px-4 aspect-square flex items-center align-middle"
               style={getBaseNeumorphism()}
               onClick={() => {
                 setRadius((r) => r - 1);
@@ -48,7 +49,7 @@ export default () => {
             </div>
             {radius()}
             <div
-              class="cursor-pointer px-4 aspect-square flex items-center"
+              class="cursor-pointer px-4 aspect-square flex items-center align-middle"
               style={getBaseNeumorphism()}
               onClick={() => {
                 setRadius((r) => r + 1);
@@ -59,18 +60,58 @@ export default () => {
           </div>
         </div>
         <div
-          class="flex justify-between px-6 py-6"
+          class="flex items-center justify-between px-6 py-6"
           style={getBaseNeumorphism()}
         >
           <div>distalce</div>
-          <div>{distalce()}</div>
+          <div class="flex items-center gap-4">
+            <div
+              class="cursor-pointer px-4 aspect-square flex items-center align-middle"
+              style={getBaseNeumorphism()}
+              onClick={() => {
+                setDistalce((d) => d - 1);
+              }}
+            >
+              -
+            </div>
+            {distalce()}
+            <div
+              class="cursor-pointer px-4 aspect-square flex items-center align-middle"
+              style={getBaseNeumorphism()}
+              onClick={() => {
+                setDistalce((d) => d + 1);
+              }}
+            >
+              +
+            </div>
+          </div>
         </div>
         <div
-          class="flex justify-between px-6 py-6"
+          class="flex items-center justify-between px-6 py-6"
           style={getBaseNeumorphism()}
         >
-          <div>blur</div>
-          <div>{blur()}</div>
+          <div>Blur</div>
+          <div class="flex items-center gap-4">
+            <div
+              class="cursor-pointer px-4 aspect-square flex items-center align-middle"
+              style={getBaseNeumorphism()}
+              onClick={() => {
+                setBlur((state) => state - 1);
+              }}
+            >
+              -
+            </div>
+            {blur()}
+            <div
+              class="cursor-pointer px-4 aspect-square flex items-center align-middle"
+              style={getBaseNeumorphism()}
+              onClick={() => {
+                setBlur((state) => state + 1);
+              }}
+            >
+              +
+            </div>
+          </div>
         </div>
       </div>
     </div>

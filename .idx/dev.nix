@@ -47,8 +47,8 @@
       # Runs when a workspace is first created
       onCreate = {
         # Example: install JS dependencies from NPM
-        add-yarn = "npm i yarn -g";
-        yarn-install = "yarn install";
+        # add-yarn = "npm i yarn -g";
+        # yarn-install = "yarn install";
       };
       # Runs when the workspace is (re)started
       onStart = {

@@ -1,5 +1,4 @@
 import { createSignal } from "solid-js";
-
 export default () => {
   const [color, setColor] = createSignal("#E0E0E0");
   const [radius, setRadius] = createSignal(20);

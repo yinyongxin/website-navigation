@@ -1,6 +1,9 @@
 import { createSignal, For, Index, onMount } from "solid-js";
 import { uniq } from "lodash-es";
 import { cn } from "../../utils";
+import { TransitionGroup } from "solid-transition-group";
+import "./index.css";
+
 const Content = () => {
   const [tags, setTags] = createSignal<
     {
@@ -88,40 +91,42 @@ const Content = () => {
             "grid-template-columns": "repeat(auto-fill, minmax(300px, 1fr))",
           }}
         >
-          <For each={getFilterList()}>
-            {(item) => {
-              return (
-                <li class="border-solid border border-gray-300 p-4 rounded-xl shadow hover:shadow-md transition-shadow flex flex-col  gap-2">
-                  <div class="flex justify-between items-center ">
-                    <div class="w-20 h-20 border rounded-xl flex justify-center items-center">
-                      <img alt="icon" width="70%" src={item.icon} />
+          <TransitionGroup name="group-item">
+            <For each={getFilterList()}>
+              {(item) => {
+                return (
+                  <li class="border-solid border border-gray-300 p-4 rounded-xl shadow hover:shadow-md transition-shadow flex flex-col  gap-2">
+                    <div class="flex justify-between items-center ">
+                      <div class="w-20 h-20 border rounded-xl flex justify-center items-center">
+                        <img alt="icon" width="70%" src={item.icon} />
+                      </div>
+                      <div class="flex-1 text-end text-3xl">{item.title}</div>
                     </div>
-                    <div class="flex-1 text-end text-3xl">{item.title}</div>
-                  </div>
-                  <div class="text-ellipsis line-clamp-2 h-12 text-justify">
-                    {item.description}
-                  </div>
-                  <ol class="flex gap-2">
-                    <For each={item.tags}>
-                      {(tag) => (
-                        <li class="text-sm border-2 rounded-xl px-2 py-1">
-                          {tag}
-                        </li>
-                      )}
-                    </For>
-                  </ol>
-                  <button
-                    class="py-4 bg-neutral-100 hover:bg-neutral-200 transition-colors rounded-xl text-center cursor-pointer"
-                    onClick={() => {
-                      window.open(item.url);
-                    }}
-                  >
-                    {item.url}
-                  </button>
-                </li>
-              );
-            }}
-          </For>
+                    <div class="text-ellipsis line-clamp-2 h-12 text-justify">
+                      {item.description}
+                    </div>
+                    <ol class="flex gap-2">
+                      <For each={item.tags}>
+                        {(tag) => (
+                          <li class="text-sm border-2 rounded-xl px-2 py-1">
+                            {tag}
+                          </li>
+                        )}
+                      </For>
+                    </ol>
+                    <button
+                      class="py-4 bg-neutral-100 hover:bg-neutral-200 transition-colors rounded-xl text-center cursor-pointer"
+                      onClick={() => {
+                        window.open(item.url);
+                      }}
+                    >
+                      {item.url}
+                    </button>
+                  </li>
+                );
+              }}
+            </For>
+          </TransitionGroup>
         </ul>
       </div>
     </div>

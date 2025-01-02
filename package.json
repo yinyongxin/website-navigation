@@ -15,6 +15,7 @@
     "astro": "^5.0.3",
     "lodash-es": "^4.17.21",
     "solid-js": "^1.9.3",
+    "solid-transition-group": "^0.2.3",
     "tailwind-merge": "^2.5.5",
     "tailwindcss": "^3.4.16",
     "tinycolor2": "^1.6.0"

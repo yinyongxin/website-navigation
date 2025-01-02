@@ -1,8 +1,13 @@
-import { createSignal, For, onMount } from "solid-js";
+import { createSignal, For, Index, onMount } from "solid-js";
 import { uniq } from "lodash-es";
-
+import { cn } from "../../utils";
 const Content = () => {
-  const [tags, setTags] = createSignal<string[]>([]);
+  const [tags, setTags] = createSignal<
+    {
+      label: string;
+      checked: boolean;
+    }[]
+  >([]);
   const list = [
     {
       title: "SolidJS",
@@ -29,27 +34,64 @@ const Content = () => {
     },
   ];
 
+  const getFilterList = () => {
+    return list.filter((listItem) => {
+      return tags().every((tag) => {
+        return tag.checked ? listItem.tags.includes(tag.label) : true;
+      });
+    });
+  };
+
+  onMount(() => {
+    setTags(
+      uniq(list.map((item) => item.tags).flat()).map((item) => ({
+        label: item,
+        checked: false,
+      }))
+    );
+  });
+
   return (
     <div class="h-full w-full p-6">
-      <div>
-        <For each={tags()}>
-          {(tag) => {
-            return <div>{tag}</div>;
-          }}
-        </For>
+      <div class="flex gap-4">
+        <img src="/icons/filter.svg" alt="filter" />
+        <div class="flex flex-wrap gap-2">
+          <Index each={tags()}>
+            {(tag, index) => {
+              return (
+                <div
+                  class={cn(
+                    "px-4 py-2 border rounded-xl hover:bg-neutral-100 active:bg-neutral-50 transition-colors cursor-pointer",
+                    {
+                      "bg-neutral-100 border-dashed": tag().checked,
+                    }
+                  )}
+                  onClick={() => {
+                    setTags((prev) =>
+                      prev.map((item, i) =>
+                        i === index ? { ...item, checked: !item.checked } : item
+                      )
+                    );
+                  }}
+                >
+                  {tag().label}
+                </div>
+              );
+            }}
+          </Index>
+        </div>
       </div>
-      <div class="flex justify-center">
+      <div class="flex justify-center mt-6">
         <ul
           class="w-full grid gap-4"
           style={{
             "grid-template-columns": "repeat(auto-fill, minmax(300px, 1fr))",
           }}
         >
-          <For each={list}>
+          <For each={getFilterList()}>
             {(item) => {
-              setTags((state) => uniq([...state, ...item.tags]));
               return (
-                <li class="border-solid border-[1px] border-gray-300 p-4 rounded-xl shadow hover:shadow-md transition-shadow flex flex-col  gap-2">
+                <li class="border-solid border border-gray-300 p-4 rounded-xl shadow hover:shadow-md transition-shadow flex flex-col  gap-2">
                   <div class="flex justify-between items-center ">
                     <div class="w-20 h-20 border rounded-xl flex justify-center items-center">
                       <img alt="icon" width="70%" src={item.icon} />
@@ -69,7 +111,7 @@ const Content = () => {
                     </For>
                   </ol>
                   <button
-                    class="py-4 bg-slate-100 hover:bg-slate-200 transition-colors rounded-xl text-center cursor-pointer"
+                    class="py-4 bg-neutral-100 hover:bg-neutral-200 transition-colors rounded-xl text-center cursor-pointer"
                     onClick={() => {
                       window.open(item.url);
                     }}

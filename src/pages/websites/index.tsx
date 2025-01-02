@@ -93,9 +93,9 @@ const Content = () => {
         >
           <TransitionGroup name="group-item">
             <For each={getFilterList()}>
-              {(item) => {
+              {(item, index) => {
                 return (
-                  <li class="border-solid border border-gray-300 p-4 rounded-xl shadow hover:shadow-md transition-shadow flex flex-col  gap-2">
+                  <li class="group-item border-solid border border-gray-300 p-4 rounded-xl shadow hover:shadow-md transition-shadow flex flex-col gap-2">
                     <div class="flex justify-between items-center ">
                       <div class="w-20 h-20 border rounded-xl flex justify-center items-center">
                         <img alt="icon" width="70%" src={item.icon} />

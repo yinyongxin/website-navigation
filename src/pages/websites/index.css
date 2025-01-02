@@ -5,7 +5,7 @@
 .group-item-enter,
 .group-item-exit-to {
   opacity: 0;
-  transform: translateY(30px);
+  /* transform: translateY(30px); */
 }
 .group-item-exit-active {
   position: absolute;

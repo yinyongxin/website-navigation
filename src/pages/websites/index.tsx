@@ -79,8 +79,8 @@ const Content = () => {
   });
 
   return (
-    <div class="h-full w-full p-6">
-      <div class="flex gap-4">
+    <div class="h-full w-full">
+      <div class="flex gap-4 sticky top-0 p-6 backdrop-blur bg-white/30">
         <img src="/icons/filter.svg" alt="filter" />
         <div class="flex flex-wrap gap-2">
           <Index each={tags()}>
@@ -108,7 +108,7 @@ const Content = () => {
           </Index>
         </div>
       </div>
-      <div class="flex justify-center mt-6">
+      <div class="px-6">
         <ul
           class="w-full grid gap-4"
           style={{

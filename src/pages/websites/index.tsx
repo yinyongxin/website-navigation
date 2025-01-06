@@ -51,6 +51,14 @@ const Content = () => {
       icon: "https://img.nodejs.cn/favicon.png",
       tags: ["中文", "Nodejs", "Runtime"],
     },
+    {
+      title: "BestofJS",
+      url: "https://bestofjs.org/",
+      description:
+        "bestofjs.org 是一个社区驱动的网站，旨在帮助开发者发现和评估最优秀的 JavaScript 项目、库和工具。该网站通过收集和展示来自 GitHub 的数据，提供了一个全面的资源列表，帮助开发者找到适合他们需求的 JavaScript 项目。",
+      icon: "https://bestofjs.org/favicon.ico",
+      tags: ["推荐", "Github"],
+    },
   ];
 
   const getFilterList = () => {

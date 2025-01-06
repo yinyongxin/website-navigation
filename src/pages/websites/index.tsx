@@ -1,4 +1,4 @@
-import { createSignal, For, Index, onMount } from "solid-js";
+import { createSignal, For, Index, onMount, Show } from "solid-js";
 import { uniq } from "lodash-es";
 import { cn } from "../../utils";
 import { TransitionGroup } from "solid-transition-group";
@@ -41,7 +41,7 @@ const Content = () => {
       description:
         "Vite 是一个旨在为现代 Web 项目提供更快、更精简开发体验的构建工具。",
       icon: "https://react.dev/favicon-32x32.png",
-      tags: ["React", "Vite"],
+      tags: ["React"],
     },
     {
       title: "Nodejs中文网",
@@ -155,9 +155,11 @@ const Content = () => {
                         </li>
                       )}
                     </For>
-                    <li class="text-xs border-2 rounded-lg px-2 py-1 cursor-pointer">
-                      更多
-                    </li>
+                    <Show when={item.tags.length > 2}>
+                      <li class="text-xs border-2 rounded-lg px-2 py-1 cursor-pointer">
+                        更多
+                      </li>
+                    </Show>
                   </ol>
                   <button
                     class="py-4 bg-neutral-100 hover:bg-neutral-200 transition-colors rounded-xl text-center cursor-pointer"

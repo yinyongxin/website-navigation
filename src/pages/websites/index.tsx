@@ -36,7 +36,7 @@ const Content = () => {
       tags: ["Build", "Vite"],
     },
     {
-      title: "React",
+      title: "ReactJS",
       url: "https://react.dev",
       description:
         "Vite 是一个旨在为现代 Web 项目提供更快、更精简开发体验的构建工具。",

@@ -31,23 +31,35 @@ export default () => {
       style={{
         "background-color": color(),
       }}
-      class="size-full grid grid-cols-1 grid-rows-2 xl:grid-cols-2 xl:grid-rows-1 p-10 place-items-center overflow-hidden"
+      class="size-full grid grid-cols-1 grid-rows-2 xl:grid-cols-2 xl:grid-rows-1 p-10 place-items-center overflow-hidden gap-5"
     >
       <div class="h-full xl:h-[unset] w-full xl:w-full grid grid-cols-2 grid-rows-2 place-content-center place-items-center aspect-square gap-10">
         <div
           class="size-full aspect-square flex justify-center items-center"
           style={getBaseNeumorphism()}
         >
-          <img src="/icons/a.svg" alt="a" />
+          <img src="/icons/a.svg" alt="a" class="w-2/5" />
         </div>
         <div
           class="size-full aspect-square flex justify-center items-center"
           style={getBaseNeumorphism(true)}
         >
-          <img src="/icons/b.svg" alt="a" />
+          <img src="/icons/b.svg" alt="a" class="w-2/5" />
+        </div>
+        <div
+          class="size-full aspect-square flex justify-center items-center"
+          style={{...getBaseNeumorphism(false),background: 'linear-gradient(145deg, #f0f0f0, #cacaca)'}}
+        >
+          <img src="/icons/c.svg" alt="a" class="w-2/5" />
+        </div>
+        <div
+          class="size-full aspect-square flex justify-center items-center"
+          style={{...getBaseNeumorphism(false),background: 'linear-gradient(145deg, #cacaca, #f0f0f0)'}}
+        >
+          <img src="/icons/d.svg" alt="a" class="w-2/5" />
         </div>
       </div>
-      <div class="h-full xl:h-[unset] w-full xl:w-full aspect-square grid grid-cols-1 xl:grid-cols-2 gap-4 auto-rows-max grid-flow-dense content-center">
+      <div class="h-full xl:h-[unset] w-full xl:w-full aspect-square grid grid-cols-1 gap-4 auto-rows-max grid-flow-dense content-center">
         <div
           class="flex items-center justify-between px-6 py-6"
           style={getBaseNeumorphism()}

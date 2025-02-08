@@ -1,11 +1,11 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
+import Content from "../components/solid/content";
+import Layout from "../layouts/Layout.astro";
 const pageTitle = "首页";
 ---
 
-<BaseLayout pageTitle={pageTitle}>
-  <h2>My awesome blog subtitle</h2>
-  <a href="/css/styles/neumorphism">拟态</a>
-  <a href="/css/styles/grid">Grid</a>
-  <a href="/websites">网址</a>
-</BaseLayout>
+<Layout>
+  <Content client:idle>
+    asd
+  </Content>
+</Layout>

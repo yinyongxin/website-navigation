@@ -1,8 +1,7 @@
-import * as a  from "gridstack";
+import { GridStack, GridStackOptions } from "gridstack";
 import { For, JSX, onMount } from "solid-js";
 import "./styles.css";
 import AppGridStackItem, { AppGridStackItemProps } from "./item";
-const { GridStack, GridStackOptions } = a
 type AppGridStackProps = GridStackOptions & {
   items?: {
     itemProps?:AppGridStackItemProps,

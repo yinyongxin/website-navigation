@@ -1,5 +1,6 @@
 import { Show, createSignal, onMount } from "solid-js";
 import Base from "./base";
+import { cn } from "../../../utils";
 const Theme = () => {
 	const [checked, setChecked] = createSignal<string>("light");
 	const toggleTheme = () => {
@@ -27,7 +28,15 @@ const Theme = () => {
 					type="checkbox"
 					checked={checked() === "dark"}
 				/>
-				<div class="relative w-full h-[50px] bg-gray-100 peer-checked:bg-zinc-500 rounded-full after:absolute after:content-[''] after:w-[40px] after:h-[40px] after:bg-gradient-to-r from-orange-500 to-yellow-400 peer-checked:after:from-zinc-900 peer-checked:after:to-zinc-900 after:rounded-full after:top-[5px] after:left-[5px] active:after:w-[50px] peer-checked:after:left-[105px] peer-checked:after:translate-x-[-100%] shadow-sm duration-300 after:duration-300 after:shadow-md"></div>
+				<div
+					class={cn(
+						"relative w-full h-[50px] bg-base-300  rounded-full",
+						"after:content-[''] after:bg-amber-500   after:absolute after:w-[40px] after:h-[40px] active:after:w-[50px] after:rounded-full",
+						"after:top-[5px] after:left-[5px] ",
+						"peer-checked:after:translate-x-[-100%] peer-checked:after:bg-neutral peer-checked:after:left-[105px]",
+						"shadow-sm duration-300 after:duration-300 after:shadow-md"
+					)}
+				></div>
 				<svg
 					height="0"
 					width="100"

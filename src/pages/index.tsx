@@ -50,8 +50,8 @@ const Content = () => {
 			<div
 				class="grid w-full gap-6 justify-center"
 				style={{
-					"grid-template-columns": "repeat(auto-fill, 200px)",
-					"grid-template-rows": "repeat(10, 200px)",
+					"grid-template-columns": "repeat(auto-fill, 160px)",
+					"grid-template-rows": "repeat(10, 160px)",
 				}}
 			>
 				<For each={list()}>

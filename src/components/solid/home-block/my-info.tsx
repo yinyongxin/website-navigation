@@ -1,8 +1,8 @@
 import { Avatar } from "@ark-ui/solid/avatar";
 const MyInfo = () => {
   return (
-    <div class="p-6 bg-white col-span-2 rounded-3xl hover:shadow-lg transition-shadow duration-400 flex flex-col gap-2">
-      <div>
+    <div class="p-6 bg-white col-span-2 rounded-3xl hover:shadow-lg transition-shadow duration-400 grid grid-rows-[auto_1fr] gap-2 overflow-hidden">
+      <div class="flex justify-between items-center">
         <Avatar.Root class="size-12 rounded-full bg-slate-100">
           <Avatar.Fallback>Avatar</Avatar.Fallback>
           <Avatar.Image
@@ -11,12 +11,7 @@ const MyInfo = () => {
             alt="avatar"
           />
         </Avatar.Root>
-      </div>
-      <div class="text-sm flex-1">
-        大家好，我是<span class="text-lg mx-2 font-bold">银永鑫</span>
-        是一名前端开发者。主要技术栈是React、Vue、NestJS, 我热爱技术，喜欢探索。
-      </div>
-      <div class="flex justify-end gap-2">
+        <div class="flex justify-end gap-2">
         <button class="btn btn-sm btn-circle ">
           <img
             src="/simpleicons/light/github.svg"
@@ -32,6 +27,12 @@ const MyInfo = () => {
           />
         </button>
       </div>
+      </div>
+      <div class="text-sm flex-1t text-ellipsis line-clamp-2"> 
+        大家好，我是<span class="text-lg mx-2 font-bold">银永鑫</span>
+        是一名前端开发者。主要技术栈是React、Vue、NestJS, 我热爱技术，喜欢探索。
+      </div>
+      
     </div>
   );
 };

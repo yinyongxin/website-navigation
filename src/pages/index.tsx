@@ -23,27 +23,27 @@ const Content = () => {
 				<ul class="bg-gray-200 flex gap-2 rounded-full p-2">
 					<li
 						class={cn("py-2 px-4 rounded-full cursor-pointer text-gray-500", {
-							"bg-white text-black": active() === "all",
+							"bg-white text-black": active() === ActiveEnum.All,
 						})}
 						onClick={() => setActive(ActiveEnum.All)}
 					>
-						All
+						全部
 					</li>
 					<li
 						class={cn("py-2 px-4 rounded-full cursor-pointer text-gray-500", {
-							"bg-white text-black": active() === "projects",
+							"bg-white text-black": active() === ActiveEnum.Projects,
 						})}
 						onClick={() => setActive(ActiveEnum.Projects)}
 					>
-						Projects
+						项目
 					</li>
 					<li
 						class={cn("py-2 px-4 rounded-full cursor-pointer text-gray-500", {
-							"bg-white text-black": active() === "about",
+							"bg-white text-black": active() === ActiveEnum.About,
 						})}
 						onClick={() => setActive(ActiveEnum.About)}
 					>
-						About
+						关于
 					</li>
 				</ul>
 			</nav>

@@ -28,9 +28,9 @@ const MyInfo = () => {
         </button>
       </div>
       </div>
-      <div class="text-sm flex-1t text-ellipsis line-clamp-2"> 
+      <div class="text-sm"> 
         大家好，我是<span class="text-lg mx-2 font-bold">银永鑫</span>
-        是一名前端开发者。主要技术栈是React、Vue、NestJS, 我热爱技术，喜欢探索。
+        是一名前端开发者。主要技术栈是React、Vue、NestJS。
       </div>
       
     </div>

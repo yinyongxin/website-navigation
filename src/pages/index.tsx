@@ -10,7 +10,7 @@ const Content = () => {
   const [active, setActive] = createSignal<ActiveEnum>(ActiveEnum.All);
   const [list, setList] = createSignal([<MyInfo />]);
   return (
-    <div class="bg-gray-50 py-8 sm:py-4 flex flex-col gap-8 items-center">
+    <div class="bg-gray-100 py-8 sm:py-4 flex flex-col gap-8 items-center px-6">
       <nav class="flex justify-center">
         <ul class="bg-gray-200 flex gap-2 rounded-full p-2">
           <li

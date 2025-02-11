@@ -25,6 +25,6 @@
     "tinycolor2": "^1.6.0"
   },
   "devDependencies": {
-    "daisyui": "^4.12.23"
+    "daisyui": "^5.0.0-beta.7"
   }
 }

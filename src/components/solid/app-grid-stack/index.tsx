@@ -1,5 +1,5 @@
 import { GridStack, GridStackOptions } from "gridstack";
-import { For, JSX, onMount } from "solid-js";
+import { For, type JSX, onMount } from "solid-js";
 import "./styles.css";
 import AppGridStackItem, { AppGridStackItemProps } from "./item";
 type AppGridStackProps = GridStackOptions & {

@@ -4,7 +4,7 @@ const {
 } = Astro.props;
 ---
 <!doctype html>
-<html lang="en" class="size-full">
+<html lang="en" class="size-full" data-theme="light">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
@@ -12,7 +12,7 @@ const {
 		<meta name="generator" content={Astro.generator} />
 		<title>{pageTitle}</title>
 	</head>
-	<body class="size-full">
+	<body class="size-full bg-base-200">
 		<slot />
 	</body>
 </html>

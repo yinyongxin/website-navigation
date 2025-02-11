@@ -1,6 +1,7 @@
 import { Show, createSignal, onMount } from "solid-js";
 import { createAvatar } from "@dicebear/core";
 import { micah } from "@dicebear/collection";
+import Base from "./base";
 const AvatarBlock = () => {
 	const [avatar, setAvatar] = createSignal("");
 	onMount(() => {
@@ -15,11 +16,11 @@ const AvatarBlock = () => {
 		setAvatar(svg);
 	});
 	return (
-		<div class="bg-white col-span-1 rounded-3xl hover:shadow-lg transition-shadow duration-400 grid justify-center overflow-hidden">
-			<Show when={avatar()}>
+		<Base class=" col-span-1 overflow-hidden">
+			<Show when={avatar()} fallback={<div class="skeleton size-full"></div>}>
 				<img class="size-full" src={avatar()} alt="" />
 			</Show>
-		</div>
+		</Base>
 	);
 };
 export default AvatarBlock;

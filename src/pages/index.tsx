@@ -18,28 +18,28 @@ const Content = () => {
 		<AvatarBlock />,
 	]);
 	return (
-		<div class="bg-gray-100 py-8 sm:py-4 flex flex-col gap-8 items-center px-6">
+		<div class="py-8 sm:py-4 flex flex-col gap-8 items-center px-6">
 			<nav class="flex justify-center">
-				<ul class="bg-gray-200 flex gap-2 rounded-full p-2">
+				<ul class="bg-base-300 flex gap-2 rounded-full p-2">
 					<li
-						class={cn("py-2 px-4 rounded-full cursor-pointer text-gray-500", {
-							"bg-white text-black": active() === ActiveEnum.All,
+						class={cn("py-2 px-4 rounded-full cursor-pointer text-secondary", {
+							"bg-base-100 text-primary": active() === ActiveEnum.All,
 						})}
 						onClick={() => setActive(ActiveEnum.All)}
 					>
 						全部
 					</li>
 					<li
-						class={cn("py-2 px-4 rounded-full cursor-pointer text-gray-500", {
-							"bg-white text-black": active() === ActiveEnum.Projects,
+						class={cn("py-2 px-4 rounded-full cursor-pointer text-secondary", {
+							"bg-base-100 text-primary": active() === ActiveEnum.Projects,
 						})}
 						onClick={() => setActive(ActiveEnum.Projects)}
 					>
 						项目
 					</li>
 					<li
-						class={cn("py-2 px-4 rounded-full cursor-pointer text-gray-500", {
-							"bg-white text-black": active() === ActiveEnum.About,
+						class={cn("py-2 px-4 rounded-full cursor-pointer text-secondary", {
+							"bg-base-100 text-primary": active() === ActiveEnum.About,
 						})}
 						onClick={() => setActive(ActiveEnum.About)}
 					>

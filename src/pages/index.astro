@@ -4,6 +4,6 @@ import Layout from "../layouts/Layout.astro";
 const pageTitle = "首页";
 ---
 
-<Layout>
-  <Content client:idle />
+<Layout pageTitle={pageTitle}>
+	<Content client:idle />
 </Layout>

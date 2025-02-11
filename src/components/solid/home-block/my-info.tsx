@@ -7,7 +7,7 @@ const MyInfo = () => {
           <Avatar.Fallback>Avatar</Avatar.Fallback>
           <Avatar.Image
             class="rounded-full"
-            src="https://api.dicebear.com/9.x/adventurer-neutral/svg?seed=George"
+            src="https://api.dicebear.com/9.x/adventurer-neutral/svg?seed=Eden"
             alt="avatar"
           />
         </Avatar.Root>

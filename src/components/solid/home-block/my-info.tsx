@@ -24,6 +24,13 @@ const MyInfo = () => {
             class="size-4"
           />
         </button>
+        <button class="btn btn-sm btn-circle ">
+          <img
+            src="/simpleicons/light/gitee.svg"
+            alt="gitee"
+            class="size-4"
+          />
+        </button>
       </div>
     </div>
   );

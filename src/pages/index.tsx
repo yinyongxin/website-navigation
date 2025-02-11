@@ -1,6 +1,7 @@
 import { cn } from "../utils";
 import { createSignal, For } from "solid-js";
 import MyInfo from "../components/solid/home-block/my-info";
+import Theme from "../components/solid/home-block/theme";
 enum ActiveEnum {
   All = "all",
   Projects = "projects",
@@ -8,7 +9,7 @@ enum ActiveEnum {
 }
 const Content = () => {
   const [active, setActive] = createSignal<ActiveEnum>(ActiveEnum.All);
-  const [list, setList] = createSignal([<MyInfo />]);
+  const [list, setList] = createSignal([<MyInfo />, <Theme />]);
   return (
     <div class="bg-gray-100 py-8 sm:py-4 flex flex-col gap-8 items-center px-6">
       <nav class="flex justify-center">

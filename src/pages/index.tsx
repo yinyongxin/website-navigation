@@ -22,7 +22,7 @@ const Content = () => {
 			<nav class="flex justify-center">
 				<ul class="bg-base-300 flex gap-2 rounded-full p-2">
 					<li
-						class={cn("py-2 px-4 rounded-full cursor-pointer text-neutral", {
+						class={cn("py-2 px-4 rounded-full cursor-pointer text-secondary", {
 							"bg-base-100 text-primary": active() === ActiveEnum.All,
 						})}
 						onClick={() => setActive(ActiveEnum.All)}
@@ -30,7 +30,7 @@ const Content = () => {
 						全部
 					</li>
 					<li
-						class={cn("py-2 px-4 rounded-full cursor-pointer text-neutral", {
+						class={cn("py-2 px-4 rounded-full cursor-pointer text-secondary", {
 							"bg-base-100 text-primary": active() === ActiveEnum.Projects,
 						})}
 						onClick={() => setActive(ActiveEnum.Projects)}
@@ -38,7 +38,7 @@ const Content = () => {
 						项目
 					</li>
 					<li
-						class={cn("py-2 px-4 rounded-full cursor-pointer text-neutral", {
+						class={cn("py-2 px-4 rounded-full cursor-pointer text-secondary", {
 							"bg-base-100 text-primary": active() === ActiveEnum.About,
 						})}
 						onClick={() => setActive(ActiveEnum.About)}

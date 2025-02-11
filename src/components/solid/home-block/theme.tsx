@@ -31,9 +31,9 @@ const Theme = () => {
 				<div
 					class={cn(
 						"relative w-full h-[50px] bg-base-300  rounded-full",
-						"after:content-[''] after:bg-amber-500   after:absolute after:w-[40px] after:h-[40px] active:after:w-[50px] after:rounded-full",
-						"after:top-[5px] after:left-[5px] ",
-						"peer-checked:after:translate-x-[-100%] peer-checked:after:bg-neutral peer-checked:after:left-[105px]",
+						"after:content-[''] after:absolute after:rounded-full after:bg-amber-500 after:w-[40px] after:h-[40px] active:after:w-[50px]",
+						"after:top-[5px] after:left-[5px]",
+						"peer-checked:after:bg-neutral peer-checked:after:left-[105px] after:translate-x-[0%] peer-checked:after:translate-x-[-100%] ",
 						"shadow-sm duration-300 after:duration-300 after:shadow-md"
 					)}
 				></div>

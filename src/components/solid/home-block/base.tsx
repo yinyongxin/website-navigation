@@ -27,7 +27,7 @@ const Base = (props: BaseProps) => {
 			}}
 		>
 			<Show when={local?.link}>
-				<div class="absolute left-3 bottom-3 rounded-full overflow-hidden duration-100  outline-0 hover:outline-3 outline-base-300 outline-solid">
+				<div class="absolute left-6 bottom-6 rounded-full overflow-hidden duration-100  outline-0 hover:outline-3 outline-base-300 outline-solid">
 					<div
 						onclick={() => {
 							if (local?.link?.href) {

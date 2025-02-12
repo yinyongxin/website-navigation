@@ -4,6 +4,7 @@ import MyInfo from "../components/solid/home-block/my-info";
 import Theme from "../components/solid/home-block/theme";
 import AvatarBlock from "../components/solid/home-block/avatar-block";
 import TestBlock from "../components/solid/home-block/test-block";
+import SearchBlock from "../components/solid/home-block/search-block";
 
 enum ActiveEnum {
 	All = "all",
@@ -18,6 +19,7 @@ const Content = () => {
 		<Theme />,
 		<AvatarBlock />,
 		<TestBlock />,
+		<SearchBlock />,
 	]);
 	return (
 		<div class="py-4 sm:py-8 flex flex-col gap-4 sm:gap-8 items-center sm:px-8">

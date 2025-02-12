@@ -47,7 +47,7 @@ const Base = (props: BaseProps) => {
 						<div
 							ref={ref}
 							class={cn(
-								"flex items-center duration-500",
+								"flex items-center duration-300",
 								"opacity-0 pl-2 pr-12 -translate-x-[50%]",
 								{
 									"opacity-100 -translate-x-0": hover(),
@@ -56,7 +56,14 @@ const Base = (props: BaseProps) => {
 						>
 							{local?.link?.name}
 						</div>
-						<div class="grid place-content-center -rotate-45 group-hover:rotate-0 size-10 absolute top-0 right-0 duration-500 rounded-full">
+						<div
+							class={cn(
+								"grid place-content-center -rotate-45 size-10 absolute top-0 right-0 duration-300 rounded-full",
+								{
+									"rotate-0": hover(),
+								}
+							)}
+						>
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
 								width="24"

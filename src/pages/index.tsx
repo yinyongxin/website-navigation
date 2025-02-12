@@ -20,7 +20,7 @@ const Content = () => {
 		<TestBlock />,
 	]);
 	return (
-		<div class="py-4 sm:py-8 flex flex-col gap-8 items-center">
+		<div class="py-4 sm:py-8 flex flex-col gap-8 items-center sm:px-8">
 			<nav class="flex justify-center">
 				<ul class="bg-base-300 flex gap-2 rounded-full p-2">
 					<li

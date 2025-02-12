@@ -30,9 +30,9 @@ const Base = (props: BaseProps) => {
 				>
 					<div
 						class={cn(
-							"flex items-center ",
+							"flex items-center",
 							"w-0 group-hover:w-max",
-							" -translate-x-[100%] group-hover:px-2 group-hover:-translate-x-[0] overflow-hidden duration-500"
+							"-translate-x-[100%] group-hover:px-2 group-hover:-translate-x-[0] overflow-hidden duration-500"
 						)}
 					>
 						{local?.link?.name}

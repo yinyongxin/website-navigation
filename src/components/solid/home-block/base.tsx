@@ -1,9 +1,10 @@
 import { cn } from "../../../utils";
-import { type JSX, splitProps } from "solid-js";
+import { type JSX, splitProps, Show } from "solid-js";
 type BaseProps = JSX.HTMLAttributes<HTMLDivElement> & {
   link?: {
     name: string;
-    href: string;
+    href?: string;
+    onCLick?: () => void;
   };
 };
 const Base = (props: BaseProps) => {
@@ -17,11 +18,19 @@ const Base = (props: BaseProps) => {
       {...others}
     >
       <Show when={local?.link}>
-        <div class="absolute left-4 bottom-4 h-10 bg-base-100 border border-primary cursor-pointer rounded-full flex hover:shadow group">
-          <div class="flex items-center w-0 group-hover:w-unset group-hover:px-2 overflow-hidden">
-            asda
+        <div
+          onclick={() => {
+            if (local?.link?.href) {
+              window.open(local?.link.href, "_blank");
+            }
+            local?.link?.onCLick?.();
+          }}
+          class="absolute left-3 bottom-3 h-10 bg-base-100 cursor-pointer rounded-full flex hover:shadow group p-2"
+        >
+          <div class="flex items-center w-0 group-active:w-max group-active:px-2 overflow-hidden duration-300">
+            {local?.link.name}
           </div>
-          <div class="size-10 flex justify-center items-center -rotate-45">
+          <div class="h-full flex justify-center items-center -rotate-45 group-active:rotate-0 duration-300 rounded-full">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"

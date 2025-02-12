@@ -1,4 +1,3 @@
-import { Avatar } from "@ark-ui/solid";
 import Base from "./base";
 import AppAvatar from "../components/app-avatar";
 const MyInfo = () => {

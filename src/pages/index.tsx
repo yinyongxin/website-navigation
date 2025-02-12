@@ -53,9 +53,9 @@ const Content = () => {
 			</nav>
 			<div
 				class={cn(
-					"grid w-full gap-6 justify-center",
+					"grid w-full gap-4 sm:gap-6 justify-center",
 					"sm:grid-cols-[repeat(auto-fill,200px)] sm:grid-rows-[repeat(10,200px)]",
-					"grid-cols-[repeat(auto-fill,calc(50vw-48px))] grid-rows-[repeat(10,calc(50vw-48px))]"
+					"grid-cols-[repeat(2,calc(50vw-2rem))] grid-rows-[repeat(10,calc(50vw-2rem))]"
 				)}
 			>
 				<For each={list()}>

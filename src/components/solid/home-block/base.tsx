@@ -17,7 +17,7 @@ const Base = (props: BaseProps) => {
       {...others}
     >
       <Show when={local?.link}>
-        <div class="absolute left-4 bottom-4 h-10 bg-base-100 cursor-pointer rounded-full flex hover:shadow group">
+        <div class="absolute left-4 bottom-4 h-10 bg-base-100 border border-primary cursor-pointer rounded-full flex hover:shadow group">
           <div class="flex items-center w-0 group-hover:w-unset group-hover:px-2 overflow-hidden">
             asda
           </div>

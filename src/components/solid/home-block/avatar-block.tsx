@@ -19,8 +19,8 @@ const AvatarBlock = () => {
     <Base
       class=" col-span-1 overflow-hidden"
       link={{
-        href: "URL_ADDRESS",
-        name: "name",
+        href: "https://www.dicebear.com/",
+        name: "Dicebear",
       }}
     >
       <Show when={avatar()} fallback={<div class="skeleton size-full"></div>}>

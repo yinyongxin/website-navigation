@@ -40,7 +40,7 @@ const Base = (props: BaseProps) => {
 							: "2.5rem",
 					}}
 					class={cn(
-						"absolute left-3 bottom-3 h-10 bg-base-200 cursor-pointer rounded-full flex hover:shadow duration-500 p-2 overflow-hidden"
+						"absolute left-3 bottom-3 h-10 bg-base-200 cursor-pointer rounded-full flex duration-300 p-2 overflow-hidden outline-0 hover:outline-3 outline-base-300 outline-solid"
 					)}
 				>
 					<div

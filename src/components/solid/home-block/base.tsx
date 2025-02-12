@@ -27,47 +27,52 @@ const Base = (props: BaseProps) => {
 			}}
 		>
 			<Show when={local?.link}>
-				<div
-					onclick={() => {
-						if (local?.link?.href) {
-							window.open(local?.link.href, "_blank");
-						}
-						local?.link?.onCLick?.();
-					}}
-					style={{
-						width: hover()
-							? `calc(${ref.getBoundingClientRect().width}px)`
-							: "2.5rem",
-					}}
-					class={cn(
-						"absolute left-3 bottom-3 h-10 bg-base-200 cursor-pointer rounded-full flex duration-200 p-2 overflow-hidden outline-0 hover:outline-3 outline-base-300 outline-solid"
-					)}
-				>
+				<div class="absolute left-3 bottom-3 rounded-full overflow-hidden duration-100  outline-0 hover:outline-3 outline-base-300 outline-solid">
 					<div
-						ref={ref}
+						onclick={() => {
+							if (local?.link?.href) {
+								window.open(local?.link.href, "_blank");
+							}
+							local?.link?.onCLick?.();
+						}}
+						style={{
+							width: hover()
+								? `calc(${ref.getBoundingClientRect().width}px)`
+								: "2.5rem",
+						}}
 						class={cn(
-							"flex items-center duration-500",
-							"opacity-0 group-hover:opacity-100 pl-2 pr-12 -translate-x-[50%] group-hover:-translate-x-0"
+							"h-10 bg-base-200 cursor-pointer flex duration-300 p-2 rounded-full"
 						)}
 					>
-						{local?.link?.name}
-					</div>
-					<div class="grid place-content-center -rotate-45 group-hover:rotate-0 size-10 absolute top-0 right-0 duration-500 rounded-full">
-						<svg
-							xmlns="http://www.w3.org/2000/svg"
-							width="24"
-							height="24"
-							viewBox="0 0 24 24"
-							fill="none"
-							stroke="currentColor"
-							stroke-width="2"
-							stroke-linecap="round"
-							stroke-linejoin="round"
-							class="lucide lucide-arrow-right"
+						<div
+							ref={ref}
+							class={cn(
+								"flex items-center duration-500",
+								"opacity-0 pl-2 pr-12 -translate-x-[50%]",
+								{
+									"opacity-100 -translate-x-0": hover(),
+								}
+							)}
 						>
-							<path d="M5 12h14" />
-							<path d="m12 5 7 7-7 7" />
-						</svg>
+							{local?.link?.name}
+						</div>
+						<div class="grid place-content-center -rotate-45 group-hover:rotate-0 size-10 absolute top-0 right-0 duration-500 rounded-full">
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								width="24"
+								height="24"
+								viewBox="0 0 24 24"
+								fill="none"
+								stroke="currentColor"
+								stroke-width="2"
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								class="lucide lucide-arrow-right"
+							>
+								<path d="M5 12h14" />
+								<path d="m12 5 7 7-7 7" />
+							</svg>
+						</div>
 					</div>
 				</div>
 			</Show>

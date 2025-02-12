@@ -10,14 +10,24 @@ const MyInfo = () => {
 					src="https://api.dicebear.com/9.x/adventurer-neutral/svg?seed=Eden"
 				/>
 				<div class="flex justify-end gap-2">
-					<button class="btn btn-sm btn-circle">
+					<button
+						class="btn btn-sm btn-circle"
+						onClick={() => {
+							window.open("https://github.com/yinyongxin", "_blank");
+						}}
+					>
 						<img
 							src="/simpleicons/light/github.svg"
 							alt="github"
 							class="size-4"
 						/>
 					</button>
-					<button class="btn btn-sm btn-circle">
+					<button
+						class="btn btn-sm btn-circle"
+						onClick={() => {
+							window.open("https://gitee.com/guduhuanzheyyx", "_blank");
+						}}
+					>
 						<img
 							src="/simpleicons/light/gitee.svg"
 							alt="gitee"

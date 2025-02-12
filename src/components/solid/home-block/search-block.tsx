@@ -21,8 +21,8 @@ const SearchBlock = () => {
 		searchList[0].key
 	);
 	return (
-		<Base class="bg-base-100 col-span-2 flex flex-col gap-4 p-6">
-			<label class="input w-full rounded-2xl">
+		<Base class="bg-base-100 col-span-2 flex flex-col justify-between p-4 sm:p-6">
+			<label class="input w-full rounded-2xl flex-none">
 				<svg
 					class="h-5 opacity-50"
 					xmlns="http://www.w3.org/2000/svg"
@@ -48,7 +48,7 @@ const SearchBlock = () => {
 							return (
 								<div
 									class={cn(
-										"size-10 p-1 rounded-full overflow-hidden cursor-pointer hover:border-2 hover:border-primary",
+										"size-8 sm:size-10 p-1 rounded-full overflow-hidden cursor-pointer hover:border-2 hover:border-primary",
 										{
 											"border-2 border-primary": active() === item.key,
 										}
@@ -71,7 +71,7 @@ const SearchBlock = () => {
 			<input
 				type="submit"
 				value="搜索"
-				class="btn btn-block btn-primary rounded-full"
+				class="btn btn-soft btn-block btn-primary rounded-full"
 				onClick={() => {
 					const input = document.querySelector(
 						"input[type=search]"

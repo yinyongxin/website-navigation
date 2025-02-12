@@ -1,5 +1,5 @@
 import { cn } from "../../../utils";
-import { type JSX, splitProps, Show } from "solid-js";
+import { type JSX, splitProps, Show, onMount, createSignal } from "solid-js";
 type BaseProps = JSX.HTMLAttributes<HTMLDivElement> & {
 	link?: {
 		name: string;
@@ -9,6 +9,8 @@ type BaseProps = JSX.HTMLAttributes<HTMLDivElement> & {
 };
 const Base = (props: BaseProps) => {
 	const [local, others] = splitProps(props, ["children", "class", "link"]);
+	const [hover, setHover] = createSignal(false);
+	let ref!: HTMLDivElement;
 	return (
 		<div
 			class={cn(
@@ -17,6 +19,12 @@ const Base = (props: BaseProps) => {
 				local?.class
 			)}
 			{...others}
+			onMouseEnter={() => {
+				setHover(true);
+			}}
+			onMouseLeave={() => {
+				setHover(false);
+			}}
 		>
 			<Show when={local?.link}>
 				<div
@@ -26,18 +34,25 @@ const Base = (props: BaseProps) => {
 						}
 						local?.link?.onCLick?.();
 					}}
-					class="absolute left-3 bottom-3 h-10 bg-base-200 cursor-pointer rounded-full flex hover:shadow duration-500 p-2 overflow-hidden"
+					style={{
+						width: hover()
+							? `calc(${ref.getBoundingClientRect().width}px)`
+							: "2.5rem",
+					}}
+					class={cn(
+						"absolute left-3 bottom-3 h-10 bg-base-200 cursor-pointer rounded-full flex hover:shadow duration-500 p-2 overflow-hidden"
+					)}
 				>
 					<div
+						ref={ref}
 						class={cn(
-							"flex items-center",
-							"w-0 group-hover:w-max",
-							"-translate-x-[100%] group-hover:px-2 group-hover:-translate-x-[0] overflow-hidden duration-500"
+							"flex items-center duration-500",
+							"opacity-0 group-hover:opacity-100 pl-2 pr-12 -translate-x-[50%] group-hover:-translate-x-0"
 						)}
 					>
 						{local?.link?.name}
 					</div>
-					<div class="h-full flex justify-center items-center -rotate-45 group-hover:rotate-0 duration-500 rounded-full">
+					<div class="h-full flex justify-center items-center -rotate-45 group-hover:rotate-0 size-10 absolute top-0 right-0 duration-500 rounded-full">
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
 							width="24"

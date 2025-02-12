@@ -13,7 +13,7 @@ const Base = (props: BaseProps) => {
     <div
       class={cn(
         "group",
-        "bg-base-100 rounded-3xl hover:base-100 hover:shadow-lg transition-shadow duration-400 relative",
+        "bg-base-100 border border-base-300 rounded-3xl hover:base-100 hover:shadow-lg transition-shadow duration-400 relative",
         local?.class
       )}
       {...others}

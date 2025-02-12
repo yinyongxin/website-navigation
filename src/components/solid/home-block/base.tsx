@@ -12,6 +12,7 @@ const Base = (props: BaseProps) => {
   return (
     <div
       class={cn(
+        "group",
         "bg-base-100 rounded-3xl hover:base-100 hover:shadow-lg transition-shadow duration-400 relative",
         local?.class
       )}
@@ -25,7 +26,7 @@ const Base = (props: BaseProps) => {
             }
             local?.link?.onCLick?.();
           }}
-          class="absolute left-3 bottom-3 h-10 bg-base-100 cursor-pointer rounded-full flex hover:shadow group p-2"
+          class="absolute left-3 bottom-3 h-10 bg-base-200 cursor-pointer rounded-full flex hover:shadow p-2"
         >
           <div class="flex items-center w-0 group-active:w-max group-active:px-2 overflow-hidden duration-300">
             {local?.link.name}

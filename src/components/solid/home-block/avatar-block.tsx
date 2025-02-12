@@ -18,10 +18,6 @@ const AvatarBlock = () => {
   return (
     <Base
       class=" col-span-1 overflow-hidden"
-      link={{
-        href: "https://www.dicebear.com/",
-        name: "Dicebear",
-      }}
     >
       <Show when={avatar()} fallback={<div class="skeleton size-full"></div>}>
         <img class="size-full" src={avatar()} alt="" />

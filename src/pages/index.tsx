@@ -3,6 +3,7 @@ import { createSignal, For } from "solid-js";
 import MyInfo from "../components/solid/home-block/my-info";
 import Theme from "../components/solid/home-block/theme";
 import AvatarBlock from "../components/solid/home-block/avatar-block";
+import TestBlock from "../components/solid/home-block/test-block";
 
 enum ActiveEnum {
   All = "all",
@@ -16,6 +17,7 @@ const Content = () => {
     <MyInfo />,
     <Theme />,
     <AvatarBlock />,
+    <TestBlock />,
   ]);
   return (
     <div class="py-8 sm:py-4 flex flex-col gap-8 items-center px-6">

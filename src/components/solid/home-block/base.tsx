@@ -28,10 +28,10 @@ const Base = (props: BaseProps) => {
           }}
           class="absolute left-3 bottom-3 h-10 bg-base-200 cursor-pointer rounded-full flex hover:shadow p-2"
         >
-          <div class="flex items-center w-0 group-active:w-max group-active:px-2 overflow-hidden duration-300">
+          <div class="flex items-center w-0 group-hover:w-max group-hover:px-2 overflow-hidden duration-300">
             {local?.link.name}
           </div>
-          <div class="h-full flex justify-center items-center -rotate-45 group-active:rotate-0 duration-300 rounded-full">
+          <div class="h-full flex justify-center items-center -rotate-45 group-hover:rotate-0 duration-300 rounded-full">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"

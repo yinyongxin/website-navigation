@@ -26,10 +26,10 @@ const Base = (props: BaseProps) => {
             }
             local?.link?.onCLick?.();
           }}
-          class="absolute left-3 bottom-3 h-10 bg-base-200 cursor-pointer rounded-full flex hover:shadow p-2"
+          class="absolute left-3 bottom-3 h-10 bg-base-200 cursor-pointer rounded-full flex hover:shadow duration-300 p-2"
         >
           <div class="flex items-center w-0 group-hover:w-max group-hover:px-2 overflow-hidden duration-300">
-            {local?.link.name}
+            {local?.link?.name}
           </div>
           <div class="h-full flex justify-center items-center -rotate-45 group-hover:rotate-0 duration-300 rounded-full">
             <svg

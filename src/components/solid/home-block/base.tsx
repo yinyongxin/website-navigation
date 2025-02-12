@@ -52,7 +52,7 @@ const Base = (props: BaseProps) => {
 					>
 						{local?.link?.name}
 					</div>
-					<div class="h-full flex justify-center items-center -rotate-45 group-hover:rotate-0 size-10 absolute top-0 right-0 duration-500 rounded-full">
+					<div class="grid place-content-center -rotate-45 group-hover:rotate-0 size-10 absolute top-0 right-0 duration-500 rounded-full">
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
 							width="24"

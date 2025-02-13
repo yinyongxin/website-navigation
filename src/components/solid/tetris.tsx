@@ -253,10 +253,10 @@ const TetrisGame = () => {
     }
   };
   return (
-    <div class="min-h-screen flex flex-col gap-6 items-center py-6">
+    <div class="min-h-screen flex flex-col justify-center gap-6 items-center py-6">
       <div class="text-secondary">得分: {score()}</div>
       <div
-        class={`flex-1 bg-base-200 transition-all duration-300 flex items-center justify-center`}
+        class={`bg-base-200 transition-all duration-300 flex items-center justify-center`}
       >
         <div class="flex items-center justify-center gap-8">
           <div

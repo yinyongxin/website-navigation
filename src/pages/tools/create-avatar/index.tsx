@@ -1,8 +1,40 @@
-import { createSignal } from "solid-js";
+import { createSignal, onMount } from "solid-js";
+import { createAvatar, schema } from "@dicebear/core";
+import { micah } from "@dicebear/collection";
+const options = {
+  ...schema.properties,
+  ...micah.schema.properties,
+};
+console.log("options", options);
 export default () => {
-  const [avatar, setAvatar] = createSignal();
+  const [avatar, setAvatar] = createSignal("");
+  const [options, setOptions] = createSignal<typeof schema.properties>({
+    backgroundColor: ["ffd5dc", "B6E3F4"],
+  });
+
+  onMount(() => {
+    const avatar = createAvatar(micah, {
+      seed: Math.random().toString(),
+      ...options(),
+      // ... other options
+    });
+    // const jsonDate = avatar.tojson();
+    // setOptions(jsonDate.options);
+    const dataUri = avatar.toDataUri();
+    setAvatar(dataUri);
+  });
+
+  const randomAvatar = () => {
+    const avatar = createAvatar(micah, {
+      seed: Math.random().toString(),
+      ...options(),
+      //... other options
+    });
+    const dataUri = avatar.toDataUri();
+    setAvatar(dataUri);
+  };
   return (
-    <div class="grid grid-cols-[auto_1fr_auto] size-full">
+    <div class="grid grid-cols-[auto_1fr_auto] h-svh">
       <div class="drawer lg:drawer-open">
         <input id="my-drawer-1" type="checkbox" class="drawer-toggle" />
         <label
@@ -38,14 +70,38 @@ export default () => {
           </ul>
         </div>
       </div>
-      <div class="grid justify-center content-center">
-        <div class="size-40 rounded-3xl">
-          <Show
-            when={avatar()}
-            fallback={<div class="skeleton size-full"></div>}
-          >
-            <img class="size-full" src={avatar()} alt="" />
-          </Show>
+      <div class="h-full flex flex-col py-8">
+        <div class="flex-1 h-full grid justify-center content-center gap-8">
+          <div class="size-50 rounded-2xl overflow-hidden justify-self-center">
+            <Show
+              when={avatar()}
+              fallback={<div class="skeleton size-full"></div>}
+            >
+              <img class="size-full" src={avatar()} alt="" />
+            </Show>
+          </div>
+          <div class="flex space-x-4">
+            <button
+              className="btn btn-neutral"
+              onClick={() => {
+                randomAvatar();
+              }}
+            >
+              随机生成
+            </button>
+            <button
+              className="btn btn-neutral"
+              onClick={() => document.getElementById("my_modal_2").showModal()}
+            >
+              下载头像
+            </button>
+            <button className="btn btn-neutral">批量生成</button>
+          </div>
+        </div>
+        <div class="flex justify-center text-secondary">
+          <div>Made BY YYX</div>
+          <div className="divider divider-horizontal"></div>
+          <div>Dicebear</div>
         </div>
       </div>
       <div class="drawer drawer-end lg:drawer-open">
@@ -83,6 +139,15 @@ export default () => {
           </ul>
         </div>
       </div>
+      <dialog id="my_modal_2" className="modal">
+        <div className="modal-box">
+          <h3 className="font-bold text-lg">Hello!</h3>
+          <p className="py-4">Press ESC key or click outside to close</p>
+        </div>
+        <form method="dialog" className="modal-backdrop">
+          <button>close</button>
+        </form>
+      </dialog>
     </div>
   );
 };

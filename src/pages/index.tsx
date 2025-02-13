@@ -76,7 +76,7 @@ const Content = () => {
           each={BlockList.filter(
             (itemBlock) =>
               active() === TabsEnum.All ||
-              itemBlock.tags.some((tag) => tag === TabsEnum.Tools)
+              itemBlock.tags.some((tag) => tag === active())
           )}
         >
           {(item) => {

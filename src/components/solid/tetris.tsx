@@ -253,34 +253,30 @@ const TetrisGame = () => {
     }
   };
   return (
-    <div class="min-h-screen flex flex-col justify-center gap-6 items-center py-6">
+    <div class="min-h-screen flex gap-6 flex-col justify-center items-center py-6 bg-base-100">
       <div class="text-secondary">得分: {score()}</div>
-      <div
-        class={`bg-base-200 transition-all duration-300 flex items-center justify-center`}
-      >
-        <div class="flex items-center justify-center gap-8">
-          <div
-            class={`border-4 bg-base-300 border-primary-content p-4 rounded-xl shadow-lg transition-all duration-300`}
-          >
-            {Array.from({ length: BOARD_HEIGHT }, (_, y) => (
-              <div class="flex">
-                {Array.from({ length: BOARD_WIDTH }, (_, x) => (
-                  <div
-                    style={{
-                      width: BLOCK_SIZE + "px",
-                      height: BLOCK_SIZE + "px",
-                    }}
-                    class={`border-2 border-primary-content rounded-lg ${
-                      renderBlock(x, y) || "bg-base-200"
-                    }`}
-                  />
-                ))}
-              </div>
-            ))}
-          </div>
+      <div class="flex items-center justify-center">
+        <div
+          class={`border-4 bg-base-200 border-primary-content p-4 rounded-xl shadow-lg transition-all duration-300`}
+        >
+          {Array.from({ length: BOARD_HEIGHT }, (_, y) => (
+            <div class="flex">
+              {Array.from({ length: BOARD_WIDTH }, (_, x) => (
+                <div
+                  style={{
+                    width: BLOCK_SIZE + "px",
+                    height: BLOCK_SIZE + "px",
+                  }}
+                  class={`border-2 border-primary-content rounded-lg ${
+                    renderBlock(x, y) || "bg-base-200"
+                  }`}
+                />
+              ))}
+            </div>
+          ))}
         </div>
       </div>
-      <div class={"btn"} onClick={handleGameControl}>
+      <div class={"btn btn-primary btn-soft"} onClick={handleGameControl}>
         {gameOver() ? "开始游戏" : isPlaying() ? "暂停" : "继续"}
       </div>
       <div class={`text-sm text-center text-secondary`}>

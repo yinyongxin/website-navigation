@@ -1,27 +1,29 @@
-import { createSignal, onMount } from "solid-js";
-import { createAvatar, schema } from "@dicebear/core";
+import { createSignal, onMount, Show } from "solid-js";
+import {
+  createAvatar,
+  schema,
+  type Result,
+  type Options,
+} from "@dicebear/core";
 import { micah } from "@dicebear/collection";
-const options = {
+import { toPng, type Avatar } from "@dicebear/converter";
+import { downloadImage } from "../../../utils/download";
+
+const defaultOptions = {
   ...schema.properties,
   ...micah.schema.properties,
 };
-console.log("options", options);
-export default () => {
-  const [avatar, setAvatar] = createSignal("");
-  const [options, setOptions] = createSignal<typeof schema.properties>({
-    backgroundColor: ["ffd5dc", "B6E3F4"],
-  });
+console.log("defaultOptions", defaultOptions);
 
+export default () => {
+  const [avatar, setAvatar] = createSignal<ReturnType<typeof createAvatar>>();
+  const [options, setOptions] = createSignal<Partial<micah.Options & Options>>({
+    backgroundColor: ["ffd5dc", "B6E3F4"],
+    backgroundType: ["gradientLinear", "solid"],
+  });
+  //
   onMount(() => {
-    const avatar = createAvatar(micah, {
-      seed: Math.random().toString(),
-      ...options(),
-      // ... other options
-    });
-    // const jsonDate = avatar.tojson();
-    // setOptions(jsonDate.options);
-    const dataUri = avatar.toDataUri();
-    setAvatar(dataUri);
+    randomAvatar();
   });
 
   const randomAvatar = () => {
@@ -30,11 +32,16 @@ export default () => {
       ...options(),
       //... other options
     });
-    const dataUri = avatar.toDataUri();
-    setAvatar(dataUri);
+    setAvatar(avatar);
   };
   return (
-    <div class="grid grid-cols-[auto_1fr_auto] h-svh">
+    <div
+      class="grid grid-cols-[auto_1fr_auto] h-svh"
+      style={{
+        "background-color": avatar()?.toJson()?.extra
+          ?.primaryBackgroundColor as string,
+      }}
+    >
       <div class="drawer lg:drawer-open">
         <input id="my-drawer-1" type="checkbox" class="drawer-toggle" />
         <label
@@ -77,12 +84,12 @@ export default () => {
               when={avatar()}
               fallback={<div class="skeleton size-full"></div>}
             >
-              <img class="size-full" src={avatar()} alt="" />
+              <img class="size-full" src={avatar()?.toDataUri()} alt="" />
             </Show>
           </div>
           <div class="flex space-x-4">
             <button
-              className="btn btn-neutral"
+              class="btn btn-neutral"
               onClick={() => {
                 randomAvatar();
               }}
@@ -90,17 +97,33 @@ export default () => {
               随机生成
             </button>
             <button
-              className="btn btn-neutral"
-              onClick={() => document.getElementById("my_modal_2").showModal()}
+              class="btn btn-neutral"
+              onClick={async () => {
+                if (!avatar()) {
+                  return;
+                }
+                // document.getElementById("my_modal_2").showModal();
+                // downloadImage(toPng(avatar()).toArrayBuffer(), "avatar.png");
+                try {
+                  // 将 avatar() 转换为 PNG 的 ArrayBuffer
+                  const pngData = await toPng(
+                    avatar() as Avatar
+                  ).toArrayBuffer();
+                  // 调用下载函数
+                  downloadImage(pngData, "avatar.png");
+                } catch (error) {
+                  console.error("图片下载失败:", error);
+                }
+              }}
             >
               下载头像
             </button>
-            <button className="btn btn-neutral">批量生成</button>
+            <button class="btn btn-neutral">批量生成</button>
           </div>
         </div>
         <div class="flex justify-center text-secondary">
           <div>Made BY YYX</div>
-          <div className="divider divider-horizontal"></div>
+          <div class="divider divider-horizontal"></div>
           <div>Dicebear</div>
         </div>
       </div>
@@ -139,12 +162,12 @@ export default () => {
           </ul>
         </div>
       </div>
-      <dialog id="my_modal_2" className="modal">
-        <div className="modal-box">
-          <h3 className="font-bold text-lg">Hello!</h3>
-          <p className="py-4">Press ESC key or click outside to close</p>
+      <dialog id="my_modal_2" class="modal">
+        <div class="modal-box">
+          <h3 class="font-bold text-lg">Hello!</h3>
+          <p class="py-4">Press ESC key or click outside to close</p>
         </div>
-        <form method="dialog" className="modal-backdrop">
+        <form method="dialog" class="modal-backdrop">
           <button>close</button>
         </form>
       </dialog>

@@ -6,32 +6,9 @@ import AvatarBlock from "../components/solid/home-block/avatar-block";
 import TestBlock from "../components/solid/home-block/test-block";
 import SearchBlock from "../components/solid/home-block/search-block";
 import { TabsEnum } from "../enums/index";
+import { BlockList } from "../common/index";
 
-const BlockList: {
-  tags: TabsEnum[];
-  getContent: () => JSX.Element;
-} = [
-  {
-    tags: ["about"],
-    getContent: () => <MyInfo />,
-  },
-  {
-    tags: [TabsEnum.Tools],
-    getContent: () => <AvatarBlock />,
-  },
-  {
-    tags: [TabsEnum.Tools],
-    getContent: () => <Theme />,
-  },
-  {
-    tags: [TabsEnum.Tools],
-    getContent: () => <SearchBlock />,
-  },
-  {
-    tags: [TabsEnum.Projects],
-    getContent: () => <TestBlock />,
-  },
-];
+
 
 const Content = () => {
   const [active, setActive] = createSignal<TabsEnum>(TabsEnum.All);

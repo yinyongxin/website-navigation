@@ -101,7 +101,7 @@ export default () => {
             <button class="btn btn-neutral">批量生成</button>
           </div>
         </div>
-        <div class="flex justify-center text-secondary">
+        <div class="flex justify-center text-sm text-neutral">
           <div>Made BY YYX</div>
           <div class="divider divider-horizontal"></div>
           <div>Dicebear</div>

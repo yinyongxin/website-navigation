@@ -1,3 +1,4 @@
+import { type JSX } from "solid-js";
 import { TabsEnum } from "../enums/index";
 import MyInfo from "../components/solid/home-block/my-info";
 import Theme from "../components/solid/home-block/theme";
@@ -6,9 +7,9 @@ import TestBlock from "../components/solid/home-block/test-block";
 import SearchBlock from "../components/solid/home-block/search-block";
 
 export const BlockList: {
-  //   tags: TabsEnum[];
-  //   getContent: () => JSX.Element;
-} = [
+  tags: TabsEnum[];
+  getContent: () => JSX.Element;
+}[] = [
   {
     tags: [TabsEnum.About],
     getContent: () => <MyInfo />,

@@ -1,14 +1,7 @@
 import { cn } from "../utils";
 import { createSignal, For } from "solid-js";
-import MyInfo from "../components/solid/home-block/my-info";
-import Theme from "../components/solid/home-block/theme";
-import AvatarBlock from "../components/solid/home-block/avatar-block";
-import TestBlock from "../components/solid/home-block/test-block";
-import SearchBlock from "../components/solid/home-block/search-block";
 import { TabsEnum } from "../enums/index";
 import { BlockList } from "../common/index";
-
-
 
 const Content = () => {
   const [active, setActive] = createSignal<TabsEnum>(TabsEnum.All);

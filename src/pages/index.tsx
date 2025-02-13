@@ -1,38 +1,27 @@
 import { cn } from "../utils";
 import { createSignal, For } from "solid-js";
-import { TabsEnum } from "../enums/index";
-import { BlockList } from "../common/index";
+import { BlockList, TabsObj, type TabsKey } from "../common/index";
 
 const Content = () => {
-  const [active, setActive] = createSignal<TabsEnum>(TabsEnum.All);
+  const [active, setActive] = createSignal<TabsKey>("all");
   return (
     <div class="py-4 sm:py-8 flex flex-col gap-4 sm:gap-8 items-center sm:px-8">
       <nav class="flex justify-center">
         <ul class="bg-base-300 flex gap-2 rounded-full p-2">
-          <li
-            class={cn("py-2 px-4 rounded-full cursor-pointer", {
-              "bg-base-100 text-primary": active() === TabsEnum.All,
-            })}
-            onClick={() => setActive(TabsEnum.All)}
-          >
-            全部
-          </li>
-          <li
-            class={cn("py-2 px-4 rounded-full cursor-pointer", {
-              "bg-base-100 text-primary": active() === TabsEnum.Projects,
-            })}
-            onClick={() => setActive(TabsEnum.Projects)}
-          >
-            项目
-          </li>
-          <li
-            class={cn("py-2 px-4 rounded-full cursor-pointer", {
-              "bg-base-100 text-primary": active() === TabsEnum.Tools,
-            })}
-            onClick={() => setActive(TabsEnum.Tools)}
-          >
-            工具
-          </li>
+          <For each={Object.keys(TabsObj) as TabsKey[]}>
+            {(item) => {
+              return (
+                <li
+                  class={cn("py-2 px-4 rounded-full cursor-pointer", {
+                    "bg-base-100 text-primary": active() === item,
+                  })}
+                  onClick={() => setActive(item)}
+                >
+                  {TabsObj[item].title}
+                </li>
+              );
+            }}
+          </For>
         </ul>
       </nav>
       <div
@@ -44,9 +33,7 @@ const Content = () => {
       >
         <For
           each={BlockList.filter(
-            (itemBlock) =>
-              active() === TabsEnum.All ||
-              itemBlock.tags.some((tag) => tag === active())
+            (itemBlock) => active() === "all" || itemBlock.key === active()
           )}
         >
           {(item) => {

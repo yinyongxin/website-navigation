@@ -285,7 +285,7 @@ const TetrisGame = () => {
 			<div class="grid grid-flow-row grid-cols-5 grid-rows-2 p-4 gap-2 rounded-lg bg-gradient-to-br from-sky-800 via-sky-700 to-sky-400 [box-shadow:3px_4px_0px_2px]">
 				<button
 					onClick={() => rotateShape()}
-					class="cursor-pointer col-start-2 relative size-full flex justify-center items-center duration-300 hover:translate-y-0.5 hover:translate-x-0.5 bg-neutral-800 rounded [box-shadow:2px_2px_0px_2px_#000] hover:[box-shadow:1px_1px_0px_1px_#000]"
+					class="cursor-pointer col-start-2 relative size-full flex justify-center items-center duration-300 acitve:translate-y-0.5 active:translate-x-0.5 bg-neutral-800 rounded [box-shadow:2px_2px_0px_2px_#000] active:[box-shadow:1px_1px_0px_1px_#000]"
 				>
 					{/* 上 */}
 					<span class="rotate-90 font-bold text-xs">
@@ -303,7 +303,7 @@ const TetrisGame = () => {
 				{/* 左 */}
 				<button
 					onClick={() => moveShape(-1, 0)}
-					class="cursor-pointer col-start-1 relative size-full flex justify-center items-center duration-300 hover:translate-y-0.5 hover:translate-x-0.5 bg-neutral-800 rounded [box-shadow:2px_2px_0px_2px_#000] hover:[box-shadow:1px_1px_0px_1px_#000]"
+					class="cursor-pointer col-start-1 relative size-full flex justify-center items-center duration-300 acitve:translate-y-0.5 active:translate-x-0.5 bg-neutral-800 rounded [box-shadow:2px_2px_0px_2px_#000] active:[box-shadow:1px_1px_0px_1px_#000]"
 				>
 					<span class="font-bold text-xs">
 						<svg
@@ -319,7 +319,7 @@ const TetrisGame = () => {
 				</button>
 				<button
 					onClick={() => moveShape(0, 1)}
-					class="cursor-pointer relative size-full flex justify-center items-center duration-300 hover:translate-y-0.5 hover:translate-x-0.5 bg-neutral-800 rounded [box-shadow:2px_2px_0px_2px_#000] hover:[box-shadow:1px_1px_0px_1px_#000]"
+					class="cursor-pointer relative size-full flex justify-center items-center duration-300 acitve:translate-y-0.5 active:translate-x-0.5 bg-neutral-800 rounded [box-shadow:2px_2px_0px_2px_#000] active:[box-shadow:1px_1px_0px_1px_#000]"
 				>
 					<span class="-rotate-90 font-bold text-xs">
 						<svg
@@ -336,7 +336,7 @@ const TetrisGame = () => {
 				{/* 右 */}
 				<button
 					onclick={() => moveShape(1, 0)}
-					class="cursor-pointer relative size-full flex justify-center items-center duration-300 hover:translate-y-0.5 hover:translate-x-0.5 bg-neutral-800 rounded [box-shadow:2px_2px_0px_2px_#000] hover:[box-shadow:1px_1px_0px_1px_#000]"
+					class="cursor-pointer relative size-full flex justify-center items-center duration-300 acitve:translate-y-0.5 active:translate-x-0.5 bg-neutral-800 rounded [box-shadow:2px_2px_0px_2px_#000] active:[box-shadow:1px_1px_0px_1px_#000]"
 				>
 					<span class="rotate-180 font-bold text-xs">
 						<svg
@@ -352,13 +352,13 @@ const TetrisGame = () => {
 				</button>
 				<button
 					onClick={handleGameControl}
-					class="col-span-2 text-white row-start-1 col-start-4 relative size-full flex justify-center items-center duration-300 hover:translate-y-0.5 hover:translate-x-0.5 bg-neutral-800 rounded [box-shadow:2px_2px_0px_2px_#000] hover:[box-shadow:1px_1px_0px_1px_#000]"
+					class="col-span-2 text-white cursor-pointer row-start-1 col-start-4 relative size-full flex justify-center items-center duration-300 acitve:translate-y-0.5 active:translate-x-0.5 bg-neutral-800 rounded [box-shadow:2px_2px_0px_2px_#000] active:[box-shadow:1px_1px_0px_1px_#000]"
 				>
 					{gameOver() ? "开始游戏" : isPlaying() ? "暂停" : "继续"}
 				</button>
 				<button
 					onClick={() => quickDrop()}
-					class="cursor-pointer text-white col-start-4 col-span-2 relative size-full flex justify-center items-center duration-300 hover:translate-y-0.5 hover:translate-x-0.5 bg-neutral-800 rounded [box-shadow:2px_2px_0px_2px_#000] hover:[box-shadow:1px_1px_0px_1px_#000]"
+					class="cursor-pointer text-white col-start-4 col-span-2 relative size-full flex justify-center items-center duration-300 acitve:translate-y-0.5 active:translate-x-0.5 bg-neutral-800 rounded [box-shadow:2px_2px_0px_2px_#000] active:[box-shadow:1px_1px_0px_1px_#000]"
 				>
 					<span class="font-bold text-xs">到底</span>
 				</button>

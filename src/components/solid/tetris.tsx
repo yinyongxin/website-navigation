@@ -6,6 +6,7 @@ import {
   useContext,
   type Accessor,
 } from "solid-js";
+import { cn } from "../../utils";
 
 const BOARD_WIDTH = 10;
 const BOARD_HEIGHT = 20;
@@ -56,12 +57,6 @@ const SHAPES = [
   },
 ];
 
-const ThemeContext = createContext<{
-  isDark?: Accessor<boolean>;
-  toggleTheme?: () => void;
-}>({
-});
-
 const useGameLogic = () => {
   const [board, setBoard] = createSignal(
     Array(BOARD_HEIGHT)
@@ -77,7 +72,7 @@ const useGameLogic = () => {
   });
   const [currentPos, setCurrentPos] = createSignal({ x: 0, y: 0 });
   const [score, setScore] = createSignal(0);
-  const [gameOver, setGameOver] = createSignal(false);
+  const [gameOver, setGameOver] = createSignal(true);
   const [isPlaying, setIsPlaying] = createSignal(false);
   const [isDropping, setIsDropping] = createSignal(false);
 
@@ -148,6 +143,7 @@ const useGameLogic = () => {
     createNewShape();
     setIsDropping(false);
   };
+
   const moveShape = (dx: number, dy: number) => {
     if (!isPlaying() || isDropping()) return;
     const newPos = { x: currentPos().x + dx, y: currentPos().y + dy };
@@ -186,7 +182,7 @@ const useGameLogic = () => {
     }
   });
   createEffect(() => {
-    const handleKeyPress = (e) => {
+    const handleKeyPress = (e: KeyboardEvent) => {
       if (gameOver() || !isPlaying()) return;
       switch (e.key) {
         case "ArrowLeft":
@@ -226,54 +222,8 @@ const useGameLogic = () => {
     resetGame,
   };
 };
-const ControlButton = (props) => {
-  const { isDark } = useContext(ThemeContext);
-  return (
-   
-  );
-};
-
-const ThemeToggle = () => {
-  const { isDark, toggleTheme } = useContext(ThemeContext);
-  return (
-    <button
-      onClick={toggleTheme}
-      class={`w-full py-3 rounded-xl transition-all duration-300 transform hover:scale-105 active:scale-95 shadow-lg ${
-        isDark?.()
-          ? "bg-gradient-to-r from-gray-800 to-gray-600 text-yellow-400"
-          : "bg-gradient-to-r from-yellow-200 to-yellow-100 text-gray-800"
-      }`}
-    >
-      {isDark?.() ? "light" : "dark"}
-    </button>
-  );
-};
-
-const GameInfo = (props) => {
-  const { isDark } = useContext(ThemeContext);
-  return (
-    <div class="flex flex-col gap-4">
-      <div
-        class={`text-2xl rounded-xl px-8 py-3 shadow-lg transform transition-all duration-300 ${
-          isDark() ? "bg-gray-800 text-white" : "bg-white text-gray-800"
-        }`}
-      >
-        分数: {props.score}
-      </div>
-      {props.gameOver && (
-        <div class="text-2xl text-red-500 font-bold animate-pulse text-center">
-          游戏结束!
-        </div>
-      )}
-    </div>
-  );
-};
 
 const TetrisGame = () => {
-  const [isDark, setIsDark] = createSignal(true);
-  const toggleTheme = () => {
-    setIsDark(!isDark());
-  };
   const {
     board,
     currentShape,
@@ -284,7 +234,7 @@ const TetrisGame = () => {
     setIsPlaying,
     resetGame,
   } = useGameLogic();
-  const renderBlock = (x, y) => {
+  const renderBlock = (x: number, y: number) => {
     const inCurrentShape =
       currentShape().matrix[y - currentPos().y]?.[x - currentPos().x] === 1;
     const boardCell = board()[y][x];
@@ -300,60 +250,40 @@ const TetrisGame = () => {
     }
   };
   return (
-    <ThemeContext.Provider value={{ isDark, toggleTheme }}>
+    <div class="min-h-screen flex flex-col gap-6 items-center py-6">
+      <div class="text-secondary">得分: {score()}</div>
       <div
-        class={`min-h-screen ${
-          isDark() ? "bg-gray-900" : "bg-gray-100"
-        } transition-all duration-300 flex items-center justify-center`}
+        class={`flex-1 bg-base-200 transition-all duration-300 flex items-center justify-center`}
       >
         <div class="flex items-center justify-center gap-8">
           <div
-            class={`border-4 ${
-              isDark()
-                ? "border-gray-700 bg-gray-800"
-                : "border-gray-300 bg-white"
-            } p-4 rounded-xl shadow-lg transition-all duration-300`}
+            class={`border-4 bg-base-300 border-primary-content p-4 rounded-xl shadow-lg transition-all duration-300`}
           >
             {Array.from({ length: BOARD_HEIGHT }, (_, y) => (
-              <div key={y} class="flex">
+              <div class="flex">
                 {Array.from({ length: BOARD_WIDTH }, (_, x) => (
                   <div
-                    key={`${x}-${y}`}
                     style={{
                       width: BLOCK_SIZE + "px",
                       height: BLOCK_SIZE + "px",
                     }}
-                    class={`border ${
-                      isDark() ? "border-gray-700" : "border-gray-200"
-                    } rounded-lg ${
-                      renderBlock(x, y) ||
-                      (isDark() ? "bg-gray-900" : "bg-gray-50")
+                    class={`border-2 border-primary-content rounded-lg ${
+                      renderBlock(x, y) || "bg-base-200"
                     }`}
                   />
                 ))}
               </div>
             ))}
           </div>
-          <div class="flex flex-col gap-4 w-full lg:w-48">
-            <GameInfo score={score()} gameOver={gameOver()} isDark={isDark} />
-            <div class="flex flex-row lg:flex-col gap-4">
-              <ControlButton onClick={handleGameControl}>
-                {gameOver() ? "开始游戏" : isPlaying() ? "暂停" : "继续"}
-              </ControlButton>
-              <ControlButton onClick={resetGame}>重新开始</ControlButton>
-              <ThemeToggle />
-            </div>
-            <div
-              class={`text-sm px-6 py-3 rounded-xl ${
-                isDark() ? "bg-gray-800 text-white" : "bg-white text-gray-800"
-              } shadow-lg transition-all duration-300 text-center`}
-            >
-              使用方向键移动和旋转，空格键快速下落
-            </div>
-          </div>
         </div>
       </div>
-    </ThemeContext.Provider>
+      <div class={"btn"} onClick={handleGameControl}>
+        {gameOver() ? "开始游戏" : isPlaying() ? "暂停" : "继续"}
+      </div>
+      <div class={`text-sm text-center text-secondary`}>
+        使用方向键移动和旋转，空格键快速下落
+      </div>
+    </div>
   );
 };
 

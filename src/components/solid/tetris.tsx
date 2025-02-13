@@ -1,12 +1,4 @@
-import {
-  createSignal,
-  createEffect,
-  onCleanup,
-  createContext,
-  useContext,
-  type Accessor,
-} from "solid-js";
-import { cn } from "../../utils";
+import { createSignal, createEffect, onCleanup } from "solid-js";
 
 const BOARD_WIDTH = 10;
 const BOARD_HEIGHT = 20;
@@ -92,11 +84,22 @@ const useGameLogic = () => {
 
   const createNewShape = () => {
     const shape = SHAPES[Math.floor(Math.random() * SHAPES.length)];
-    setCurrentShape(shape);
-    setCurrentPos({
-      x: Math.floor(BOARD_WIDTH / 2) - Math.floor(shape.matrix[0].length / 2),
+    const newShape = {
+      matrix: shape.matrix,
+      color: shape.color,
+    };
+    const newPos = {
+      x:
+        Math.floor(BOARD_WIDTH / 2) - Math.floor(newShape.matrix[0].length / 2),
       y: 0,
-    });
+    };
+    if (checkCollision(newShape.matrix, newPos)) {
+      setGameOver(true);
+      setIsPlaying(false);
+      return;
+    }
+    setCurrentShape(newShape);
+    setCurrentPos(newPos);
   };
   const checkCollision = (shape: number[][], pos: { x: number; y: number }) => {
     for (let y = 0; y < shape.length; y++) {

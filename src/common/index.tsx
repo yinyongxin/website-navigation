@@ -4,16 +4,20 @@ import Theme from "../components/solid/home-block/theme";
 import AvatarBlock from "../components/solid/home-block/avatar-block";
 import TestBlock from "../components/solid/home-block/test-block";
 import SearchBlock from "../components/solid/home-block/search-block";
+import TetrisGame from "../components/solid/tetris";
+import TetrisBlock from "../components/solid/home-block/tetris-block";
 export const TabsObj = {
   all: {
     title: "全部",
   },
-
   tools: {
     title: "工具",
   },
   projects: {
     title: "项目",
+  },
+  games: {
+    title: "游戏",
   },
   about: {
     title: "关于我",
@@ -45,5 +49,9 @@ export const BlockList: {
   {
     key: "projects",
     getContent: () => <TestBlock />,
+  },
+  {
+    key: "games",
+    getContent: () => <TetrisBlock />,
   },
 ];

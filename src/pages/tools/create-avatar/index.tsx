@@ -19,11 +19,22 @@ console.log("defaultOptions", defaultOptions);
 export default () => {
   const [avatar, setAvatar] = createSignal<ReturnType<typeof createAvatar>>();
   const [options, setOptions] = createStore<Partial<micah.Options & Options>>({
-    backgroundColor: ["ffd5dc", "B6E3F4"],
-    backgroundType: [
-      // "gradientLinear",
-      "solid",
+    backgroundColor: [
+      "ffd5dc",
+      "B6E3F4",
+      "EED267",
+      "DFDDFC",
+      "D8EEF2",
+      "D8EEF2",
+      "FCECAC",
+      "5569EC",
+      "E5875B",
+      "63A79A",
+      "BBA0F9",
+      "EC7864",
+      "CF7477",
     ],
+    backgroundType: ["gradientLinear", "solid"],
   });
   //
   onMount(() => {

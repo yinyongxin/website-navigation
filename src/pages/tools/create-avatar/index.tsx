@@ -116,7 +116,9 @@ export default () => {
                 <Dialog.Positioner class="absolute inset-0 p-6 flex justify-center items-center">
                   <Dialog.Content class="bg-base-100 rounded-2xl shadow-lg w-full h-full sm-w-3/5">
                     <div class="flex justify-between items-center px-6 py-4 shadow">
-                      <Dialog.Title>已为你自动生成头像</Dialog.Title>
+                      <Dialog.Title class="font-bold">
+                        已为你自动生成头像
+                      </Dialog.Title>
                       <div class="flex space-x-2 items-center">
                         <div class="btn btn-sm btn-primary btn-soft">
                           换一批
@@ -155,10 +157,16 @@ export default () => {
             </Dialog.Root>
           </div>
         </div>
-        <div class="flex justify-center text-sm text-neutral">
-          <div>Made BY YYX</div>
-          <div class="divider divider-horizontal"></div>
-          <div>Dicebear</div>
+        <div class="flex justify-center text-neutral/70">
+          <div>银永鑫</div>
+          <div class="divider divider-horizontal py-1 mx-1"></div>
+          <a
+            class="hover:text-primary cursor-pointer"
+            href="https://www.dicebear.com/"
+            target="_blank"
+          >
+            Dicebear
+          </a>
         </div>
       </div>
     </div>

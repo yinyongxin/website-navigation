@@ -24,15 +24,13 @@ const AvatarBlock = () => {
         <div class="aspect-square flex justify-center items-center rounded-bl-2xl">
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
             viewBox="0 0 24 24"
             fill="none"
             stroke="currentColor"
             stroke-width="2"
             stroke-linecap="round"
             stroke-linejoin="round"
-            class="lucide lucide-refresh-cw group-hover:scale-110 group-active:scale-100  cursor-pointer"
+            class="lucide lucide-refresh-cw size-2/5 group-hover:scale-110 group-active:scale-100  cursor-pointer"
           >
             <path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8" />
             <path d="M21 3v5h-5" />
@@ -43,15 +41,13 @@ const AvatarBlock = () => {
         <div class="aspect-square flex justify-center items-center border-x border-base-200/10">
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
             viewBox="0 0 24 24"
             fill="none"
             stroke="currentColor"
             stroke-width="2"
             stroke-linecap="round"
             stroke-linejoin="round"
-            class="lucide lucide-image-down group-hover:scale-110 group-active:scale-100 cursor-pointer"
+            class="lucide lucide-image-down size-2/5 group-hover:scale-110 group-active:scale-100 cursor-pointer"
           >
             <path d="M10.3 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v10l-3.1-3.1a2 2 0 0 0-2.814.014L6 21" />
             <path d="m14 19 3 3v-5.5" />
@@ -59,25 +55,25 @@ const AvatarBlock = () => {
             <circle cx="9" cy="9" r="2" />
           </svg>
         </div>
-        <div class="aspect-square flex justify-center items-center rounded-br-2xl ">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            class="lucide lucide-maximize group-hover:scale-110 group-active:scale-100 cursor-pointer"
-          >
-            <path d="M8 3H5a2 2 0 0 0-2 2v3" />
-            <path d="M21 8V5a2 2 0 0 0-2-2h-3" />
-            <path d="M3 16v3a2 2 0 0 0 2 2h3" />
-            <path d="M16 21h3a2 2 0 0 0 2-2v-3" />
-          </svg>
-        </div>
+        <a href="/tools/create-avatar">
+          <div class="aspect-square flex justify-center items-center rounded-br-2xl ">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-maximize group-hover:scale-110 group-active:scale-100 cursor-pointer size-2/5"
+            >
+              <path d="M8 3H5a2 2 0 0 0-2 2v3" />
+              <path d="M21 8V5a2 2 0 0 0-2-2h-3" />
+              <path d="M3 16v3a2 2 0 0 0 2 2h3" />
+              <path d="M16 21h3a2 2 0 0 0 2-2v-3" />
+            </svg>
+          </div>
+        </a>
       </div>
     </Base>
   );

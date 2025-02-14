@@ -62,7 +62,7 @@ export default () => {
     >
       <div class="h-full flex flex-col py-8">
         <div class="flex-1 h-full grid justify-center content-center gap-8">
-          <div class="size-50 sm:size-50 md:size-70 rounded-2xl border-4 border-base-100 shadow overflow-hidden justify-self-center">
+          <div class="size-50 md:size-60 xl:size-70 rounded-2xl border-4 md:border-6 xl:border-8 border-base-100 shadow overflow-hidden justify-self-center">
             <Show
               when={avatar()}
               fallback={<div class="skeleton size-full"></div>}

@@ -1,6 +1,7 @@
 @import "tailwindcss";
 @plugin "daisyui" {
-	themes: "all";
+  themes: "all";
 }
 
-@import './daisyui/btn.css';
+@import "./daisyui/btn.css";
+@import "./ios.css";

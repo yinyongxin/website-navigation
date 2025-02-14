@@ -24,7 +24,7 @@ const AvatarBlock = () => {
           alt=""
         />
       </Show>
-      <div class="absolute bottom-0 left-0 right-0 border-t border-base-200/10 rounded-b-2xl overflow-hidden bg-base-100/20 backdrop-blur-sm grid grid-cols-3 transition-[transform_opacity] duration-300 opacity-0 sm:group-hover:opacity-100 group-active:opacity-100 translate-y-1/4 group-active:translate-y-0  sm:group-hover:translate-y-0">
+      <div class="absolute bottom-0 left-0 right-0 border-t border-base-200/10 rounded-b-2xl overflow-hidden bg-base-100/20 backdrop-blur-sm grid grid-cols-3 transition-[transform_opacity] duration-300 opacity-0 group-hover:opacity-100 translate-y-1/4 group-hover:translate-y-0">
         <div class="aspect-square flex justify-center items-center rounded-bl-2xl">
           <svg
             xmlns="http://www.w3.org/2000/svg"

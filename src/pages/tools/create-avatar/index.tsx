@@ -16,7 +16,7 @@ const defaultOptions = {
   ...schema.properties,
   ...micah.schema.properties,
 };
-console.log("defaultOptions", defaultOptions);
+console.log("schema.properties", schema.properties);
 
 export default () => {
   const [avatar, setAvatar] = createSignal<ReturnType<typeof createAvatar>>();

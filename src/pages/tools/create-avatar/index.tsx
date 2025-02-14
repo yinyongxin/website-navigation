@@ -9,6 +9,8 @@ import {
 import { micah } from "@dicebear/collection";
 import { toPng, type Avatar } from "@dicebear/converter";
 import { downloadImage } from "../../../utils/download";
+import { Dialog } from "@ark-ui/solid";
+import { Portal } from "solid-js/web";
 
 const defaultOptions = {
   ...schema.properties,
@@ -18,6 +20,7 @@ console.log("defaultOptions", defaultOptions);
 
 export default () => {
   const [avatar, setAvatar] = createSignal<ReturnType<typeof createAvatar>>();
+  const [open, setOpen] = createSignal(false);
   const [options, setOptions] = createStore<Partial<micah.Options & Options>>({
     backgroundColor: [
       "ffd5dc",
@@ -98,7 +101,58 @@ export default () => {
             >
               下载头像
             </button>
-            <button class="btn btn-neutral">批量生成</button>
+
+            <Dialog.Root open={open()}>
+              <Dialog.Trigger
+                class="btn btn-neutral"
+                onClick={() => {
+                  setOpen(true);
+                }}
+              >
+                批量生成
+              </Dialog.Trigger>
+              <Portal>
+                <Dialog.Backdrop class="absolute inset-0 bg-base-content/50" />
+                <Dialog.Positioner class="absolute inset-0 p-6 flex justify-center items-center">
+                  <Dialog.Content class="bg-base-100 rounded-2xl shadow-lg w-full h-full sm-w-3/5">
+                    <div class="flex justify-between items-center px-6 py-4 shadow">
+                      <Dialog.Title>已为你自动生成头像</Dialog.Title>
+                      <div class="flex space-x-2 items-center">
+                        <div class="btn btn-sm btn-primary btn-soft">
+                          换一批
+                        </div>
+                        <Dialog.CloseTrigger
+                          class="cursor-pointer"
+                          onClick={() => {
+                            setOpen(false);
+                          }}
+                        >
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            class="lucide lucide-circle-x"
+                          >
+                            <circle cx="12" cy="12" r="10" />
+                            <path d="m15 9-6 6" />
+                            <path d="m9 9 6 6" />
+                          </svg>
+                        </Dialog.CloseTrigger>
+                      </div>
+                    </div>
+                    <Dialog.Description class="p-6">
+                      Dialog Description
+                    </Dialog.Description>
+                  </Dialog.Content>
+                </Dialog.Positioner>
+              </Portal>
+            </Dialog.Root>
           </div>
         </div>
         <div class="flex justify-center text-sm text-neutral">

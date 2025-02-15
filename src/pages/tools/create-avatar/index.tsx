@@ -71,7 +71,7 @@ export default () => {
 			// 	"background-color": avatar()?.toJson()?.extra
 			// 		?.primaryBackgroundColor as string,
 			// }}
-		> 
+		>
 			<div class="h-full flex flex-col py-6">
 				<div class="flex-1 h-full grid justify-center content-center gap-8">
 					<div class="size-50 md:size-60 xl:size-70 rounded-2xl border-4 md:border-6 xl:border-8 border-base-100 shadow overflow-hidden justify-self-center">
@@ -200,6 +200,24 @@ export default () => {
 				</div>
 			</div>
 			<div class="absolute top-0 bottom-0 right-0 w-70 p-6">
+				<div class="absolute w-6 h-12 -left-6 top-1/2 -translate-y-1/2 flex items-center bg-base-300 rounded-l-lg cursor-pointer  duration-300 hover:scale-110 active:scale-90">
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						width="24"
+						height="24"
+						viewBox="0 0 24 24"
+						fill="none"
+						stroke="currentColor"
+						stroke-width="2"
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						class="lucide lucide-ellipsis-vertical"
+					>
+						<circle cx="12" cy="12" r="1" />
+						<circle cx="12" cy="5" r="1" />
+						<circle cx="12" cy="19" r="1" />
+					</svg>
+				</div>
 				<ul>
 					<li class="flex flex-col gap-4">
 						<div class="font-bold">头像形状</div>

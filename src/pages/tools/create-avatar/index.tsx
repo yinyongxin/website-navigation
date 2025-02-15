@@ -1,4 +1,4 @@
-import { createSignal, onMount, Show } from "solid-js";
+import { createMemo, createSignal, For, onMount, Show } from "solid-js";
 import { createStore } from "solid-js/store";
 import {
 	createAvatar,
@@ -20,7 +20,7 @@ const defaultOptions = {
 console.log("schema.properties", schema.properties);
 
 export default () => {
-	const [avatar, setAvatar] = createSignal<ReturnType<typeof createAvatar>>();
+	const [avatar, setAvatar] = createSignal<Result>();
 	const [open, setOpen] = createSignal(false);
 	const [options, setOptions] =
 		createStore<Partial<micah.Options & Options>>(AvatarDefaultOptions);
@@ -36,6 +36,33 @@ export default () => {
 			//... other options
 		});
 		setAvatar(avatar);
+	};
+	const [avatarList, setAvatarList] = createSignal<Result[]>([]);
+
+	const createAvatarList = () => {
+		const newAvatarList = Array.from({ length: 18 }, (_, index) => {
+			const avatar = createAvatar(micah, {
+				seed: Math.random().toString(),
+				...options,
+				//... other options
+			});
+			return avatar;
+		});
+		setAvatarList(newAvatarList);
+	};
+
+	const download = async (value: Avatar) => {
+		if (!avatar()) {
+			return;
+		}
+		try {
+			// 将 avatar() 转换为 PNG 的 ArrayBuffer
+			const pngData = await toPng(value).toArrayBuffer();
+			// 调用下载函数
+			downloadImage(pngData as ArrayBuffer, "avatar.png");
+		} catch (error) {
+			console.error("图片下载失败:", error);
+		}
 	};
 	return (
 		<div
@@ -67,21 +94,7 @@ export default () => {
 						<button
 							class="btn btn-neutral md:btn-lg"
 							onClick={async () => {
-								if (!avatar()) {
-									return;
-								}
-								// document.getElementById("my_modal_2").showModal();
-								// downloadImage(toPng(avatar()).toArrayBuffer(), "avatar.png");
-								try {
-									// 将 avatar() 转换为 PNG 的 ArrayBuffer
-									const pngData = await toPng(
-										avatar() as Avatar
-									).toArrayBuffer();
-									// 调用下载函数
-									downloadImage(pngData as ArrayBuffer, "avatar.png");
-								} catch (error) {
-									console.error("图片下载失败:", error);
-								}
+								download(avatar() as Avatar);
 							}}
 						>
 							下载头像
@@ -92,6 +105,7 @@ export default () => {
 								class="btn btn-neutral md:btn-lg"
 								onClick={() => {
 									setOpen(true);
+									createAvatarList();
 								}}
 							>
 								批量生成
@@ -99,13 +113,18 @@ export default () => {
 							<Portal>
 								<Dialog.Backdrop class="absolute inset-0 bg-base-content/50" />
 								<Dialog.Positioner class="absolute inset-0 p-6 flex justify-center items-center">
-									<Dialog.Content class="bg-base-100 rounded-2xl shadow-lg size-full sm:w-3/5 sm:h-4/5">
+									<Dialog.Content class="bg-base-100 rounded-2xl shadow-lg w-full sm:w-3/5 max-h-4/5 overflow-hidden flex flex-col">
 										<div class="flex justify-between items-center px-6 py-4 shadow">
 											<Dialog.Title class="font-bold">
 												已为你自动生成头像
 											</Dialog.Title>
 											<div class="flex space-x-2 items-center">
-												<div class="btn btn-sm btn-primary btn-soft">
+												<div
+													class="btn btn-sm btn-primary btn-soft"
+													onClick={() => {
+														createAvatarList();
+													}}
+												>
 													换一批
 												</div>
 												<Dialog.CloseTrigger
@@ -133,8 +152,32 @@ export default () => {
 												</Dialog.CloseTrigger>
 											</div>
 										</div>
-										<Dialog.Description class="p-6">
-											Dialog Description
+										<Dialog.Description class="p-6 overflow-auto flex-1">
+											<div class="grid grid-cols-2 lg:grid-cols-4 xl:grid-cols-6 gap-6">
+												<For each={avatarList()}>
+													{(item) => {
+														return (
+															<div class="size-full rounded-2xl border-4 border-base-100 shadow overflow-hidden group relative">
+																<img
+																	class="size-full"
+																	src={item.toDataUri()}
+																	alt="avatar"
+																/>
+																<div class="absolute left-0 right-0 bottom-6 lg:bottom-4 xl:bottom-2 flex justify-center items-center invisible group-hover:visible">
+																	<div
+																		class="btn btn-sm glass "
+																		onClick={() => {
+																			download(item as Avatar);
+																		}}
+																	>
+																		下载图片
+																	</div>
+																</div>
+															</div>
+														);
+													}}
+												</For>
+											</div>
 										</Dialog.Description>
 									</Dialog.Content>
 								</Dialog.Positioner>

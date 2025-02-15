@@ -22,7 +22,8 @@ console.log("schema.properties", schema.properties);
 export default () => {
 	const [avatar, setAvatar] = createSignal<ReturnType<typeof createAvatar>>();
 	const [open, setOpen] = createSignal(false);
-	const [options, setOptions] = createStore<Partial<micah.Options & Options>>(AvatarDefaultOptions);
+	const [options, setOptions] =
+		createStore<Partial<micah.Options & Options>>(AvatarDefaultOptions);
 	//
 	onMount(() => {
 		randomAvatar();
@@ -56,7 +57,7 @@ export default () => {
 					</div>
 					<div class="flex space-x-4">
 						<button
-							class="btn btn-neutral"
+							class="btn btn-neutral md:btn-lg"
 							onClick={() => {
 								randomAvatar();
 							}}
@@ -64,7 +65,7 @@ export default () => {
 							随机生成
 						</button>
 						<button
-							class="btn btn-neutral"
+							class="btn btn-neutral md:btn-lg"
 							onClick={async () => {
 								if (!avatar()) {
 									return;
@@ -88,7 +89,7 @@ export default () => {
 
 						<Dialog.Root open={open()}>
 							<Dialog.Trigger
-								class="btn btn-neutral"
+								class="btn btn-neutral md:btn-lg"
 								onClick={() => {
 									setOpen(true);
 								}}
@@ -141,8 +142,10 @@ export default () => {
 						</Dialog.Root>
 					</div>
 				</div>
-				<div class="flex justify-center text-neutral/70">
-					<div>银永鑫</div>
+				<div class="flex justify-center text-neutral/70 font-bold">
+					<a class="hover:text-primary cursor-pointer" href="/">
+						银永鑫
+					</a>
 					<div class="divider divider-horizontal py-1 mx-1"></div>
 					<a
 						class="hover:text-primary cursor-pointer"

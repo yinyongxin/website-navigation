@@ -66,13 +66,13 @@ export default () => {
 	};
 	return (
 		<div
-			class="h-svh"
-			style={{
-				"background-color": avatar()?.toJson()?.extra
-					?.primaryBackgroundColor as string,
-			}}
-		>
-			<div class="h-full flex flex-col py-8">
+			class="h-svh relative"
+			// style={{
+			// 	"background-color": avatar()?.toJson()?.extra
+			// 		?.primaryBackgroundColor as string,
+			// }}
+		> 
+			<div class="h-full flex flex-col py-6">
 				<div class="flex-1 h-full grid justify-center content-center gap-8">
 					<div class="size-50 md:size-60 xl:size-70 rounded-2xl border-4 md:border-6 xl:border-8 border-base-100 shadow overflow-hidden justify-self-center">
 						<Show
@@ -185,7 +185,7 @@ export default () => {
 						</Dialog.Root>
 					</div>
 				</div>
-				<div class="flex justify-center text-neutral/70 font-bold">
+				<div class="flex justify-center font-bold">
 					<a class="hover:text-primary cursor-pointer" href="/">
 						银永鑫
 					</a>
@@ -198,6 +198,18 @@ export default () => {
 						Dicebear
 					</a>
 				</div>
+			</div>
+			<div class="absolute top-0 bottom-0 right-0 w-70 p-6">
+				<ul>
+					<li class="flex flex-col gap-4">
+						<div class="font-bold">头像形状</div>
+						<div class="flex gap-4">
+							<div class="rounded-full size-10 bg-primary-content"></div>
+							<div class="rounded-lg size-10 bg-primary-content"></div>
+							<div class="size-10 bg-primary-content"></div>
+						</div>
+					</li>
+				</ul>
 			</div>
 		</div>
 	);

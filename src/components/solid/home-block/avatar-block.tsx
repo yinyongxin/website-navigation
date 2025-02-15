@@ -30,7 +30,7 @@ const AvatarBlock = () => {
 			</Show>
 			<div
 				class={cn(
-					"absolute bottom-0 left-0 right-0 border-t border-base-200/10 rounded-b-2xl overflow-hidden bg-base-100/20 backdrop-blur-sm grid grid-cols-3",
+					"absolute bottom-0 left-0 right-0 border-t border-base-200/10 rounded-b-2xl overflow-hidden glass grid grid-cols-3",
 					" transition-[transform_opacity] duration-500 opacity-0 group-hover:opacity-100 select-none"
 				)}
 			>

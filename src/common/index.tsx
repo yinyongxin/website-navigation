@@ -5,6 +5,8 @@ import AvatarBlock from "../components/solid/home-block/avatar-block";
 import TestBlock from "../components/solid/home-block/test-block";
 import SearchBlock from "../components/solid/home-block/search-block";
 import TetrisBlock from "../components/solid/home-block/tetris-block";
+
+export * from "./avatar";
 export const TabsObj = {
 	all: {
 		title: "全部",
@@ -30,10 +32,6 @@ export const BlockList: {
 	getContent: () => JSX.Element;
 }[] = [
 	{
-		key: "about",
-		getContent: () => <MyInfo />,
-	},
-	{
 		key: "tools",
 		getContent: () => <AvatarBlock />,
 	},
@@ -52,5 +50,9 @@ export const BlockList: {
 	{
 		key: "games",
 		getContent: () => <TetrisBlock />,
+	},
+	{
+		key: "about",
+		getContent: () => <MyInfo />,
 	},
 ];

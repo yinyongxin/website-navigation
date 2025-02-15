@@ -58,7 +58,7 @@ const Tetris = () => {
 					))}
 				</div>
 			</div>
-			<div class="grid grid-flow-row grid-cols-5 grid-rows-2 p-4 gap-2 rounded-lg bg-gradient-to-br from-sky-800 via-sky-700 to-sky-400 [box-shadow:3px_4px_0px_2px]">
+			<div class="grid grid-flow-row grid-cols-5 grid-rows-2 p-4 gap-2 rounded-lg bg-gradient-to-br from-sky-800 via-sky-700 to-sky-400 [box-shadow:3px_4px_0px_2px_#000]">
 				<button
 					onClick={() => rotateShape()}
 					class="cursor-pointer col-start-2 relative size-full flex justify-center items-center duration-300 acitve:translate-y-0.5 active:translate-x-0.5 bg-neutral-800 rounded [box-shadow:2px_2px_0px_2px_#000] active:[box-shadow:1px_1px_0px_1px_#000]"

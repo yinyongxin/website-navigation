@@ -1,4 +1,4 @@
-import { createSignal, onMount, Show } from "solid-js";
+import { createMemo, createSignal, For, onMount, Show } from "solid-js";
 import { createStore } from "solid-js/store";
 import {
 	createAvatar,
@@ -20,7 +20,7 @@ const defaultOptions = {
 console.log("schema.properties", schema.properties);
 
 export default () => {
-	const [avatar, setAvatar] = createSignal<ReturnType<typeof createAvatar>>();
+	const [avatar, setAvatar] = createSignal<Result>();
 	const [open, setOpen] = createSignal(false);
 	const [options, setOptions] =
 		createStore<Partial<micah.Options & Options>>(AvatarDefaultOptions);
@@ -37,15 +37,42 @@ export default () => {
 		});
 		setAvatar(avatar);
 	};
+	const [avatarList, setAvatarList] = createSignal<Result[]>([]);
+
+	const createAvatarList = () => {
+		const newAvatarList = Array.from({ length: 18 }, (_, index) => {
+			const avatar = createAvatar(micah, {
+				seed: Math.random().toString(),
+				...options,
+				//... other options
+			});
+			return avatar;
+		});
+		setAvatarList(newAvatarList);
+	};
+
+	const download = async (value: Avatar) => {
+		if (!avatar()) {
+			return;
+		}
+		try {
+			// 将 avatar() 转换为 PNG 的 ArrayBuffer
+			const pngData = await toPng(value).toArrayBuffer();
+			// 调用下载函数
+			downloadImage(pngData as ArrayBuffer, "avatar.png");
+		} catch (error) {
+			console.error("图片下载失败:", error);
+		}
+	};
 	return (
 		<div
-			class="h-svh"
-			style={{
-				"background-color": avatar()?.toJson()?.extra
-					?.primaryBackgroundColor as string,
-			}}
+			class="h-svh relative"
+			// style={{
+			// 	"background-color": avatar()?.toJson()?.extra
+			// 		?.primaryBackgroundColor as string,
+			// }}
 		>
-			<div class="h-full flex flex-col py-8">
+			<div class="h-full flex flex-col py-6">
 				<div class="flex-1 h-full grid justify-center content-center gap-8">
 					<div class="size-50 md:size-60 xl:size-70 rounded-2xl border-4 md:border-6 xl:border-8 border-base-100 shadow overflow-hidden justify-self-center">
 						<Show
@@ -67,21 +94,7 @@ export default () => {
 						<button
 							class="btn btn-neutral md:btn-lg"
 							onClick={async () => {
-								if (!avatar()) {
-									return;
-								}
-								// document.getElementById("my_modal_2").showModal();
-								// downloadImage(toPng(avatar()).toArrayBuffer(), "avatar.png");
-								try {
-									// 将 avatar() 转换为 PNG 的 ArrayBuffer
-									const pngData = await toPng(
-										avatar() as Avatar
-									).toArrayBuffer();
-									// 调用下载函数
-									downloadImage(pngData as ArrayBuffer, "avatar.png");
-								} catch (error) {
-									console.error("图片下载失败:", error);
-								}
+								download(avatar() as Avatar);
 							}}
 						>
 							下载头像
@@ -92,6 +105,7 @@ export default () => {
 								class="btn btn-neutral md:btn-lg"
 								onClick={() => {
 									setOpen(true);
+									createAvatarList();
 								}}
 							>
 								批量生成
@@ -99,13 +113,18 @@ export default () => {
 							<Portal>
 								<Dialog.Backdrop class="absolute inset-0 bg-base-content/50" />
 								<Dialog.Positioner class="absolute inset-0 p-6 flex justify-center items-center">
-									<Dialog.Content class="bg-base-100 rounded-2xl shadow-lg size-full sm:w-3/5 sm:h-4/5">
+									<Dialog.Content class="bg-base-100 rounded-2xl shadow-lg w-full sm:w-3/5 max-h-4/5 overflow-hidden flex flex-col">
 										<div class="flex justify-between items-center px-6 py-4 shadow">
 											<Dialog.Title class="font-bold">
 												已为你自动生成头像
 											</Dialog.Title>
 											<div class="flex space-x-2 items-center">
-												<div class="btn btn-sm btn-primary btn-soft">
+												<div
+													class="btn btn-sm btn-primary btn-soft"
+													onClick={() => {
+														createAvatarList();
+													}}
+												>
 													换一批
 												</div>
 												<Dialog.CloseTrigger
@@ -133,8 +152,32 @@ export default () => {
 												</Dialog.CloseTrigger>
 											</div>
 										</div>
-										<Dialog.Description class="p-6">
-											Dialog Description
+										<Dialog.Description class="p-6 overflow-auto flex-1">
+											<div class="grid grid-cols-2 lg:grid-cols-4 xl:grid-cols-6 gap-6">
+												<For each={avatarList()}>
+													{(item) => {
+														return (
+															<div class="size-full rounded-2xl border-4 border-base-100 shadow overflow-hidden group relative">
+																<img
+																	class="size-full"
+																	src={item.toDataUri()}
+																	alt="avatar"
+																/>
+																<div class="absolute left-0 right-0 bottom-6 lg:bottom-4 xl:bottom-2 flex justify-center items-center invisible group-hover:visible">
+																	<div
+																		class="btn btn-sm glass "
+																		onClick={() => {
+																			download(item as Avatar);
+																		}}
+																	>
+																		下载图片
+																	</div>
+																</div>
+															</div>
+														);
+													}}
+												</For>
+											</div>
 										</Dialog.Description>
 									</Dialog.Content>
 								</Dialog.Positioner>
@@ -142,7 +185,7 @@ export default () => {
 						</Dialog.Root>
 					</div>
 				</div>
-				<div class="flex justify-center text-neutral/70 font-bold">
+				<div class="flex justify-center font-bold">
 					<a class="hover:text-primary cursor-pointer" href="/">
 						银永鑫
 					</a>
@@ -155,6 +198,36 @@ export default () => {
 						Dicebear
 					</a>
 				</div>
+			</div>
+			<div class="absolute top-0 bottom-0 right-0 w-70 p-6">
+				<div class="absolute w-6 h-12 -left-6 top-1/2 -translate-y-1/2 flex items-center bg-base-300 rounded-l-lg cursor-pointer  duration-300 hover:scale-110 active:scale-90">
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						width="24"
+						height="24"
+						viewBox="0 0 24 24"
+						fill="none"
+						stroke="currentColor"
+						stroke-width="2"
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						class="lucide lucide-ellipsis-vertical"
+					>
+						<circle cx="12" cy="12" r="1" />
+						<circle cx="12" cy="5" r="1" />
+						<circle cx="12" cy="19" r="1" />
+					</svg>
+				</div>
+				<ul>
+					<li class="flex flex-col gap-4">
+						<div class="font-bold">头像形状</div>
+						<div class="flex gap-4">
+							<div class="rounded-full size-10 bg-primary-content"></div>
+							<div class="rounded-lg size-10 bg-primary-content"></div>
+							<div class="size-10 bg-primary-content"></div>
+						</div>
+					</li>
+				</ul>
 			</div>
 		</div>
 	);

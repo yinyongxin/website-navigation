@@ -20,7 +20,7 @@ const AvatarBlock = () => {
 		setAvatar(avatar);
 	};
 	return (
-		<Base class="relative col-span-1 group">
+		<Base class="relative col-span-1 group border-0">
 			<Show when={avatar()} fallback={<div class="skeleton size-full"></div>}>
 				<img
 					class="size-fullr rounded-2xl user-select-nones"

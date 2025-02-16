@@ -204,7 +204,7 @@ export default () => {
 				<label
 					class={cn(
 						"absolute w-6 h-12 -left-6 top-1/2 -translate-y-1/2 flex items-center border-l border-y",
-						"bg-base-300 rounded-l-lg cursor-pointer  duration-300 hover:scale-110 active:scale-90"
+						"bg-base-300 rounded-l-lg cursor-pointer duration-100 hover:scale-110 active:scale-90"
 					)}
 				>
 					<input type="checkbox" class="hidden" checked></input>

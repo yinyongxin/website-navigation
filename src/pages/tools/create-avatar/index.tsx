@@ -12,6 +12,7 @@ import { downloadImage } from "../../../utils/download";
 import { Dialog } from "@ark-ui/solid";
 import { Portal } from "solid-js/web";
 import { AvatarDefaultOptions } from "../../../common";
+import { cn } from "../../../utils";
 
 const defaultOptions = {
 	...schema.properties,
@@ -66,13 +67,13 @@ export default () => {
 	};
 	return (
 		<div
-			class="h-svh relative"
-			// style={{
-			// 	"background-color": avatar()?.toJson()?.extra
-			// 		?.primaryBackgroundColor as string,
-			// }}
+			class="h-svh relative overflow-hidden"
+			style={{
+				"background-color": avatar()?.toJson()?.extra
+					?.primaryBackgroundColor as string,
+			}}
 		>
-			<div class="h-full flex flex-col py-6">
+			<div class="h-full flex flex-col py-6 ">
 				<div class="flex-1 h-full grid justify-center content-center gap-8">
 					<div class="size-50 md:size-60 xl:size-70 rounded-2xl border-4 md:border-6 xl:border-8 border-base-100 shadow overflow-hidden justify-self-center">
 						<Show
@@ -199,8 +200,14 @@ export default () => {
 					</a>
 				</div>
 			</div>
-			<div class="absolute top-0 bottom-0 right-0 w-70 p-6">
-				<div class="absolute w-6 h-12 -left-6 top-1/2 -translate-y-1/2 flex items-center bg-base-300 rounded-l-lg cursor-pointer  duration-300 hover:scale-110 active:scale-90">
+			<div class="absolute top-0 bottom-0 right-0 w-70 has-[:checked]:translate-x-full duration-300">
+				<label
+					class={cn(
+						"absolute w-6 h-12 -left-6 top-1/2 -translate-y-1/2 flex items-center border-l border-y",
+						"bg-base-300 rounded-l-lg cursor-pointer  duration-300 hover:scale-110 active:scale-90"
+					)}
+				>
+					<input type="checkbox" class="hidden" checked></input>
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
 						width="24"
@@ -217,8 +224,14 @@ export default () => {
 						<circle cx="12" cy="5" r="1" />
 						<circle cx="12" cy="19" r="1" />
 					</svg>
-				</div>
-				<ul>
+				</label>
+				<ul
+					class={cn(
+						"p-6 h-full overflow-auto",
+						"bg-base-200",
+						"shadow-lg sm:shadow-none"
+					)}
+				>
 					<li class="flex flex-col gap-4">
 						<div class="font-bold">头像形状</div>
 						<div class="flex gap-4">

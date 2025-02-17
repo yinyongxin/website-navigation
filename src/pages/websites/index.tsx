@@ -80,7 +80,7 @@ const Content = () => {
 
   return (
     <div class="h-full w-full">
-      <div class="flex gap-4 sticky top-0 p-6 backdrop-blur bg-white/30">
+      <div class="flex gap-4 sticky top-0 p-6 glass">
         <img src="/icons/filter.svg" alt="filter" />
         <div class="flex flex-wrap gap-2">
           <Index each={tags()}>
@@ -90,7 +90,7 @@ const Content = () => {
                   class={cn(
                     "px-4 py-2 border rounded-xl hover:bg-neutral-100 active:bg-neutral-50 transition-colors cursor-pointer",
                     {
-                      "bg-neutral-100 border-dashed": tag().checked,
+                      "bg-base-200 border-dashed": tag().checked,
                     }
                   )}
                   onClick={() => {

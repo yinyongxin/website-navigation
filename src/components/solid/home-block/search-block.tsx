@@ -43,7 +43,7 @@ const SearchBlock = () => {
       </label> */}
       <div class="relative rounded-full overflow-hidden shadow w-full">
         <input
-          class="input bg-transparent outline-none border-none pl-6 pr-10 py-5 w-full font-sans text-lg font-semibold"
+          class="bg-transparent outline-none border-none pl-6 pr-10 py-3 w-full font-sans text-lg font-semibold"
           placeholder="输入搜索内容"
           name="text"
           type="text"
@@ -51,7 +51,7 @@ const SearchBlock = () => {
         <div class="absolute right-2 bottom-2 top-2">
           <button
             class={cn(
-              "h-full aspect-square rounded-full group shadow",
+              "h-full aspect-square rounded-full group shadow cursor-pointer",
               " flex items-center justify-center ",
               "relative overflow-hidden"
             )}
@@ -97,28 +97,27 @@ const SearchBlock = () => {
           </button>
         </div>
       </div>
-      <div class="flex gap-2">
-        <For each={searchList}>
-          {(item) => {
-            return (
-              <div
-                class={cn(
-                  "size-8 sm:size-10 p-1 rounded-full overflow-hidden cursor-pointer hover:border-2 hover:border-primary",
-                  {
-                    "border-2 border-primary": active() === item.key,
-                  }
-                )}
-                onClick={() => setActive(item.key)}
-              >
-                <img src={item.iconImage} class="size-full" alt="google" />
-              </div>
-            );
-          }}
-        </For>
-      </div>
       <div class="flex justify-between items-center">
+        <div class="flex gap-2">
+          <For each={searchList}>
+            {(item) => {
+              return (
+                <div
+                  class={cn(
+                    "size-8 sm:size-10 p-1 rounded-full overflow-hidden cursor-pointer hover:border-2 hover:border-primary",
+                    {
+                      "border-2 border-primary": active() === item.key,
+                    }
+                  )}
+                  onClick={() => setActive(item.key)}
+                >
+                  <img src={item.iconImage} class="size-full" alt="google" />
+                </div>
+              );
+            }}
+          </For>
+        </div>
         <div>
-          当前搜索跳转为
           <span class="text-primary font-bold text-xl ml-2">
             {searchList.find((item) => item.key === active())?.label}
           </span>

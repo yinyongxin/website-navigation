@@ -4,7 +4,7 @@ const WebsitesNavigationBlock = () => {
   return (
     <Base
       class={
-        "hover:scale-105 hover:border-none bg-transparent hover:bg-none duration-300 bg-gradient-to-b from-primary-content/50 to-secondary-content/50"
+        "hover:scale-105 hover:border-none bg-transparent hover:bg-none duration-300 bg-gradient-to-br from-primary/20 via-accent/20 to-secondary/20"
       }
     >
       <div class="grid grid-cols-3 grid-rows-3 absolute inset-0 group-hover:gap-3 duration-400 opacity-0 group-hover:opacity-100">
@@ -71,7 +71,7 @@ const WebsitesNavigationBlock = () => {
           </svg>
         </div>
       </div>
-      <div class="absolute inset-0 flex flex-col justify-center gap-3 items-center duration-300 opacity-100 group-hover:opacity-0">
+      <div class="absolute inset-0 flex flex-col justify-center gap-3 items-center duration-300 backdrop-blur bg-white/20 rounded-3xl opacity-100 group-hover:opacity-0">
         <div>HOVER</div>
         <div>FOR</div>
         <div>WEBSITWS</div>

@@ -4,11 +4,11 @@ const WebsitesNavigationBlock = () => {
   return (
     <Base
       class={
-        "active:scale-110 active:border-none active:bg-transparent active:bg-none duration-300 bg-gradient-to-b from-primary-content/50 to-secondary-content/50"
+        "hover:scale-105 hover:border-none bg-transparent hover:bg-none duration-300 bg-gradient-to-b from-primary-content/50 to-secondary-content/50"
       }
     >
-      <div class="grid grid-cols-3 grid-rows-3 absolute inset-0 group-active:gap-2 duration-400 opacity-0 group-active:opacity-100">
-        <div class="size-full flex justify-center items-center bg-primary-content rounded-lg">
+      <div class="grid grid-cols-3 grid-rows-3 absolute inset-0 group-hover:gap-3 duration-400 opacity-0 group-hover:opacity-100">
+        <div class="size-full flex justify-center items-center glass bg-primary-content/30 rounded-lg duration-600">
           <svg
             fill-rule="nonzero"
             height="30px"
@@ -39,7 +39,7 @@ const WebsitesNavigationBlock = () => {
             </g>
           </svg>
         </div>
-        <div class="size-full flex justify-center items-center bg-primary-content rounded-lg">
+        <div class="size-full flex justify-center items-center glass bg-primary-content/30 rounded-lg duration-600">
           <svg
             fill-rule="nonzero"
             height="30px"
@@ -71,7 +71,7 @@ const WebsitesNavigationBlock = () => {
           </svg>
         </div>
       </div>
-      <div class="absolute inset-0 flex flex-col justify-center gap-3 items-center duration-300 opacity-100 group-active:opacity-0">
+      <div class="absolute inset-0 flex flex-col justify-center gap-3 items-center duration-300 opacity-100 group-hover:opacity-0">
         <div>HOVER</div>
         <div>FOR</div>
         <div>WEBSITWS</div>

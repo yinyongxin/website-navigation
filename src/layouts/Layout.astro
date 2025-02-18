@@ -1,0 +1,33 @@
+---
+import "../styles/global.css";
+const { pageTitle } = Astro.props;
+import { ClientRouter } from "astro:transitions";
+---
+
+<!doctype html>
+<html lang="zh-cn" class="size-full" data-theme="light">
+	<head>
+		<meta charset="UTF-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{pageTitle}</title>
+		<ClientRouter />
+	</head>
+	<body class="bg-base-200 h-max-centent">
+		<slot />
+	</body>
+</html>
+
+<script is:inline>
+	function setTheme(document) {
+		const newTheme = localStorage.getItem("theme") || "light";
+		document.documentElement.setAttribute("data-theme", newTheme);
+	}
+	setTheme(document);
+	document.addEventListener("astro:before-swap", (event) => {
+		console.log("astro:before-swap");
+		// 传入新文档以设置主题
+		setTheme(event.newDocument);
+	});
+</script>

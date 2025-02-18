@@ -146,12 +146,28 @@ const WebsitesNavigation = () => {
                 <li class={styles.card}>
                   <img src={item.icon} alt="icon" class="w-20" />
                   <div class={cn(styles.content, "bg-base-100")}>
-                    <p class={styles.title}>Card Title</p>
-                    <p class={styles.description}>
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                      sed do eiusmod tempor incididunt ut labore et dolore magna
-                      aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                      ullamco.
+                    <div class="text-lg font-bold flex justify-between">
+                      <div>{item.title}</div>
+                      <a href={item.url} target="_blank">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="24"
+                          height="24"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          class="lucide lucide-arrow-right"
+                        >
+                          <path d="M5 12h14" />
+                          <path d="m12 5 7 7-7 7" />
+                        </svg>
+                      </a>
+                    </div>
+                    <p class={cn(styles.description, "text-justify")}>
+                      {item.description}
                     </p>
                   </div>
                 </li>

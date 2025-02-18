@@ -1,12 +1,12 @@
 import { createSignal, For, Index, onMount, Show } from "solid-js";
 import { uniq } from "lodash-es";
-import { cn } from "../../utils";
+import { cn } from "../../../utils";
 import { TransitionGroup } from "solid-transition-group";
-import "./index.css";
 import { Dialog } from "@ark-ui/solid";
 import { Portal } from "solid-js/web";
+import styles from "./index.module.css";
 
-const Content = () => {
+const WebsitesNavigation = () => {
   const [open, setOpen] = createSignal(false);
   const [tags, setTags] = createSignal<
     {
@@ -133,9 +133,9 @@ const Content = () => {
           </button>
         </div>
       </div>
-      <div class="p-6 flex-1 overflow-auto">
+      <div class="p-8 flex-1 overflow-auto">
         <ul
-          class="w-full grid gap-4"
+          class="w-full grid gap-8"
           style={{
             "grid-template-columns": "repeat(auto-fill, minmax(300px, 1fr))",
           }}
@@ -143,57 +143,17 @@ const Content = () => {
           <For each={getFilterList()}>
             {(item) => {
               return (
-                <li class="border-solid border border-gray-300 p-4 rounded-xl shadow hover:shadow-md transition-shadow flex flex-col gap-2">
-                  <div class="flex justify-between items-center ">
-                    <div class="w-16 h-16 border rounded-xl flex justify-center items-center">
-                      <img alt="icon" width="70%" src={item.icon} />
-                    </div>
-                    <div class="flex-1 text-end text-2xl">{item.title}</div>
+                <li class={styles.card}>
+                  <img src={item.icon} alt="icon" class="w-20" />
+                  <div class={styles.content}>
+                    <p class={styles.title}>Card Title</p>
+                    <p class={styles.description}>
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                      sed do eiusmod tempor incididunt ut labore et dolore magna
+                      aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                      ullamco.
+                    </p>
                   </div>
-                  <div class="text-ellipsis line-clamp-2 h-12 text-justify">
-                    {item.description}
-                  </div>
-                  <ol class="flex gap-2">
-                    <For each={item.tags.slice(0, 2)}>
-                      {(tag) => (
-                        <li
-                          class={cn(
-                            "text-xs border rounded-lg px-2 py-1 hover:bg-neutral-100 active:bg-neutral-50 transition-colors cursor-pointer",
-                            {
-                              "bg-neutral-100 border-dashed": tags().find(
-                                (tagsItem) =>
-                                  tagsItem.label === tag && tagsItem.checked
-                              ),
-                            }
-                          )}
-                          onClick={() => {
-                            setTags((prev) =>
-                              prev.map((item, i) =>
-                                item.label === tag
-                                  ? { ...item, checked: !item.checked }
-                                  : item
-                              )
-                            );
-                          }}
-                        >
-                          {tag}
-                        </li>
-                      )}
-                    </For>
-                    <Show when={item.tags.length > 2}>
-                      <li class="text-xs border-2 rounded-lg px-2 py-1 cursor-pointer">
-                        更多
-                      </li>
-                    </Show>
-                  </ol>
-                  <button
-                    class="py-4 bg-neutral-100 hover:bg-neutral-200 transition-colors rounded-xl text-center cursor-pointer"
-                    onClick={() => {
-                      window.open(item.url);
-                    }}
-                  >
-                    {item.url}
-                  </button>
                 </li>
               );
             }}
@@ -270,4 +230,4 @@ const Content = () => {
   );
 };
 
-export default Content;
+export default WebsitesNavigation;

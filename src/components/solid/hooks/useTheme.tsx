@@ -10,12 +10,16 @@ const toggleTheme = (newTheme: string) => {
 };
 export const useTheme = () => {
   const [theme, setTheme] = createSignal("light");
+
   onMount(() => {
     setTheme(getTheme());
   });
 
   return {
-    theme: theme(),
-    toggleTheme,
+    theme,
+    toggleTheme: (newTheme: string) => {
+      setTheme(newTheme);
+      toggleTheme(newTheme);
+    },
   };
 };

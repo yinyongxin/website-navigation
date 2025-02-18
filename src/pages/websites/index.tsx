@@ -3,8 +3,11 @@ import { uniq } from "lodash-es";
 import { cn } from "../../utils";
 import { TransitionGroup } from "solid-transition-group";
 import "./index.css";
+import { Dialog } from "@ark-ui/solid";
+import { Portal } from "solid-js/web";
 
 const Content = () => {
+  const [open, setOpen] = createSignal(false);
   const [tags, setTags] = createSignal<
     {
       label: string;
@@ -79,36 +82,58 @@ const Content = () => {
   });
 
   return (
-    <div class="h-full w-full">
-      <div class="flex gap-4 sticky top-0 p-6 glass">
-        <img src="/icons/filter.svg" alt="filter" />
-        <div class="flex flex-wrap gap-2">
-          <Index each={tags()}>
-            {(tag, index) => {
-              return (
-                <div
-                  class={cn(
-                    "px-4 py-2 border rounded-xl hover:bg-neutral-100 active:bg-neutral-50 transition-colors cursor-pointer",
-                    {
-                      "bg-base-200 border-dashed": tag().checked,
-                    }
-                  )}
-                  onClick={() => {
-                    setTags((prev) =>
-                      prev.map((item, i) =>
-                        i === index ? { ...item, checked: !item.checked } : item
-                      )
-                    );
-                  }}
-                >
-                  {tag().label}
-                </div>
-              );
+    <div class="h-svh overflow-hidden relative flex flex-col">
+      <div class="navbar bg-base-100 shadow-sm">
+        <div class="navbar-start">
+          <div
+            tabindex="0"
+            role="button"
+            class="btn btn-ghost btn-circle"
+            onClick={() => {
+              console.log(open());
+              setOpen(open() ? false : true);
             }}
-          </Index>
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-5 w-5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 6h16M4 12h16M4 18h7"
+              />{" "}
+            </svg>
+          </div>
+        </div>
+        <div class="navbar-center">
+          <a class="btn btn-ghost text-xl">前端导航</a>
+        </div>
+        <div class="navbar-end">
+          <button class="btn btn-ghost btn-circle">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-5 w-5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              {" "}
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+              />{" "}
+            </svg>
+          </button>
         </div>
       </div>
-      <div class="px-6">
+      <div class="p-6 flex-1 overflow-auto">
         <ul
           class="w-full grid gap-4"
           style={{
@@ -175,6 +200,72 @@ const Content = () => {
           </For>
         </ul>
       </div>
+      <Dialog.Root preventScroll={false} modal={false} open={open()}>
+        <Portal>
+          <Dialog.Positioner class="absolute left-0 top-16 bottom-0 flex justify-center items-center">
+            <Dialog.Content class="bg-base-100 shadow h-full overflow-hidden flex flex-col">
+              <ul class="menu rounded-box w-56">
+                <Index each={tags()}>
+                  {(tag, index) => {
+                    return (
+                      <li
+                        class="mt-2"
+                        onClick={() => {
+                          setTags((prev) =>
+                            prev.map((item, i) =>
+                              i === index
+                                ? { ...item, checked: !item.checked }
+                                : item
+                            )
+                          );
+                        }}
+                      >
+                        <a
+                          class={cn({
+                            "menu-active": tag().checked,
+                          })}
+                        >
+                          {" "}
+                          {tag().label}
+                        </a>
+                      </li>
+                    );
+                  }}
+                </Index>
+              </ul>
+            </Dialog.Content>
+          </Dialog.Positioner>
+        </Portal>
+      </Dialog.Root>
+      {/* <div class="flex gap-4 sticky top-0 p-6 glass">
+        <img src="/icons/filter.svg" alt="filter" />
+        <div class="flex flex-wrap gap-2">
+          <Index each={tags()}>
+            {(tag, index) => {
+              return (
+                <div
+                  class={cn(
+                    "px-4 py-2 border rounded-xl hover:bg-neutral-100 active:bg-neutral-50 transition-colors cursor-pointer",
+                    {
+                      "bg-base-200 border-dashed": tag().checked,
+                    }
+                  )}
+                  onClick={() => {
+                    setTags((prev) =>
+                      prev.map((item, i) =>
+                        i === index ? { ...item, checked: !item.checked } : item
+                      )
+                    );
+                  }}
+                >
+                  {tag().label}
+                </div>
+              );
+            }}
+          </Index>
+        </div>
+      </div>
+      */}
     </div>
   );
 };

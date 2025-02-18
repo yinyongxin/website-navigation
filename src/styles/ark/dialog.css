@@ -1,0 +1,15 @@
+/* [data-scope="dialog"][data-part="backdrop"] {
+  @apply bg-base-content/50;
+  position: fixed;
+  inset: 0;
+}
+[data-scope="dialog"][data-part="positioner"] {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+[data-scope="dialog"][data-part="content"] {
+  @apply bg-base-100 rounded-2xl shadow-lg p-6;
+} */

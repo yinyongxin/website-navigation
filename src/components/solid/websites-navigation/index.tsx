@@ -5,11 +5,11 @@ import { TransitionGroup } from "solid-transition-group";
 import { Dialog } from "@ark-ui/solid";
 import { Portal } from "solid-js/web";
 import styles from "./index.module.css";
-import { setTheme } from "../../../utils/theme";
+import { useTheme } from "../hooks/useTheme";
 
 const WebsitesNavigation = () => {
   const [open, setOpen] = createSignal(false);
-  const [checked, setChecked] = createSignal(false);
+  const { theme, toggleTheme } = useTheme();
   const [tags, setTags] = createSignal<
     {
       label: string;
@@ -65,10 +65,6 @@ const WebsitesNavigation = () => {
       tags: ["推荐", "Github"],
     },
   ];
-
-  onMount(() => {
-    setChecked(localStorage.getItem("theme") === "dark");
-  });
 
   const getFilterList = () => {
     return list.filter((listItem) => {
@@ -127,12 +123,12 @@ const WebsitesNavigation = () => {
                 type="checkbox"
                 class="theme-controller"
                 value="dark"
-                checked={checked()}
+                checked={theme() === "dark"}
                 onChange={(e) => {
                   if (e.target.checked) {
-                    setTheme("dark");
+                    toggleTheme("dark");
                   } else {
-                    setTheme();
+                    toggleTheme("light");
                   }
                 }}
               />

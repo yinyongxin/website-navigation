@@ -134,7 +134,7 @@ const WebsitesNavigation = () => {
                 <li
                   class={cn(
                     styles.card,
-                    "bg-gradient-to-br from-primary-content/50 to-secondary-content/50"
+                    "bg-gradient-to-br from-primary-content/60 to-secondary-content/60 shadow"
                   )}
                 >
                   <img src={item.icon} alt="icon" class="h-1/3" />

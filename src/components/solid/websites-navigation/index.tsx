@@ -133,9 +133,9 @@ const WebsitesNavigation = () => {
           </button>
         </div>
       </div>
-      <div class="p-8 flex-1 overflow-auto">
+      <div class="p-6 flex-1 overflow-auto">
         <ul
-          class="w-full grid gap-8"
+          class="w-full grid gap-6"
           style={{
             "grid-template-columns": "repeat(auto-fill, minmax(300px, 1fr))",
           }}
@@ -145,7 +145,7 @@ const WebsitesNavigation = () => {
               return (
                 <li class={styles.card}>
                   <img src={item.icon} alt="icon" class="w-20" />
-                  <div class={styles.content}>
+                  <div class={cn(styles.content, "bg-base-100")}>
                     <p class={styles.title}>Card Title</p>
                     <p class={styles.description}>
                       Lorem ipsum dolor sit amet, consectetur adipiscing elit,

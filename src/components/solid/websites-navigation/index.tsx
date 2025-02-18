@@ -122,7 +122,6 @@ const WebsitesNavigation = () => {
               viewBox="0 0 24 24"
               stroke="currentColor"
             >
-              {" "}
               <path
                 stroke-linecap="round"
                 stroke-linejoin="round"
@@ -144,7 +143,7 @@ const WebsitesNavigation = () => {
             {(item) => {
               return (
                 <li class={styles.card}>
-                  <img src={item.icon} alt="icon" class="w-20" />
+                  <img src={item.icon} alt="icon" class="h-1/3" />
                   <div class={cn(styles.content, "bg-base-100")}>
                     <div class="text-lg font-bold flex justify-between">
                       <div>{item.title}</div>
@@ -166,7 +165,11 @@ const WebsitesNavigation = () => {
                         </svg>
                       </a>
                     </div>
-                    <p class={cn(styles.description, "text-justify")}>
+                    <p
+                      class={cn(
+                        "mt-2 text-justify text-sm text-base-content/50"
+                      )}
+                    >
                       {item.description}
                     </p>
                   </div>
@@ -213,35 +216,6 @@ const WebsitesNavigation = () => {
           </Dialog.Positioner>
         </Portal>
       </Dialog.Root>
-      {/* <div class="flex gap-4 sticky top-0 p-6 glass">
-        <img src="/icons/filter.svg" alt="filter" />
-        <div class="flex flex-wrap gap-2">
-          <Index each={tags()}>
-            {(tag, index) => {
-              return (
-                <div
-                  class={cn(
-                    "px-4 py-2 border rounded-xl hover:bg-neutral-100 active:bg-neutral-50 transition-colors cursor-pointer",
-                    {
-                      "bg-base-200 border-dashed": tag().checked,
-                    }
-                  )}
-                  onClick={() => {
-                    setTags((prev) =>
-                      prev.map((item, i) =>
-                        i === index ? { ...item, checked: !item.checked } : item
-                      )
-                    );
-                  }}
-                >
-                  {tag().label}
-                </div>
-              );
-            }}
-          </Index>
-        </div>
-      </div>
-      */}
     </div>
   );
 };

@@ -5,9 +5,11 @@ import { TransitionGroup } from "solid-transition-group";
 import { Dialog } from "@ark-ui/solid";
 import { Portal } from "solid-js/web";
 import styles from "./index.module.css";
+import { setTheme } from "../../../utils/theme";
 
 const WebsitesNavigation = () => {
   const [open, setOpen] = createSignal(false);
+  const [checked, setChecked] = createSignal(false);
   const [tags, setTags] = createSignal<
     {
       label: string;
@@ -64,6 +66,10 @@ const WebsitesNavigation = () => {
     },
   ];
 
+  onMount(() => {
+    setChecked(localStorage.getItem("theme") === "dark");
+  });
+
   const getFilterList = () => {
     return list.filter((listItem) => {
       return tags().every((tag) => {
@@ -117,8 +123,19 @@ const WebsitesNavigation = () => {
           <button class="btn btn-ghost btn-circle">
             <label class="swap swap-rotate ">
               {/* <!-- this hidden checkbox controls the state --> */}
-              <input type="checkbox" class="theme-controller" value="dark" />
-
+              <input
+                type="checkbox"
+                class="theme-controller"
+                value="dark"
+                checked={checked()}
+                onChange={(e) => {
+                  if (e.target.checked) {
+                    setTheme("dark");
+                  } else {
+                    setTheme();
+                  }
+                }}
+              />
               {/* <!-- sun icon --> */}
               <svg
                 class="swap-off fill-current h-6 w-6"

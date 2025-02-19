@@ -1,16 +1,16 @@
 import { cn } from "../../../../utils";
 import Base from "../base";
 const ItemBase =
-  "size-full group-active:size-4/5 flex justify-center items-center glass bg-primary-content/30 group-active:rounded-lg duration-1000";
+  "size-full group-active:size-4/5 flex justify-center items-center glass bg-primary-content/30 group-active:rounded-lg delay-200 duration-800";
 const WebsitesNavigationBlock = () => {
   return (
     <Base
       class={cn(
-        "shadow-none active:shadow-none active:border-none bg-transparent  duration-300",
+        "shadow-none active:shadow-none active:border-none bg-transparent duration-300",
         "active:bg-none"
       )}
     >
-      <div class="absolute inset-0 opacity-100 group-active:opacity-0 bg-gradient-to-br from-primary/20 via-accent/20 to-secondary/20 rounded-3xl  duration-1000"></div>
+      <div class="absolute inset-0 opacity-100 group-active:opacity-0 bg-gradient-to-br from-primary/20 via-accent/20 to-secondary/20 rounded-3xl duration-1000"></div>
       <div class="grid grid-cols-3 grid-rows-3 content-between absolute inset-0 duration-400 opacity-0 group-active:opacity-100">
         <div
           class={cn("justify-self-start self-start rounded-tl-3xl ", ItemBase)}
@@ -120,7 +120,7 @@ const WebsitesNavigationBlock = () => {
           </svg>
         </div>
       </div>
-      <div class="absolute border border-base-300 inset-0 flex flex-col justify-center gap-3 items-center duration-500 backdrop-blur bg-white/20 rounded-3xl opacity-100 group-active:opacity-0">
+      <div class="absolute border border-base-300 inset-0 flex flex-col justify-center gap-3 items-center duration-300 backdrop-blur bg-white/20 rounded-3xl opacity-100 group-active:opacity-0">
         <div>HOVER</div>
         <div>FOR</div>
         <div>WEBSITWS</div>

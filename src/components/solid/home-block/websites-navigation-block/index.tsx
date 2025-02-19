@@ -6,11 +6,16 @@ const WebsitesNavigationBlock = () => {
   return (
     <Base
       class={cn(
-        "shadow-none hover:shadow-none hover:border-none bg-transparent duration-300",
-        "hover:bg-none"
+        "shadow-none bg-transparent duration-300",
+        "hover:bg-none hover:shadow-none hover:border-none"
       )}
     >
-      <div class="absolute inset-0 opacity-100 group-hover:opacity-0 bg-gradient-to-br from-primary/20 via-accent/20 to-secondary/20 rounded-3xl duration-1000"></div>
+      <div
+        class={cn(
+          "absolute inset-0 opacity-100 bg-gradient-to-br from-primary/20 via-accent/20 to-secondary/20 rounded-3xl duration-1000",
+          "group-hover:opacity-0"
+        )}
+      ></div>
       <div class="grid grid-cols-3 grid-rows-3 content-between absolute inset-0 duration-400 opacity-0 group-hover:opacity-100">
         <div
           class={cn("justify-self-start self-start rounded-tl-3xl ", ItemBase)}

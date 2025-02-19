@@ -1,7 +1,6 @@
 import { cn } from "../utils";
 import { createSignal, For } from "solid-js";
 import { BlockList, TabsObj, type TabsKey } from "../common/index";
-import TetrisGame from "../components/solid/tetris/tetris";
 
 const Content = () => {
   const [active, setActive] = createSignal<TabsKey>("all");

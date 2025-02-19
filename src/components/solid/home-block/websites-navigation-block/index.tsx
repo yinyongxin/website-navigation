@@ -125,7 +125,7 @@ const WebsitesNavigationBlock = () => {
           </a>
         </div>
       </div>
-      <div class="absolute border border-base-300 inset-0 flex flex-col justify-center gap-3 items-center duration-300 backdrop-blur bg-white/20 rounded-3xl opacity-100 group-hover:opacity-0">
+      <div class="pointer-events-none absolute border border-base-300 inset-0 flex flex-col justify-center gap-3 items-center duration-300 backdrop-blur bg-white/20 rounded-3xl opacity-100 group-hover:opacity-0">
         <div>HOVER</div>
         <div>FOR</div>
         <div>WEBSITWS</div>

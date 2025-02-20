@@ -1,7 +1,11 @@
-import { For } from "solid-js";
+import { For, createSignal, onMount } from "solid-js";
 import { cn } from "../../../utils";
+import dayjs from "dayjs";
 
 const RoundClock = () => {
+  const [second, setSecond] = createSignal(0);
+  const [minute, setMinute] = createSignal(0);
+  const [hour, setHour] = createSignal(0);
   const hoursRender = () => {
     const hours = [
       "01",
@@ -55,20 +59,37 @@ const RoundClock = () => {
       </div>
     );
   };
+  onMount(() => {
+    setInterval(() => {
+      const now = dayjs();
+      setSecond(now.second());
+      setMinute(now.minute());
+      setHour(now.hour());
+    }, 1000);
+  });
   return (
     <div class="w-full aspect-square rounded-full border-8 border-base-content-500 bg-base-200 relative">
       {hoursRender()}
       <div class="absolute inset-0 rounded-full shadow-[inset_0_0_10px_0_rgba(0,0,0,0.5)] shadow-base-content"></div>
       {/* 时 */}
-      <div class="w-full h-[8px] absolute top-1/2 -translate-y-1/2  rotate-90 pr-[40%] pl-[15%]">
+      <div
+        class="w-full h-[8px] absolute top-1/2 -translate-y-1/2 pr-[40%] pl-[15%]"
+        style={{ transform: "rotate(" + (90 + hour() * 6) + "deg)" }}
+      >
         <div class="size-full bg-accent rounded-[3px] shadow"></div>
       </div>
       {/* 分 */}
-      <div class="w-full h-[4px] absolute top-1/2 -translate-y-1/2  rotate-135 pr-[35%] pl-[10%]">
+      <div
+        class="w-full h-[4px] absolute top-1/2 -translate-y-1/2 pr-[35%] pl-[10%]"
+        style={{ transform: "rotate(" + (90 + minute() * 6) + "deg)" }}
+      >
         <div class="size-full bg-secondary rounded-[2px] shadow"></div>
       </div>
       {/* 秒 */}
-      <div class="w-full h-[2px] absolute top-1/2 -translate-y-1/2 pr-[35%] pl-[5%] rotate-180">
+      <div
+        class="w-full h-[2px] absolute top-1/2 -translate-y-1/2 pr-[35%] pl-[5%]"
+        style={{ transform: "rotate(" + (90 + second() * 6) + "deg)" }}
+      >
         <div class="size-full bg-primary rounded-[1px] shadow"></div>
       </div>
       <div class="size-4 rounded-full bg-base-content absolute top-1/2 left-1/2 -translate-1/2 shadow"></div>

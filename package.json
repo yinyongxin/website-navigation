@@ -17,6 +17,7 @@
     "@tailwindcss/vite": "^4.0.6",
     "@types/lodash-es": "^4.17.12",
     "astro": "^5.0.3",
+    "dayjs": "^1.11.13",
     "gridstack": "^11.3.0",
     "lodash-es": "^4.17.21",
     "solid-js": "^1.9.3",

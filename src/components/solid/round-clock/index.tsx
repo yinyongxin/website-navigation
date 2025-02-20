@@ -76,21 +76,21 @@ const RoundClock = () => {
         class="w-full h-[8px] absolute top-1/2 -translate-y-1/2 pr-[40%] pl-[15%]"
         style={{ transform: "rotate(" + (90 + hour() * 6) + "deg)" }}
       >
-        <div class="size-full bg-accent rounded-[3px] shadow"></div>
+        <div class="size-full bg-gradient-to-r from-accent to-base-content rounded-[3px] shadow"></div>
       </div>
       {/* 分 */}
       <div
         class="w-full h-[4px] absolute top-1/2 -translate-y-1/2 pr-[35%] pl-[10%]"
         style={{ transform: "rotate(" + (90 + minute() * 6) + "deg)" }}
       >
-        <div class="size-full bg-secondary rounded-[2px] shadow"></div>
+        <div class="size-full bg-gradient-to-r from-secondary to-base-content rounded-[2px] shadow"></div>
       </div>
       {/* 秒 */}
       <div
         class="w-full h-[2px] absolute top-1/2 -translate-y-1/2 pr-[35%] pl-[5%]"
         style={{ transform: "rotate(" + (90 + second() * 6) + "deg)" }}
       >
-        <div class="size-full bg-primary rounded-[1px] shadow"></div>
+        <div class="size-full bg-gradient-to-r from-primary to-base-content rounded-[1px] shadow"></div>
       </div>
       <div class="size-4 rounded-full bg-base-content absolute top-1/2 left-1/2 -translate-1/2 shadow"></div>
     </div>

@@ -70,7 +70,7 @@ const RoundClock = () => {
   return (
     <div class="w-full aspect-square rounded-full border-8 border-neutral/90 bg-base-300 relative">
       {hoursRender()}
-      <div class="absolute inset-0 rounded-full shadow-[inset_0_0_10px_0_rgba(0,0,0,0.5)] shadow-base-content"></div>
+      <div class="absolute inset-0 rounded-full shadow-[inset_0_0_20px_0_rgba(0,0,0,0.5)] shadow-base-content/40"></div>
       {/* 时 */}
       <div
         class="w-full h-[8px] absolute top-1/2 -translate-y-1/2 pr-[40%] pl-[15%]"

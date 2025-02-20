@@ -73,7 +73,7 @@ const RoundClock = () => {
       <div class="absolute inset-0 rounded-full shadow-[inset_0_0_20px_0_rgba(0,0,0,0.5)] shadow-base-content/40"></div>
       {/* 时 */}
       <div
-        class="w-full h-[8px] absolute top-1/2 -translate-y-1/2 pr-[40%] pl-[15%]"
+        class="w-full h-[6px] absolute top-1/2 -translate-y-1/2 pr-[40%] pl-[15%]"
         style={{ transform: "rotate(" + (90 + hour() * 6) + "deg)" }}
       >
         <div class="size-full bg-gradient-to-r from-accent to-base-content rounded-[3px] shadow"></div>

@@ -13,7 +13,7 @@ const WebsitesNavigationBlock = () => {
 		<Base
 			class={cn(
 				"shadow-none bg-transparent duration-300",
-				"hover:bg-none hover:shadow-none hover:border-none"
+				"hover:bg-none hover:shadow-none border-none"
 			)}
 		>
 			<div
@@ -183,9 +183,9 @@ const WebsitesNavigationBlock = () => {
 			</div>
 			<div
 				class={cn(
-					"pointer-events-auto sm:pointer-events-none  select-none absolute border border-base-300 inset-0",
+					"pointer-events-auto sm:pointer-events-none  select-none absolute inset-0",
 					"flex flex-col justify-center gap-3 items-center duration-300 ",
-					"backdrop-blur bg-white/20 rounded-3xl",
+					"backdrop-blur bg-white/20 rounded-3xl", 
 					"opacity-100 group-hover:opacity-0"
 				)}
 				onTouchStart={() => {

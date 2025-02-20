@@ -80,14 +80,14 @@ const RoundClock = () => {
       </div>
       {/* 分 */}
       <div
-        class="w-full h-[4px] absolute top-1/2 -translate-y-1/2 pr-[35%] pl-[10%]"
+        class="w-full h-[4px] absolute top-1/2 -translate-y-1/2 pr-[38%] pl-[10%]"
         style={{ transform: "rotate(" + (90 + minute() * 6) + "deg)" }}
       >
         <div class="size-full bg-gradient-to-r from-secondary to-base-content rounded-[2px] shadow"></div>
       </div>
       {/* 秒 */}
       <div
-        class="w-full h-[2px] absolute top-1/2 -translate-y-1/2 pr-[35%] pl-[5%]"
+        class="w-full h-[2px] absolute top-1/2 -translate-y-1/2 pr-[36%] pl-[5%]"
         style={{ transform: "rotate(" + (90 + second() * 6) + "deg)" }}
       >
         <div class="size-full bg-gradient-to-r from-primary to-base-content rounded-[1px] shadow"></div>

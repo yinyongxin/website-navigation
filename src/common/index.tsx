@@ -7,6 +7,7 @@ import SearchBlock from "../components/solid/home-block/search-block";
 import TetrisBlock from "../components/solid/home-block/tetris-block";
 import WebsitesNavigationBlock from "../components/solid/home-block/websites-navigation-block";
 import RoundClockBlock from "../components/solid/home-block/round-clock-block";
+import FlipClock from "../components/solid/flip-clock";
 
 export * from "./avatar";
 export const TabsObj = {
@@ -53,6 +54,7 @@ export const BlockList: {
     key: "tools",
     getContent: () => <WebsitesNavigationBlock />,
   },
+
   {
     key: "projects",
     getContent: () => <TestBlock />,

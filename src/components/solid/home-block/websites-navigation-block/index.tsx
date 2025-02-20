@@ -1,12 +1,11 @@
 import { cn } from "../../../../utils";
 import Base from "../base";
 const ItemBase = [
-  "size-full group-hover:size-4/5 group-active:size-4/5",
+  "size-full group-hover:size-4/5",
   "flex justify-center items-center",
   "backdrop-blur bg-primary-content/30",
   "delay-200 duration-600",
   "group-hover:border group-hover:rounded-lg border-base-300",
-  "group-active:border group-active:rounded-lg",
 ].join(" ");
 
 const WebsitesNavigationBlock = () => {
@@ -20,7 +19,7 @@ const WebsitesNavigationBlock = () => {
       <div
         class={cn(
           "absolute inset-0 bg-gradient-to-br from-primary/20 via-accent/20 to-secondary/20 rounded-3xl duration-1000",
-          "opacity-100 group-hover:opacity-0 group-active:opacity-0"
+          "opacity-100 group-hover:opacity-0"
         )}
       ></div>
       <div
@@ -28,7 +27,7 @@ const WebsitesNavigationBlock = () => {
           "grid grid-cols-3 grid-rows-3 content-between",
           "absolute inset-0",
           "duration-400 ",
-          "opacity-0 group-hover:opacity-100 group-active:opacity-100"
+          "opacity-0 group-hover:opacity-100"
         )}
       >
         <div
@@ -184,10 +183,10 @@ const WebsitesNavigationBlock = () => {
       </div>
       <div
         class={cn(
-          "pointer-events-none absolute border border-base-300 inset-0",
+          "pointer-events-none select-none absolute border border-base-300 inset-0",
           "flex flex-col justify-center gap-3 items-center duration-300 ",
           "backdrop-blur bg-white/20 rounded-3xl",
-          "opacity-100 group-hover:opacity-0 group-active:opacity-0"
+          "opacity-100 group-hover:opacity-0"
         )}
       >
         <div>HOVER</div>

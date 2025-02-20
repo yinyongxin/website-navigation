@@ -4,7 +4,7 @@ const ItemBase = [
   "size-full group-hover:size-4/5",
   "flex justify-center items-center",
   "backdrop-blur bg-primary-content/30",
-  "delay-200 duration-600",
+  "delay-200 duration-500",
   "group-hover:border group-hover:rounded-lg border-base-300",
 ].join(" ");
 
@@ -183,11 +183,14 @@ const WebsitesNavigationBlock = () => {
       </div>
       <div
         class={cn(
-          "pointer-events-none select-none absolute border border-base-300 inset-0",
+          "select-none absolute border border-base-300 inset-0",
           "flex flex-col justify-center gap-3 items-center duration-300 ",
           "backdrop-blur bg-white/20 rounded-3xl",
           "opacity-100 group-hover:opacity-0"
         )}
+        onTouchStart={() => {
+          window.open("/websites", "_blank");
+        }}
       >
         <div>HOVER</div>
         <div>FOR</div>

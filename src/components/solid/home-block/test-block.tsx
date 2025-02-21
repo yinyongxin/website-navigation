@@ -4,7 +4,9 @@ import Base from "./base";
 const TestBlock = () => {
   return (
     <Base class="col-span-2 bg-base-100 p-4">
-      <ElectronicClock />
+      <div class="h-2/5 w-full">
+        <ElectronicClock />
+      </div>
     </Base>
   );
 };

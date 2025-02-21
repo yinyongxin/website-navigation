@@ -9,7 +9,6 @@ const ElectronicBumber = (props: ElectronicBumberProps) => {
   onMount(() => {
     const newBoundingClientRect = currentRef.getBoundingClientRect();
     setBoundingClientRect(newBoundingClientRect);
-    console.log(newBoundingClientRect);
   });
 
   const horizontal = (params?: { show?: boolean; classNames?: string }) => (
@@ -20,7 +19,7 @@ const ElectronicBumber = (props: ElectronicBumberProps) => {
       )}
     >
       <div
-        class={cn("bg-base-300 w-full h-full", {
+        class={cn("bg-base-200 w-full h-full transition duration-100", {
           "bg-base-content": params?.show,
         })}
         style={{
@@ -33,7 +32,7 @@ const ElectronicBumber = (props: ElectronicBumberProps) => {
   const vertical = (params?: { show?: boolean; classNames?: string }) => (
     <div class={cn("h-3/7 w-1/6 absolute", params?.classNames)}>
       <div
-        class={cn("bg-base-300 size-full", {
+        class={cn("bg-base-200 size-full transition duration-100", {
           "bg-base-content": params?.show,
         })}
         style={{
@@ -47,31 +46,31 @@ const ElectronicBumber = (props: ElectronicBumberProps) => {
   return (
     <div class="relative size-full" ref={currentRef}>
       {horizontal({
-        show: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9].includes(props.value),
+        show: [0, 2, 3, 5, 6, 7, 8, 9].includes(props.value),
       })}
       {vertical({
         classNames: "top-[6%]",
-        show: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9].includes(props.value),
+        show: [0, 4, 5, 6, 8, 9].includes(props.value),
       })}
       {vertical({
         classNames: "top-[6%] right-0",
-        show: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9].includes(props.value),
+        show: [0, 1, 2, 3, 4, 7, 8, 9].includes(props.value),
       })}
       {horizontal({
         classNames: "top-1/2 -translate-y-1/2",
-        show: [1, 2, 3, 4, 5, 6, 7, 8, 9].includes(props.value),
+        show: [2, 3, 4, 5, 6, 8, 9].includes(props.value),
       })}
       {vertical({
         classNames: "bottom-[6%]",
-        show: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9].includes(props.value),
+        show: [0, 2, 6, 8].includes(props.value),
       })}
       {vertical({
         classNames: "bottom-[6%] right-0",
-        show: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9].includes(props.value),
+        show: [0, 1, 3, 4, 5, 6, 7, 8, 9].includes(props.value),
       })}
       {horizontal({
         classNames: "bottom-0",
-        show: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9].includes(props.value),
+        show: [0, 2, 3, 5, 6, 8, 9].includes(props.value),
       })}
     </div>
   );

@@ -1,0 +1,3 @@
+.grid-stack-item-content {
+  @apply bg-white/50 rounded-xl;
+}

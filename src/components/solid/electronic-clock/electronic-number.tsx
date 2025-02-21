@@ -15,59 +15,30 @@ const ElectronicBumber = (props: ElectronicBumberProps) => {
   const horizontal = (params?: { show?: boolean; classNames?: string }) => (
     <div
       class={cn(
-        "h-1/10 w-4/5 grid grid-cols-[auto_1fr_auto] absolute left-1/2 -translate-x-1/2",
+        "h-1/10 w-4/5 absolute left-1/2 -translate-x-1/2",
         params?.classNames
       )}
     >
       <div
-        class={cn("aspect-square bg-base-300", {
+        class={cn("bg-base-300 w-full h-full", {
           "bg-base-content": params?.show,
         })}
         style={{
-          "clip-path": "polygon(100% 100%, 100% 0%, 0% 50%)",
-        }}
-      ></div>
-      <div
-        class={cn("bg-base-300", {
-          "bg-base-content": params?.show,
-        })}
-      ></div>
-      <div
-        class={cn("aspect-square bg-base-300", {
-          "bg-base-content": params?.show,
-        })}
-        style={{
-          "clip-path": "polygon(0% 0%, 100% 50%, 0% 100%)",
+          "clip-path":
+            "polygon(20% 0%, 80% 0%, 100% 50%, 80% 100%, 20% 100%, 0% 50%)",
         }}
       ></div>
     </div>
   );
   const vertical = (params?: { show?: boolean; classNames?: string }) => (
-    <div
-      class={cn(
-        "h-3/7 w-1/6 grid grid-rows-[auto_1fr_auto] absolute",
-        params?.classNames
-      )}
-    >
+    <div class={cn("h-3/7 w-1/6 absolute", params?.classNames)}>
       <div
-        class={cn("aspect-square bg-base-300", {
+        class={cn("bg-base-300 size-full", {
           "bg-base-content": params?.show,
         })}
         style={{
-          "clip-path": "polygon(100% 100%, 50% 0%, 0% 100%)",
-        }}
-      ></div>
-      <div
-        class={cn("bg-base-300", {
-          "bg-base-content": params?.show,
-        })}
-      ></div>
-      <div
-        class={cn("aspect-square bg-base-300", {
-          "bg-base-content": params?.show,
-        })}
-        style={{
-          "clip-path": "polygon(0% 0%, 100% 0%, 50% 100%)",
+          "clip-path":
+            "polygon(50% 0%, 100% 20%, 100% 80%, 50% 100%, 0% 80%, 0% 20%)",
         }}
       ></div>
     </div>

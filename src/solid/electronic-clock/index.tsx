@@ -1,15 +1,18 @@
 import { createSignal, onMount } from "solid-js";
 import ElectronicBumber from "./electronic-number";
 import dayjs from "dayjs";
-
-const ElectronicClock = () => {
-  const [timeFormat, setTimeFormat] = createSignal("HH:mm:ss");
+type ElectronicClockProps = {
+  timeType?: "AM" | "PM";
+};
+const ElectronicClock = (props: ElectronicClockProps) => {
   const [second, setSecond] = createSignal([0, 0]);
   const [minute, setMinute] = createSignal([0, 0]);
   const [hour, setHour] = createSignal([0, 0]);
   onMount(() => {
     setInterval(() => {
-      const currentTime = dayjs().format("HH:mm:ss");
+      const currentTime = dayjs().format(
+        props?.timeType === "PM" ? "HH:mm:ss" : "hh:mm:ss"
+      );
       const [h, m, s] = currentTime.split(":");
       setHour(h.split("").map(Number));
       setMinute(m.split("").map(Number));

@@ -9,7 +9,19 @@ const Calculator = () => {
     }[]
   >([]);
   const [currentInput, setCurrentInput] = createSignal([]);
-  const numberButtonClick = (value) => {
+  const addValue = (value) => {
+    const lastValue = currentInput().slice(-1)?.[0];
+    console.log("lastValue", lastValue, value, isNaN(Number(lastValue)));
+    if (
+      (currentInput().length === 0 || isNaN(Number(lastValue))) &&
+      value === "."
+    ) {
+      return;
+    }
+    // if (!isNaN(Number(lastValue))) {
+    //   return;
+    // }
+    console.log([...currentInput(), value]);
     setCurrentInput([...currentInput(), value]);
   };
   function calculate(expression) {
@@ -28,6 +40,7 @@ const Calculator = () => {
       }
     });
     try {
+      console.log(newExpression, newExpression.join(""));
       // 使用 eval() 计算表达式
       const result = eval(newExpression.join(""));
       console.log(result);
@@ -70,7 +83,9 @@ const Calculator = () => {
             }}
           </For>
         </div>
-        <div class="w-full">{expressionShow(currentInput())}</div>
+        <div class="w-full flex justify-end">
+          {expressionShow(currentInput())}
+        </div>
       </div>
       <div
         class={cn(
@@ -82,6 +97,7 @@ const Calculator = () => {
           class="bg-secondary-content! text-secondary"
           onClick={() => {
             setCurrentInput([]);
+            setCalculationHistory([]);
           }}
         >
           <button class="w-full h-full">AC</button>
@@ -129,7 +145,7 @@ const Calculator = () => {
         <div
           class="bg-secondary-content! text-secondary"
           onClick={() => {
-            setCurrentInput([currentInput(), "divide"]);
+            setCurrentInput([...currentInput(), "divide"]);
           }}
         >
           <svg
@@ -152,7 +168,7 @@ const Calculator = () => {
         <div
           class=""
           onClick={() => {
-            numberButtonClick("7");
+            addValue("7");
           }}
         >
           7
@@ -160,7 +176,7 @@ const Calculator = () => {
         <div
           class=""
           onClick={() => {
-            numberButtonClick("8");
+            addValue("8");
           }}
         >
           8
@@ -168,7 +184,7 @@ const Calculator = () => {
         <div
           class=""
           onClick={() => {
-            numberButtonClick("9");
+            addValue("9");
           }}
         >
           9
@@ -198,7 +214,7 @@ const Calculator = () => {
         <div
           class=""
           onClick={() => {
-            numberButtonClick("4");
+            addValue("4");
           }}
         >
           4
@@ -206,7 +222,7 @@ const Calculator = () => {
         <div
           class=""
           onClick={() => {
-            numberButtonClick("5");
+            addValue("5");
           }}
         >
           5
@@ -214,7 +230,7 @@ const Calculator = () => {
         <div
           class=""
           onClick={() => {
-            numberButtonClick("6");
+            addValue("6");
           }}
         >
           6
@@ -243,7 +259,7 @@ const Calculator = () => {
         <div
           class=""
           onClick={() => {
-            numberButtonClick("1");
+            addValue("1");
           }}
         >
           1
@@ -251,7 +267,7 @@ const Calculator = () => {
         <div
           class=""
           onClick={() => {
-            numberButtonClick("2");
+            addValue("2");
           }}
         >
           2
@@ -259,7 +275,7 @@ const Calculator = () => {
         <div
           class=""
           onClick={() => {
-            numberButtonClick("3");
+            addValue("3");
           }}
         >
           3
@@ -305,8 +321,22 @@ const Calculator = () => {
             <path d="M16 21h3a2 2 0 0 0 2-2v-3" />
           </svg>
         </div>
-        <div class="">0</div>
-        <div class="">.</div>
+        <div
+          class=""
+          onClick={() => {
+            addValue("0");
+          }}
+        >
+          0
+        </div>
+        <div
+          class=""
+          onClick={() => {
+            addValue(".");
+          }}
+        >
+          .
+        </div>
         <div
           class=" bg-primary-content! text-primary rounded-br-2xl!"
           onClick={() => {

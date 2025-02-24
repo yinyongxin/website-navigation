@@ -23,9 +23,6 @@ export const TabsObj = {
   games: {
     title: "游戏",
   },
-  about: {
-    title: "关于我",
-  },
 } as const;
 
 export type TabsKey = keyof typeof TabsObj;
@@ -72,7 +69,7 @@ export const BlockList: {
     getContent: () => <TetrisBlock />,
   },
   {
-    key: "about",
+    key: "all",
     getContent: () => <MyInfo />,
   },
 ];

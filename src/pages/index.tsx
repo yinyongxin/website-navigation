@@ -5,7 +5,7 @@ import { BlockList, TabsObj, type TabsKey } from "../solid/index";
 const Content = () => {
   const [active, setActive] = createSignal<TabsKey>("all");
   return (
-    <div class="py-4 sm:py-8 flex flex-col gap-4 sm:gap-8 items-center sm:px-8">
+    <div class="bg-base-200 py-4 sm:py-8 flex flex-col gap-4 sm:gap-8 items-center sm:px-8">
       <nav class="flex justify-center">
         <ul class="bg-base-300 max-w-80 sm:max-w-max flex gap-2 rounded-full p-2 overflow-auto">
           <For each={Object.keys(TabsObj) as TabsKey[]}>

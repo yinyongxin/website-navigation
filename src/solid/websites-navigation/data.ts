@@ -12,7 +12,7 @@ export const list = [
     url: "https://astro.build",
     description: "Astro 是一个用于构建快速、内容聚焦网站的 Web 框架。",
     icon: "https://astro.build/favicon.svg",
-    tags: ["静态网站", "SolidJS", "ReactJS", "VueJS"],
+    tags: ["静态网站", "Solid", "React", "Vue"],
   },
   {
     title: "Vite",
@@ -23,7 +23,7 @@ export const list = [
     tags: ["Build", "Vite"],
   },
   {
-    title: "ReactJS",
+    title: "React",
     url: "https://react.dev",
     description:
       "Vite 是一个旨在为现代 Web 项目提供更快、更精简开发体验的构建工具。",

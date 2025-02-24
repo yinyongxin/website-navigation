@@ -22,34 +22,31 @@ const SearchBlock = () => {
   );
   return (
     <Base class="bg-base-100 col-span-2 flex flex-col justify-between p-4 sm:p-6">
-      <div class="flex justify-between items-center">
+      <div class="flex justify-between">
         <div>
-          <span class="text-primary font-bold text-xl">
-            {searchList.find((item) => item.key === active())?.label}
-          </span>
+          
         </div>
         <a
           href="/tools/search"
           class={cn(
-            "size-6 sm:size-8 flex justify-center items-center cursor-pointer"
+            "flex justify-center items-center cursor-pointer"
           )}
         >
           <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            class="lucide lucide-fullscreen size-4/5"
-          >
-            <path d="M3 7V5a2 2 0 0 1 2-2h2" />
-            <path d="M17 3h2a2 2 0 0 1 2 2v2" />
-            <path d="M21 17v2a2 2 0 0 1-2 2h-2" />
-            <path d="M7 21H5a2 2 0 0 1-2-2v-2" />
-            <rect width="10" height="8" x="7" y="8" rx="1" />
-          </svg>
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="h-4 w-4"
+            >
+              <path d="M8 3H5a2 2 0 0 0-2 2v3" />
+              <path d="M21 8V5a2 2 0 0 0-2-2h-3" />
+              <path d="M3 16v3a2 2 0 0 0 2 2h3" />
+              <path d="M16 21h3a2 2 0 0 0 2-2v-3" />
+            </svg>
         </a>
       </div>
       <div class="w-full relative rounded-full overflow-hidden shadow">
@@ -128,6 +125,9 @@ const SearchBlock = () => {
             }}
           </For>
         </div>
+        <span class="text-primary font-bold text-xl">
+            {searchList.find((item) => item.key === active())?.label}
+          </span>
       </div>
     </Base>
   );

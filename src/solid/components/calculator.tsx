@@ -40,10 +40,8 @@ const Calculator = () => {
       }
     });
     try {
-      console.log(newExpression, newExpression.join(""));
       // 使用 eval() 计算表达式
       const result = eval(newExpression.join(""));
-      console.log(result);
       return result;
     } catch (error) {
       return "无效的表达式";

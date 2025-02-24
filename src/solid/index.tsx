@@ -8,6 +8,7 @@ import TetrisBlock from "../solid/home-block/tetris-block";
 import WebsitesNavigationBlock from "../solid/home-block/websites-navigation-block";
 import RoundClockBlock from "../solid/home-block/round-clock-block";
 import ElectronicClockBlock from "./home-block/electronic-clock-block";
+import CalculatorBlock from "./home-block/calculator-block";
 
 export const TabsObj = {
   all: {
@@ -33,6 +34,10 @@ export const BlockList: {
   key: TabsKey;
   getContent: () => JSX.Element;
 }[] = [
+  {
+    key: "tools",
+    getContent: () => <CalculatorBlock />,
+  },
   {
     key: "tools",
     getContent: () => <AvatarBlock />,

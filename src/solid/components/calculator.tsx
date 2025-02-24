@@ -56,8 +56,8 @@ const Calculator = () => {
 
   return (
     <div class="flex flex-col flex-1 gap-2">
-      <div class="grow flex flex-col justify-end items-end text-lg overflow-auto">
-        <div class="grow">
+      <div class="grow flex flex-col justify-end items-end text-lg bg-base-200 rounded-t-3xl p-2">
+        <div class="grow overflow-auto w-full">
           <For each={calculationHistory()}>
             {(item) => {
               return (
@@ -70,7 +70,7 @@ const Calculator = () => {
             }}
           </For>
         </div>
-        <div>{expressionShow(currentInput())}</div>
+        <div class="w-full">{expressionShow(currentInput())}</div>
       </div>
       <div
         class={cn(

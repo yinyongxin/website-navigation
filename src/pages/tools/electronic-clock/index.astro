@@ -1,16 +1,9 @@
 ---
-import ElectronicClock from "../../../solid/electronic-clock";
+import ElectronicClock from "../../../solid/pages/tools/electronic-clock-page.tsx";
 import Layout from "../../../layouts/Layout.astro";
-import dayjs from "dayjs";
-const pageTitle = "圆形时钟";
-const date = dayjs().format("YYYY年MM月DD日");
+const pageTitle = "电子时钟";
 ---
 
 <Layout pageTitle={pageTitle}>
-  <div class="size-full flex flex-col justify-center items-center gap-4">
-    <div class="w-3/4 aspect-[5/1] flex flex-col justify-center items-center">
-      <ElectronicClock client:load />
-    </div>
-    <div class="text-2xl font-bold">{date}</div>
-  </div>
+  <ElectronicClock client:load />
 </Layout>

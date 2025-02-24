@@ -1,12 +1,18 @@
+import { cn } from "../../utils";
 const Calculator = () => {
   return (
     <div class="flex flex-col h-full">
       <div class="grow">asds</div>
-      <div class="flex-none grid gap-2 grid-cols-4 grid-rows-5">
-        <div class="aspect-square bg-base-300 rounded-lg">
+      <div
+        class={cn(
+          "flex-none grid gap-2 grid-cols-4 grid-rows-5",
+          "*:active:scale-95 *:cursor-pointer *:aspect-square *:bg-base-300 *:rounded-lg *:flex *:justify-center *:items-center"
+        )}
+      >
+        <div class="bg-secondary-content! text-secondary">
           <button class="w-full h-full">AC</button>
         </div>
-        <div class="aspect-square bg-base-300 rounded-lg flex justify-center items-center">
+        <div class="bg-secondary-content! text-secondary">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
@@ -22,7 +28,7 @@ const Calculator = () => {
             <path d="m18 9-6 6" />
           </svg>
         </div>
-        <div class="aspect-square bg-base-300 rounded-lg flex justify-center items-center">
+        <div class="bg-secondary-content! text-secondary">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="24"
@@ -40,7 +46,7 @@ const Calculator = () => {
             <circle cx="17.5" cy="17.5" r="2.5" />
           </svg>
         </div>
-        <div class="aspect-square bg-base-300 rounded-lg flex justify-center items-center">
+        <div class="bg-secondary-content! text-secondary">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="24"
@@ -58,16 +64,10 @@ const Calculator = () => {
             <circle cx="12" cy="18" r="1" />
           </svg>
         </div>
-        <div class="aspect-square bg-base-300 rounded-lg flex justify-center items-center">
-          7
-        </div>
-        <div class="aspect-square bg-base-300 rounded-lg flex justify-center items-center">
-          8
-        </div>
-        <div class="aspect-square bg-base-300 rounded-lg flex justify-center items-center">
-          9
-        </div>
-        <div class="aspect-square bg-base-300 rounded-lg flex justify-center items-center">
+        <div class="">7</div>
+        <div class="">8</div>
+        <div class="">9</div>
+        <div class="bg-secondary-content! text-secondary">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="24"
@@ -84,16 +84,10 @@ const Calculator = () => {
             <path d="m6 6 12 12" />
           </svg>
         </div>
-        <div class="aspect-square bg-base-300 rounded-lg flex justify-center items-center">
-          4
-        </div>
-        <div class="aspect-square bg-base-300 rounded-lg flex justify-center items-center">
-          5
-        </div>
-        <div class="aspect-square bg-base-300 rounded-lg flex justify-center items-center">
-          6
-        </div>
-        <div class="aspect-square bg-base-300 rounded-lg flex justify-center items-center">
+        <div class="">4</div>
+        <div class="">5</div>
+        <div class="">6</div>
+        <div class="bg-secondary-content! text-secondary">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="24"
@@ -109,16 +103,10 @@ const Calculator = () => {
             <path d="M5 12h14" />
           </svg>
         </div>
-        <div class="aspect-square bg-base-300 rounded-lg flex justify-center items-center">
-          1
-        </div>
-        <div class="aspect-square bg-base-300 rounded-lg flex justify-center items-center">
-          2
-        </div>
-        <div class="aspect-square bg-base-300 rounded-lg flex justify-center items-center">
-          3
-        </div>
-        <div class="aspect-square bg-base-300 rounded-lg flex justify-center items-center">
+        <div class="">1</div>
+        <div class="">2</div>
+        <div class="">3</div>
+        <div class="bg-secondary-content! text-secondary">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="24"
@@ -135,7 +123,7 @@ const Calculator = () => {
             <path d="M12 5v14" />
           </svg>
         </div>
-        <div class="aspect-square bg-base-300 rounded-lg flex justify-center items-center bg-primary-content text-primary rounded-bl-2xl">
+        <div class="bg-primary-content! text-primary rounded-bl-2xl">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="24"
@@ -154,13 +142,9 @@ const Calculator = () => {
             <path d="M16 21h3a2 2 0 0 0 2-2v-3" />
           </svg>
         </div>
-        <div class="aspect-square bg-base-300 rounded-lg flex justify-center items-center">
-          0
-        </div>
-        <div class="aspect-square bg-base-300 rounded-lg flex justify-center items-center">
-          .
-        </div>
-        <div class="aspect-square bg-base-300 rounded-lg flex justify-center items-center bg-primary-content text-primary rounded-br-2xl">
+        <div class="">0</div>
+        <div class="">.</div>
+        <div class=" bg-primary-content! text-primary rounded-br-2xl">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="24"

@@ -17,7 +17,7 @@ const Calculator = () => {
     const newExpression = expression.map((item) => {
       if (item === "multiply") {
         return "*";
-      } else if (item === "/") {
+      } else if (item === "divide") {
         return "/";
       } else if (item === "subtract") {
         return "-";
@@ -41,7 +41,7 @@ const Calculator = () => {
     const res = expression.map((item) => {
       if (item === "multiply") {
         return "*";
-      } else if (item === "/") {
+      } else if (item === "divide") {
         return "/";
       } else if (item === "subtract") {
         return "-";
@@ -129,7 +129,7 @@ const Calculator = () => {
         <div
           class="bg-secondary-content! text-secondary"
           onClick={() => {
-            setCurrentInput(currentInput() + "divide");
+            setCurrentInput([currentInput(), "divide"]);
           }}
         >
           <svg

@@ -4,7 +4,9 @@ import Base from "./base";
 const RoundClockBlock = () => {
   return (
     <Base class="bg-base-100 p-4">
-      <RoundClock />
+      <a href="/tools/round-clock">
+        <RoundClock />
+      </a>
     </Base>
   );
 };

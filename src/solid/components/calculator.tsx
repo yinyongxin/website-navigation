@@ -201,7 +201,7 @@ const Calculator = (props: CalculatorProps) => {
         )}
       >
         <div
-          class="bg-secondary-content! text-secondary cursor-pointer"
+          class="bg-error/20! text-error! cursor-pointer text-lg font-bold"
           onClick={() => {
             setCurrentInput([]);
             setCalculationHistory([]);
@@ -269,7 +269,7 @@ const Calculator = (props: CalculatorProps) => {
             stroke-width="2"
             stroke-linecap="round"
             stroke-linejoin="round"
-            class="lucide lucide-divide"
+            class="size-1/2"
           >
             <circle cx="12" cy="6" r="1" />
             <line x1="5" x2="19" y1="12" y2="12" />
@@ -457,7 +457,7 @@ const Calculator = (props: CalculatorProps) => {
         </div>
         <div
           class={cn("bg-primary-content! text-primary rounded-br-2xl!", {
-            "col-span-2 aspect-auto! max-h-[62px]":
+            "col-span-2 aspect-auto!":
               props?.showFullScreen === false,
           })}
           onClick={() => {
@@ -474,7 +474,7 @@ const Calculator = (props: CalculatorProps) => {
             stroke-width="2"
             stroke-linecap="round"
             stroke-linejoin="round"
-            class="size-1/2"
+            class="w-1/2"
           >
             <line x1="5" x2="19" y1="9" y2="9" />
             <line x1="5" x2="19" y1="15" y2="15" />

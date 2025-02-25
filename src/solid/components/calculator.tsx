@@ -457,7 +457,8 @@ const Calculator = (props: CalculatorProps) => {
         </div>
         <div
           class={cn("bg-primary-content! text-primary rounded-br-2xl!", {
-            "col-span-2 aspect-auto!": props?.showFullScreen === false,
+            "col-span-2 aspect-auto! max-h-[62px]":
+              props?.showFullScreen === false,
           })}
           onClick={() => {
             calculate();

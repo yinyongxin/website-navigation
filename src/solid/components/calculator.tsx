@@ -168,8 +168,8 @@ const Calculator = () => {
     const lastValue = newValue[inputLength - 1];
     if (!isNaN(Number(lastValue))) {
       newValue[inputLength - 1] = (parseFloat(lastValue) / 100).toString();
+      setCurrentInput(newValue);
     }
-    setCurrentInput(newValue);
   };
 
   return (

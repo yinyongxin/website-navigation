@@ -4,7 +4,7 @@ import Base from "./base";
 import { createSignal } from "solid-js";
 
 const ElectronicClockBlock = () => {
-	const [timeType, setTimeType] = createSignal<"AM" | "PM">("AM");
+	const [timeType, setTimeType] = createSignal<"AM" | "PM">("PM");
 	const date = dayjs().format("YYYY年MM月DD日");
 	return (
 		<Base class="col-span-2 bg-base-100 p-6 flex flex-col justify-between">

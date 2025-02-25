@@ -3,7 +3,7 @@ import { createSignal } from "solid-js";
 import dayjs from "dayjs";
 
 const ElectronicClockPage = () => {
-	const [timeType, setTimeType] = createSignal<"AM" | "PM">("AM");
+	const [timeType, setTimeType] = createSignal<"AM" | "PM">("PM");
 	const date = dayjs().format("YYYY年MM月DD日");
 	return (
 		<div class="size-full flex flex-col justify-center items-center gap-4">

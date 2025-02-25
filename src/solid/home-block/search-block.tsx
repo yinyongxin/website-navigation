@@ -27,7 +27,7 @@ const SearchBlock = () => {
 				<a
 					href="/tools/search"
 					class={cn(
-						"flex justify-center items-center text-neutral/50 cursor-pointer hover:scale-110 hover:text-neutral"
+						"flex justify-center items-center text-base-content/50 cursor-pointer hover:scale-110 hover:text-base-content"
 					)}
 				>
 					<svg

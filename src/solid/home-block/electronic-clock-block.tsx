@@ -9,7 +9,7 @@ const ElectronicClockBlock = () => {
 	return (
 		<Base class="col-span-2 bg-base-100 p-6 flex flex-col justify-between">
 			<div class="flex justify-end">
-				<div class="text-sm text-neutral/50 cursor-pointer hover:scale-110 hover:text-neutral">
+				<div class="text-sm text-base-content/70 cursor-pointer hover:scale-110 hover:text-base-content">
 					<a href="/tools/electronic-clock">
 						<svg
 							xmlns="http://www.w3.org/2000/svg"

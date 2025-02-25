@@ -27,7 +27,7 @@ const Content = () => {
       <div
         class={cn(
           "grid grid-flow-dense w-full gap-4 sm:gap-6 justify-center ",
-          "sm:grid-cols-[repeat(auto-fill,300px)] sm:grid-rows-[repeat(10,300px)]",
+          "sm:grid-cols-[repeat(auto-fill,260px)] sm:grid-rows-[repeat(10,260px)]",
           "grid-cols-[repeat(2,calc(50vw-2rem))] grid-rows-[repeat(10,calc(50vw-2rem))]"
         )}
       >

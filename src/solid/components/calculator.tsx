@@ -1,7 +1,9 @@
 import { cn } from "../../utils";
-import { createSignal, For } from "solid-js";
-
-const Calculator = () => {
+import { createSignal, For, Show } from "solid-js";
+type CalculatorProps = {
+  showFullScreen?: boolean;
+};
+const Calculator = (props: CalculatorProps) => {
   const [calculationHistory, setCalculationHistory] = createSignal<
     {
       expression: string[];
@@ -173,7 +175,7 @@ const Calculator = () => {
   };
 
   return (
-    <div class="flex flex-col flex-1 gap-2">
+    <div class="size-full flex flex-col flex-1 gap-2">
       <div class="grow flex flex-col justify-end items-end text-lg bg-base-200 rounded-t-3xl p-2">
         <div class="grow overflow-auto w-full">
           <For each={calculationHistory()}>
@@ -411,25 +413,32 @@ const Calculator = () => {
             <path d="M12 5v14" />
           </svg>
         </div>
-        <div class="bg-primary-content! text-primary rounded-bl-2xl!">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            class="size-1/2 "
-          >
-            <path d="M8 3H5a2 2 0 0 0-2 2v3" />
-            <path d="M21 8V5a2 2 0 0 0-2-2h-3" />
-            <path d="M3 16v3a2 2 0 0 0 2 2h3" />
-            <path d="M16 21h3a2 2 0 0 0 2-2v-3" />
-          </svg>
-        </div>
+        <Show when={props?.showFullScreen === true}>
+          <div class={cn("bg-primary-content! text-primary rounded-bl-2xl!")}>
+            <a
+              href="/tools/calculator"
+              class="size-full flex justify-center items-center"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="size-1/2 "
+              >
+                <path d="M8 3H5a2 2 0 0 0-2 2v3" />
+                <path d="M21 8V5a2 2 0 0 0-2-2h-3" />
+                <path d="M3 16v3a2 2 0 0 0 2 2h3" />
+                <path d="M16 21h3a2 2 0 0 0 2-2v-3" />
+              </svg>
+            </a>
+          </div>
+        </Show>
         <div
           class=""
           onClick={() => {
@@ -447,7 +456,9 @@ const Calculator = () => {
           .
         </div>
         <div
-          class=" bg-primary-content! text-primary rounded-br-2xl!"
+          class={cn("bg-primary-content! text-primary rounded-br-2xl!", {
+            "col-span-2 aspect-auto!": props?.showFullScreen === false,
+          })}
           onClick={() => {
             calculate();
           }}

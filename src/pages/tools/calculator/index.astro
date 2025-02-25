@@ -1,0 +1,8 @@
+---
+import CalculatorPage from "../../../solid/pages/tools/calculator-page.tsx";
+import Layout from "../../../layouts/Layout.astro";
+const pageTitle = "简单计算器";
+---
+<Layout pageTitle={pageTitle}>
+  <CalculatorPage client:load />
+</Layout>

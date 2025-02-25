@@ -8,7 +8,7 @@ const ElectronicClockPage = () => {
   return (
     <div class="size-full flex flex-col justify-center items-center gap-4">
       <div class="w-3/4 aspect-[5/1] flex flex-col justify-center items-center">
-        <ElectronicClock timeType={timeType} />
+        <ElectronicClock timeType={timeType()} />
       </div>
       <div class="w-3/4 flex justify-between text-neutral/50">
         <div

@@ -1,243 +1,99 @@
 import { createSignal, For, Index, onMount, Show } from "solid-js";
 import { uniq } from "lodash-es";
 import { cn } from "../../utils";
-import { TransitionGroup } from "solid-transition-group";
-import { Dialog } from "@ark-ui/solid";
-import { Portal } from "solid-js/web";
-import styles from "./index.module.css";
 import { useTheme } from "../hooks/useTheme";
 import { list } from "./data";
+import ReactContnet from "./react-content";
 
 const WebsitesNavigation = () => {
-	const [open, setOpen] = createSignal(false);
-	const { theme, toggleTheme } = useTheme();
-	const [tags, setTags] = createSignal<
-		{
-			label: string;
-			checked: boolean;
-		}[]
-	>([]);
+  const [check, setCheck] = createSignal("check");
+  const { theme, toggleTheme } = useTheme();
 
-	const getFilterList = () => {
-		return list.filter((listItem) => {
-			return tags().every((tag) => {
-				return tag.checked ? listItem.tags.includes(tag.label) : true;
-			});
-		});
-	};
+  return (
+    <div class="h-svh relative bg-gradient-to-br from-primary/20 via-secondary/20 to-accent/20">
+      <div class="fixed p-2 glass top-4 left-4 bottom-4 pb-12 w-30 rounded-2xl flex flex-col gap-2">
+        <div
+          class="relative cursor-pointer py-2 px-3 bg-[#61DAFB]/15 rounded-xl flex gap-2 justify-start items-center"
+          onClick={() => {
+            setCheck("react");
+          }}
+        >
+          <svg
+            role="img"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+            class="size-8 fill-[#61DAFB]"
+          >
+            <title>React</title>
+            <path d="M14.23 12.004a2.236 2.236 0 0 1-2.235 2.236 2.236 2.236 0 0 1-2.236-2.236 2.236 2.236 0 0 1 2.235-2.236 2.236 2.236 0 0 1 2.236 2.236zm2.648-10.69c-1.346 0-3.107.96-4.888 2.622-1.78-1.653-3.542-2.602-4.887-2.602-.41 0-.783.093-1.106.278-1.375.793-1.683 3.264-.973 6.365C1.98 8.917 0 10.42 0 12.004c0 1.59 1.99 3.097 5.043 4.03-.704 3.113-.39 5.588.988 6.38.32.187.69.275 1.102.275 1.345 0 3.107-.96 4.888-2.624 1.78 1.654 3.542 2.603 4.887 2.603.41 0 .783-.09 1.106-.275 1.374-.792 1.683-3.263.973-6.365C22.02 15.096 24 13.59 24 12.004c0-1.59-1.99-3.097-5.043-4.032.704-3.11.39-5.587-.988-6.38-.318-.184-.688-.277-1.092-.278zm-.005 1.09v.006c.225 0 .406.044.558.127.666.382.955 1.835.73 3.704-.054.46-.142.945-.25 1.44-.96-.236-2.006-.417-3.107-.534-.66-.905-1.345-1.727-2.035-2.447 1.592-1.48 3.087-2.292 4.105-2.295zm-9.77.02c1.012 0 2.514.808 4.11 2.28-.686.72-1.37 1.537-2.02 2.442-1.107.117-2.154.298-3.113.538-.112-.49-.195-.964-.254-1.42-.23-1.868.054-3.32.714-3.707.19-.09.4-.127.563-.132zm4.882 3.05c.455.468.91.992 1.36 1.564-.44-.02-.89-.034-1.345-.034-.46 0-.915.01-1.36.034.44-.572.895-1.096 1.345-1.565zM12 8.1c.74 0 1.477.034 2.202.093.406.582.802 1.203 1.183 1.86.372.64.71 1.29 1.018 1.946-.308.655-.646 1.31-1.013 1.95-.38.66-.773 1.288-1.18 1.87-.728.063-1.466.098-2.21.098-.74 0-1.477-.035-2.202-.093-.406-.582-.802-1.204-1.183-1.86-.372-.64-.71-1.29-1.018-1.946.303-.657.646-1.313 1.013-1.954.38-.66.773-1.286 1.18-1.868.728-.064 1.466-.098 2.21-.098zm-3.635.254c-.24.377-.48.763-.704 1.16-.225.39-.435.782-.635 1.174-.265-.656-.49-1.31-.676-1.947.64-.15 1.315-.283 2.015-.386zm7.26 0c.695.103 1.365.23 2.006.387-.18.632-.405 1.282-.66 1.933-.2-.39-.41-.783-.64-1.174-.225-.392-.465-.774-.705-1.146zm3.063.675c.484.15.944.317 1.375.498 1.732.74 2.852 1.708 2.852 2.476-.005.768-1.125 1.74-2.857 2.475-.42.18-.88.342-1.355.493-.28-.958-.646-1.956-1.1-2.98.45-1.017.81-2.01 1.085-2.964zm-13.395.004c.278.96.645 1.957 1.1 2.98-.45 1.017-.812 2.01-1.086 2.964-.484-.15-.944-.318-1.37-.5-1.732-.737-2.852-1.706-2.852-2.474 0-.768 1.12-1.742 2.852-2.476.42-.18.88-.342 1.356-.494zm11.678 4.28c.265.657.49 1.312.676 1.948-.64.157-1.316.29-2.016.39.24-.375.48-.762.705-1.158.225-.39.435-.788.636-1.18zm-9.945.02c.2.392.41.783.64 1.175.23.39.465.772.705 1.143-.695-.102-1.365-.23-2.006-.386.18-.63.406-1.282.66-1.933zM17.92 16.32c.112.493.2.968.254 1.423.23 1.868-.054 3.32-.714 3.708-.147.09-.338.128-.563.128-1.012 0-2.514-.807-4.11-2.28.686-.72 1.37-1.536 2.02-2.44 1.107-.118 2.154-.3 3.113-.54zm-11.83.01c.96.234 2.006.415 3.107.532.66.905 1.345 1.727 2.035 2.446-1.595 1.483-3.092 2.295-4.11 2.295-.22-.005-.406-.05-.553-.132-.666-.38-.955-1.834-.73-3.703.054-.46.142-.944.25-1.438zm4.56.64c.44.02.89.034 1.345.034.46 0 .915-.01 1.36-.034-.44.572-.895 1.095-1.345 1.565-.455-.47-.91-.993-1.36-1.565z" />
+          </svg>
+          <div class="text-[#61DAFB]">React</div>
+          <div
+            class={cn("absolute right-0 top-3 bottom-3 w-1", {
+              "bg-[#61DAFB]": check() === "react",
+            })}
+          ></div>
+        </div>
+        <div
+          class="relative cursor-pointer py-2 px-3 bg-[#4FC08D]/15 rounded-xl flex gap-2 justify-start items-center"
+          onClick={() => {
+            setCheck("vue");
+          }}
+        >
+          <svg
+            role="img"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+            class="size-8 fill-[#4FC08D]"
+          >
+            <title>Vue.js</title>
+            <path d="M24,1.61H14.06L12,5.16,9.94,1.61H0L12,22.39ZM12,14.08,5.16,2.23H9.59L12,6.41l2.41-4.18h4.43Z" />
+          </svg>
+          <div class="text-[#4FC08D]">Vue</div>
+          <div
+            class={cn("absolute right-0 top-3 bottom-3 w-1", {
+              "bg-[#4FC08D]": check() === "vue",
+            })}
+          ></div>
+        </div>
+        <button class="absolute bottom-2 left-2 right-2 h-10 bg-base-100/20 rounded-xl flex justify-center items-center">
+          <label class="swap swap-rotate ">
+            <input
+              type="checkbox"
+              class="theme-controller"
+              value="dark"
+              checked={theme() === "dark"}
+              onChange={(e) => {
+                if (e.target.checked) {
+                  toggleTheme("dark");
+                } else {
+                  toggleTheme("light");
+                }
+              }}
+            />
+            <svg
+              class="swap-off fill-current h-6 w-6"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+            >
+              <path d="M5.64,17l-.71.71a1,1,0,0,0,0,1.41,1,1,0,0,0,1.41,0l.71-.71A1,1,0,0,0,5.64,17ZM5,12a1,1,0,0,0-1-1H3a1,1,0,0,0,0,2H4A1,1,0,0,0,5,12Zm7-7a1,1,0,0,0,1-1V3a1,1,0,0,0-2,0V4A1,1,0,0,0,12,5ZM5.64,7.05a1,1,0,0,0,.7.29,1,1,0,0,0,.71-.29,1,1,0,0,0,0-1.41l-.71-.71A1,1,0,0,0,4.93,6.34Zm12,.29a1,1,0,0,0,.7-.29l.71-.71a1,1,0,1,0-1.41-1.41L17,5.64a1,1,0,0,0,0,1.41A1,1,0,0,0,17.66,7.34ZM21,11H20a1,1,0,0,0,0,2h1a1,1,0,0,0,0-2Zm-9,8a1,1,0,0,0-1,1v1a1,1,0,0,0,2,0V20A1,1,0,0,0,12,19ZM18.36,17A1,1,0,0,0,17,18.36l.71.71a1,1,0,0,0,1.41,0,1,1,0,0,0,0-1.41ZM12,6.5A5.5,5.5,0,1,0,17.5,12,5.51,5.51,0,0,0,12,6.5Zm0,9A3.5,3.5,0,1,1,15.5,12,3.5,3.5,0,0,1,12,15.5Z" />
+            </svg>
 
-	onMount(() => {
-		setTags(
-			uniq(list.map((item) => item.tags).flat()).map((item) => ({
-				label: item,
-				checked: false,
-			}))
-		);
-	});
-
-	return (
-		<div class="h-svh overflow-hidden relative flex flex-col">
-			<div class="navbar shadow-sm bg-base-100/20 backdrop-blur">
-				<div class="navbar-start">
-					<div
-						tabindex="0"
-						role="button"
-						class="btn btn-ghost btn-circle"
-						onClick={() => {
-							console.log(open());
-							setOpen(open() ? false : true);
-						}}
-					>
-						<Show
-							when={!open()}
-							fallback={
-								<svg
-									xmlns="http://www.w3.org/2000/svg"
-									width="24"
-									height="24"
-									viewBox="0 0 24 24"
-									fill="none"
-									stroke="currentColor"
-									stroke-width="2"
-									stroke-linecap="round"
-									stroke-linejoin="round"
-									class="lucide lucide-x"
-								>
-									<path d="M18 6 6 18" />
-									<path d="m6 6 12 12" />
-								</svg>
-							}
-						>
-							<svg
-								xmlns="http://www.w3.org/2000/svg"
-								class="h-5 w-5"
-								fill="none"
-								viewBox="0 0 24 24"
-								stroke="currentColor"
-							>
-								<path
-									stroke-linecap="round"
-									stroke-linejoin="round"
-									stroke-width="2"
-									d="M4 6h16M4 12h16M4 18h7"
-								/>
-							</svg>
-						</Show>
-					</div>
-				</div>
-				<div class="navbar-center">
-					<a class="btn btn-ghost text-xl">导航</a>
-				</div>
-				<div class="navbar-end">
-					<button class="btn btn-ghost btn-circle">
-						<label class="swap swap-rotate ">
-							<input
-								type="checkbox"
-								class="theme-controller"
-								value="dark"
-								checked={theme() === "dark"}
-								onChange={(e) => {
-									if (e.target.checked) {
-										toggleTheme("dark");
-									} else {
-										toggleTheme("light");
-									}
-								}}
-							/>
-							<svg
-								class="swap-off fill-current h-6 w-6"
-								xmlns="http://www.w3.org/2000/svg"
-								viewBox="0 0 24 24"
-							>
-								<path d="M5.64,17l-.71.71a1,1,0,0,0,0,1.41,1,1,0,0,0,1.41,0l.71-.71A1,1,0,0,0,5.64,17ZM5,12a1,1,0,0,0-1-1H3a1,1,0,0,0,0,2H4A1,1,0,0,0,5,12Zm7-7a1,1,0,0,0,1-1V3a1,1,0,0,0-2,0V4A1,1,0,0,0,12,5ZM5.64,7.05a1,1,0,0,0,.7.29,1,1,0,0,0,.71-.29,1,1,0,0,0,0-1.41l-.71-.71A1,1,0,0,0,4.93,6.34Zm12,.29a1,1,0,0,0,.7-.29l.71-.71a1,1,0,1,0-1.41-1.41L17,5.64a1,1,0,0,0,0,1.41A1,1,0,0,0,17.66,7.34ZM21,11H20a1,1,0,0,0,0,2h1a1,1,0,0,0,0-2Zm-9,8a1,1,0,0,0-1,1v1a1,1,0,0,0,2,0V20A1,1,0,0,0,12,19ZM18.36,17A1,1,0,0,0,17,18.36l.71.71a1,1,0,0,0,1.41,0,1,1,0,0,0,0-1.41ZM12,6.5A5.5,5.5,0,1,0,17.5,12,5.51,5.51,0,0,0,12,6.5Zm0,9A3.5,3.5,0,1,1,15.5,12,3.5,3.5,0,0,1,12,15.5Z" />
-							</svg>
-
-							<svg
-								class="swap-on h-6 w-6 fill-current"
-								xmlns="http://www.w3.org/2000/svg"
-								viewBox="0 0 24 24"
-							>
-								<path d="M21.64,13a1,1,0,0,0-1.05-.14,8.05,8.05,0,0,1-3.37.73A8.15,8.15,0,0,1,9.08,5.49a8.59,8.59,0,0,1,.25-2A1,1,0,0,0,8,2.36,10.14,10.14,0,1,0,22,14.05,1,1,0,0,0,21.64,13Zm-9.5,6.69A8.14,8.14,0,0,1,7.08,5.22v.27A10.15,10.15,0,0,0,17.22,15.63a9.79,9.79,0,0,0,2.1-.22A8.11,8.11,0,0,1,12.14,19.73Z" />
-							</svg>
-						</label>
-					</button>
-					<button class="btn btn-ghost btn-circle">
-						<svg
-							xmlns="http://www.w3.org/2000/svg"
-							class="h-5 w-5"
-							fill="none"
-							viewBox="0 0 24 24"
-							stroke="currentColor"
-						>
-							<path
-								stroke-linecap="round"
-								stroke-linejoin="round"
-								stroke-width="2"
-								d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-							/>
-						</svg>
-					</button>
-				</div>
-			</div>
-			<div class="p-6 flex-1 overflow-auto">
-				<ul
-					class="w-full grid gap-6"
-					style={{
-						"grid-template-columns": "repeat(auto-fill, minmax(240px, 1fr))",
-					}}
-				>
-					<For each={getFilterList()}>
-						{(item) => {
-							return (
-								<li
-									class={cn(
-										styles.card,
-										"bg-gradient-to-br from-primary/20 to-secondary/20 shadow border border-base-300"
-									)}
-								>
-									<div
-										class={cn(
-											styles.main,
-											"size-full flex flex-col gap-2 text-lg font-bold justify-center items-center"
-										)}
-									>
-										<img src={item.icon} alt="icon" class="h-1/3" />
-										<div>{item.title}</div>
-									</div>
-									<div class={cn(styles.content, "bg-base-100")}>
-										<div class="text-lg font-bold flex justify-between">
-											<div>{item.title}</div>
-											<a href={item.url} target="_blank">
-												<svg
-													xmlns="http://www.w3.org/2000/svg"
-													width="24"
-													height="24"
-													viewBox="0 0 24 24"
-													fill="none"
-													stroke="currentColor"
-													stroke-width="2"
-													stroke-linecap="round"
-													stroke-linejoin="round"
-													class="lucide lucide-arrow-right"
-												>
-													<path d="M5 12h14" />
-													<path d="m12 5 7 7-7 7" />
-												</svg>
-											</a>
-										</div>
-										<p
-											class={cn(
-												"mt-2 text-justify text-sm text-base-content/50"
-											)}
-										>
-											{item.description}
-										</p>
-									</div>
-								</li>
-							);
-						}}
-					</For>
-				</ul>
-			</div>
-			<Dialog.Root preventScroll={false} modal={false} open={open()}>
-				<Portal>
-					<Dialog.Positioner class="absolute left-0 top-16 bottom-0 flex justify-center items-center">
-						<Dialog.Content class="bg-base-100 shadow h-full overflow-hidden flex flex-col">
-							<ul class="menu rounded-box w-56">
-								<Index each={tags()}>
-									{(tag, index) => {
-										return (
-											<li
-												class="mt-2"
-												onClick={() => {
-													setTags((prev) =>
-														prev.map((item, i) =>
-															i === index
-																? { ...item, checked: !item.checked }
-																: item
-														)
-													);
-												}}
-											>
-												<a
-													class={cn({
-														"menu-active": tag().checked,
-													})}
-												>
-													{" "}
-													{tag().label}
-												</a>
-											</li>
-										);
-									}}
-								</Index>
-							</ul>
-						</Dialog.Content>
-					</Dialog.Positioner>
-				</Portal>
-			</Dialog.Root>
-		</div>
-	);
+            <svg
+              class="swap-on h-6 w-6 fill-current"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+            >
+              <path d="M21.64,13a1,1,0,0,0-1.05-.14,8.05,8.05,0,0,1-3.37.73A8.15,8.15,0,0,1,9.08,5.49a8.59,8.59,0,0,1,.25-2A1,1,0,0,0,8,2.36,10.14,10.14,0,1,0,22,14.05,1,1,0,0,0,21.64,13Zm-9.5,6.69A8.14,8.14,0,0,1,7.08,5.22v.27A10.15,10.15,0,0,0,17.22,15.63a9.79,9.79,0,0,0,2.1-.22A8.11,8.11,0,0,1,12.14,19.73Z" />
+            </svg>
+          </label>
+        </button>
+      </div>
+      <div class="pl-38 py-4 pr-4 h-full overflow-auto">
+        <ReactContnet />
+      </div>
+    </div>
+  );
 };
 
 export default WebsitesNavigation;

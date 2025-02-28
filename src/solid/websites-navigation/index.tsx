@@ -1,12 +1,10 @@
 import { createSignal, For, Index, onMount, Show } from "solid-js";
-import { uniq } from "lodash-es";
 import { cn } from "../../utils";
 import { useTheme } from "../hooks/useTheme";
-import { list } from "./data";
-import ReactContnet from "./react-content";
+import ReactContnet from "./modules/react";
 
 const WebsitesNavigation = () => {
-  const [check, setCheck] = createSignal("check");
+  const [check, setCheck] = createSignal("react");
   const { theme, toggleTheme } = useTheme();
 
   return (
